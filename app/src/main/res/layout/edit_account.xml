@@ -40,6 +40,17 @@
             android:maxLines="1"
             android:layout_marginTop="20dp"
             />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textColorHint="#fff"
+            android:textSize="20dp"
+            android:inputType="phone"
+            android:hint="New Phone Number"
+            android:maxLines="1"
+            android:layout_marginTop="20dp"
+            />
 
         <Button
             android:layout_width="match_parent"

@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <LinearLayout
         android:background="@color/colorRed"
         android:layout_width="match_parent"
@@ -15,26 +14,41 @@
             android:layout_height="wrap_content"
             android:textColor="#fff"
             android:textSize="30dp"
-            android:text="Profile Management"
+            android:text="Reserved Events"
             android:gravity="center"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="356dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="center"
+                    android:text="Event #"
+                    android:textColor="#fff"
+                    android:textSize="20dp" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@color/colorOrange"
+                    android:text="View Details" />
+
+            </LinearLayout>
+        </ScrollView>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Edit Account"
-            android:layout_margin="10dp"
-            android:background="@color/colorOrange"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Delete Account"
-            android:layout_margin="10dp"
-            android:background="@color/colorOrange"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cancel"
+            android:text="Back"
             android:layout_margin="10dp"
             android:background="@color/colorOrange"/>
     </LinearLayout>
