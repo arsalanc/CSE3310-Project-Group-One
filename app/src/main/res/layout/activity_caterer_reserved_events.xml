@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <LinearLayout
         android:background="@color/colorRed"
         android:layout_width="match_parent"
@@ -14,48 +13,28 @@
             android:layout_height="wrap_content"
             android:textColor="#fff"
             android:textSize="30dp"
-            android:text="User Homepage"
+            android:text="Reserved Events"
             android:gravity="center"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:textSize="20dp"
+            android:text="Event #"
+            android:layout_margin="10dp"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Request event"
+            android:text="View Details"
             android:layout_margin="10dp"
             android:background="@color/colorOrange"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="View requested events"
+            android:text="Edit event"
             android:layout_margin="10dp"
             android:background="@color/colorOrange"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="View reserved events"
-            android:layout_margin="10dp"
-            android:background="@color/colorOrange"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="View Schedule of events"
-            android:layout_margin="10dp"
-            android:background="@color/colorOrange"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Profile Management"
-            android:layout_margin="10dp"
-            android:background="@color/colorYellow"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Logout"
-            android:layout_margin="10dp"
-            android:background="@color/colorYellow"/>
-
-
     </LinearLayout>
-
 </android.support.constraint.ConstraintLayout>

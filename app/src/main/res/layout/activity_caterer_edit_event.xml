@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <LinearLayout
         android:background="@color/colorRed"
         android:layout_width="match_parent"
@@ -14,48 +13,52 @@
             android:layout_height="wrap_content"
             android:textColor="#fff"
             android:textSize="30dp"
-            android:text="User Homepage"
+            android:text="Event #"
             android:gravity="center"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Request event"
-            android:layout_margin="10dp"
+            android:text="Assign Staff"
+            android:layout_margin="8dp"
             android:background="@color/colorOrange"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="View requested events"
-            android:layout_margin="10dp"
+            android:text="Remove Staff"
+            android:layout_margin="8dp"
             android:background="@color/colorOrange"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="View reserved events"
-            android:layout_margin="10dp"
+            android:text="Add Resources"
+            android:layout_margin="8dp"
             android:background="@color/colorOrange"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="View Schedule of events"
-            android:layout_margin="10dp"
+            android:text="View User Info"
+            android:layout_margin="8dp"
             android:background="@color/colorOrange"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Profile Management"
-            android:layout_margin="10dp"
-            android:background="@color/colorYellow"/>
+            android:text="Remove Resources"
+            android:layout_margin="8dp"
+            android:background="@color/colorOrange"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Logout"
-            android:layout_margin="10dp"
-            android:background="@color/colorYellow"/>
-
+            android:text="Remove Event"
+            android:layout_margin="8dp"
+            android:background="@color/colorOrange"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:layout_margin="8dp"
+            android:background="@color/colorOrange"/>
 
     </LinearLayout>
-
 </android.support.constraint.ConstraintLayout>
