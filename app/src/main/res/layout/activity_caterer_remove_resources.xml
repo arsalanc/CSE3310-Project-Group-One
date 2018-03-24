@@ -13,52 +13,57 @@
             android:layout_height="wrap_content"
             android:textColor="#fff"
             android:textSize="30dp"
-            android:text="Event #"
+            android:text="Remove Resources"
             android:gravity="center"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:textSize="20dp"
+            android:text="Resources"
+            android:layout_margin="10dp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:textSize="15dp"
+                android:text="Resource name"
+                android:layout_margin="10dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:textSize="15dp"
+                android:text="Resource Amount"
+                android:layout_margin="10dp"/>
+        </LinearLayout>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textColorHint="#fff"
+            android:textSize="20dp"
+            android:hint="Resource Name"
+            android:maxLines="1"
+            android:layout_marginTop="50dp" />
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Assign Staff"
-            android:layout_margin="8dp"
+            android:text="Submit"
+            android:layout_margin="10dp"
             android:background="@color/colorOrange"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Remove Staff"
-            android:layout_margin="8dp"
-            android:background="@color/colorOrange"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Add Resources"
-            android:layout_margin="8dp"
-            android:background="@color/colorOrange"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="View User Info"
-            android:layout_margin="8dp"
-            android:background="@color/colorOrange"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Remove Resources"
-            android:layout_margin="8dp"
-            android:background="@color/colorOrange"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Remove Event"
-            android:layout_margin="8dp"
-            android:background="@color/colorYellow"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Back"
-            android:layout_margin="8dp"
+            android:layout_margin="10dp"
             android:background="@color/colorOrange"/>
-
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
