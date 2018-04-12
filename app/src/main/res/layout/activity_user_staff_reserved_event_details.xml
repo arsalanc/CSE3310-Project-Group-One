@@ -94,6 +94,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <Button
+                android:id="@+id/caterer_information"
                 android:layout_width="175dp"
                 android:layout_height="50dp"
                 android:text="Caterer Information"
@@ -101,6 +102,7 @@
                 android:layout_gravity="center"
                 android:background="@color/colorOrange"/>
             <Button
+                android:id="@+id/event_details_back_user"
                 android:layout_width="175dp"
                 android:layout_height="50dp"
                 android:text="Back"

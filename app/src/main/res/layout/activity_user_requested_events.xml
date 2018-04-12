@@ -27,14 +27,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <!-- Consider making spinner instead of textview -->
-                <TextView
+                <Spinner
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:spinnerMode="dropdown"
                     android:layout_margin="10dp"
                     android:gravity="center"
                     android:text="Event #"
                     android:textColor="#fff"
-                    android:textSize="20dp" />
+                    android:textSize="20dp"
+                    />
 
                 <Button
                     android:layout_width="match_parent"

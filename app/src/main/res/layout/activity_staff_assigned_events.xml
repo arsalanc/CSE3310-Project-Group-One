@@ -35,6 +35,8 @@
                     android:textSize="20dp" />
 
                 <Button
+
+                    android:id="@+id/view_details_assigned"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"

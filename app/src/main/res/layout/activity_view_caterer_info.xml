@@ -34,6 +34,7 @@
             android:textColor="#fff"
             android:textSize="20dp" />
         <Button
+            android:id="@+id/caterer_info_back"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Back"

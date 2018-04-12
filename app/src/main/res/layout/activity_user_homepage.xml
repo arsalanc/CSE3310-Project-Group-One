@@ -19,36 +19,42 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"/>
         <Button
+            android:id="@+id/request_event_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Request event"
             android:layout_margin="10dp"
             android:background="@color/colorOrange"/>
         <Button
+            android:id="@+id/view_requested_events_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="View requested events"
             android:layout_margin="10dp"
             android:background="@color/colorOrange"/>
         <Button
+            android:id="@+id/view_reserved_events_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="View reserved events"
             android:layout_margin="10dp"
             android:background="@color/colorOrange"/>
         <Button
+            android:id="@+id/view_schedule_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="View Schedule of events"
             android:layout_margin="10dp"
             android:background="@color/colorOrange"/>
         <Button
+            android:id="@+id/profile_management_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Profile Management"
             android:layout_margin="10dp"
             android:background="@color/colorYellow"/>
         <Button
+            android:id="@+id/logout_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Logout"
