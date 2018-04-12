@@ -81,6 +81,7 @@
             android:layout_margin="5dp"
             android:background="@color/colorOrange"/>
         <Button
+            android:id="@+id/cancel_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cancel"

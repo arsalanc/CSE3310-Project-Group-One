@@ -19,24 +19,28 @@
             android:layout_marginBottom="20dp"/>
 
         <Button
+            android:id="@+id/reserved_events_caterer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="View Reserved Events"
             android:layout_margin="10dp"
             android:background="@color/colorOrange"/>
         <Button
+            android:id="@+id/requested_events_caterer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="View Requested Events"
             android:layout_margin="10dp"
             android:background="@color/colorOrange"/>
         <Button
+            android:id="@+id/profile_management_caterer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Profile management"
             android:layout_margin="10dp"
             android:background="@color/colorYellow"/>
         <Button
+            android:id="@+id/logout_caterer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="logout"

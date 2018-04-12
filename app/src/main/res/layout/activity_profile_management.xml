@@ -20,18 +20,21 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"/>
         <Button
+            android:id="@+id/edit_account"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Edit Account"
             android:layout_margin="10dp"
             android:background="@color/colorOrange"/>
         <Button
+            android:id="@+id/delete_account"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Delete Account"
             android:layout_margin="10dp"
             android:background="@color/colorOrange"/>
         <Button
+            android:id="@+id/cancel_PM"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cancel"

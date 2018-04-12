@@ -18,42 +18,49 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"/>
         <Button
+            android:id="@+id/assign_staff"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Assign Staff"
             android:layout_margin="8dp"
             android:background="@color/colorOrange"/>
         <Button
+            android:id="@+id/remove_staff"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Remove Staff"
             android:layout_margin="8dp"
             android:background="@color/colorOrange"/>
         <Button
+            android:id="@+id/add_resources"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Add Resources"
             android:layout_margin="8dp"
             android:background="@color/colorOrange"/>
         <Button
+            android:id="@+id/view_user_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="View User Info"
             android:layout_margin="8dp"
             android:background="@color/colorOrange"/>
         <Button
+            android:id="@+id/remove_resources"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Remove Resources"
             android:layout_margin="8dp"
             android:background="@color/colorOrange"/>
         <Button
+            android:id="@+id/remove_event"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Remove Event"
             android:layout_margin="8dp"
             android:background="@color/colorYellow"/>
         <Button
+            android:id="@+id/back_caterer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Back"

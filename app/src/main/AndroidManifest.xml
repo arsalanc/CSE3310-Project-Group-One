@@ -16,6 +16,75 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".RegisterActivity">
+            
+        </activity>
+        <activity android:name=".CatererAddResourcesActivity">
+            
+        </activity>
+        <activity android:name=".CatererAproveEventActivity">
+            
+        </activity>
+        <activity android:name=".CatererAssignStaffActivity">
+            
+        </activity>
+        <activity android:name=".CatererEditEventActivity">
+            
+        </activity>
+        <activity android:name=".CatererHomepageActivity">
+            
+        </activity>
+        <activity android:name=".CatererRemoveResourcesActivity">
+            
+        </activity>
+        <activity android:name=".CatererRemoveStaffActivity">
+            
+        </activity>
+        <activity android:name=".CatererRequestedEventsActivity">
+            
+        </activity>
+        <activity android:name=".CatererReservedEventsActivity">
+
+        </activity>
+        <activity android:name=".CatererViewUserInfoActivity">
+
+        </activity>
+        <activity android:name=".EditAccountActivity">
+
+        </activity>
+        <activity android:name=".ProfileManagementActivity">
+
+        </activity>
+        <activity android:name=".StaffAssignedEventsActivity">
+
+        </activity>
+        <activity android:name=".StaffHomepageActivity">
+
+        </activity>
+        <activity android:name=".UserEventDetailsActivity">
+
+        </activity>
+        <activity android:name=".UserHomepageActivity">
+
+        </activity>
+        <activity android:name=".UserRequestEventActivity">
+
+        </activity>
+        <activity android:name=".UserReservedEventsActivity">
+
+        </activity>
+        <activity android:name=".UserScheduleActivity">
+
+        </activity>
+        <activity android:name=".UserStaffReservedEventDetails">
+
+        </activity>
+        <activity android:name=".UserViewRequestedEvents">
+
+        </activity>
+        <activity android:name=".ViewCatererInfoActivity">
+
+        </activity>
     </application>
 
 </manifest>

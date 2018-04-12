@@ -17,6 +17,7 @@
             android:gravity="center"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"/>
+        <!-- Consider making spinner instead of textview -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -25,12 +26,14 @@
             android:text="Event #"
             android:layout_margin="10dp"/>
         <Button
+            android:id="@+id/reserved_events_details_caterer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="View Details"
             android:layout_margin="10dp"
             android:background="@color/colorOrange"/>
         <Button
+            android:id="@+id/edit_event_caterer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Edit event"
