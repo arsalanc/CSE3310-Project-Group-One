@@ -19,6 +19,7 @@
             android:layout_marginBottom="5dp"/>
 
         <EditText
+            android:id="@+id/resource_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
@@ -28,6 +29,7 @@
             android:maxLines="1"
             android:layout_marginTop="20dp" />
         <EditText
+            android:id="@+id/resource_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
@@ -37,6 +39,7 @@
             android:maxLines="1"
             android:layout_marginTop="20dp" />
         <EditText
+            android:id="@+id/resource_amount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
@@ -46,12 +49,14 @@
             android:maxLines="1"
             android:layout_marginTop="20dp" />
         <Button
+            android:id="@+id/add_resources_submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Submit"
             android:layout_margin="10dp"
             android:background="@color/colorOrange"/>
         <Button
+            android:id="@+id/add_resources_back"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Back"

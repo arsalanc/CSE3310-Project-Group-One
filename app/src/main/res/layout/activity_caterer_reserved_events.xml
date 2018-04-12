@@ -39,5 +39,12 @@
             android:text="Edit event"
             android:layout_margin="10dp"
             android:background="@color/colorOrange"/>
+        <Button
+            android:id="@+id/reserved_events_back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:layout_margin="10dp"
+            android:background="@color/colorYellow"/>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

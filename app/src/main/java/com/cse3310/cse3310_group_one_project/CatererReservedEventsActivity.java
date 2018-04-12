@@ -18,12 +18,19 @@ public class CatererReservedEventsActivity extends AppCompatActivity {
 
         Button view_details=findViewById(R.id.reserved_events_details_caterer);
         Button Edit_event=findViewById(R.id.edit_event_caterer);
+        Button back_event=findViewById(R.id.reserved_events_back);
         //TODO: view_details function
 
         Edit_event.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                edit_event();
+                editEvent();
+            }
+        });
+        back_event.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                backEvent();
             }
         });
 
@@ -33,8 +40,12 @@ public class CatererReservedEventsActivity extends AppCompatActivity {
     public void view_details(){
 
     }
-    public void edit_event(){
+    public void editEvent(){
         Intent intent_editEvent = new Intent(this,CatererEditEventActivity.class);
         startActivity(intent_editEvent);
+    }
+    public void backEvent(){
+        Intent intent_backEvent = new Intent(this,CatererHomepageActivity.class);
+        startActivity(intent_backEvent);
     }
 }

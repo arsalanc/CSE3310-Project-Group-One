@@ -23,13 +23,13 @@ public class CatererEditEventActivity extends AppCompatActivity {
         Button Remove_resources=findViewById(R.id.remove_resources);
         Button Remove_event=findViewById(R.id.remove_event);
         Button Back=findViewById(R.id.back_caterer);
+
         Assign_staff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 assignStaff();
             }
         });
-
         Remove_staff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
