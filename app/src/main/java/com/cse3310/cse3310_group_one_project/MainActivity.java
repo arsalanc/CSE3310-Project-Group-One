@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         register_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                open_Register();
+                openRegister();
             }
         });
         //testing purposes
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    public void open_Register(){
+    public void openRegister(){
         Intent intent_register = new Intent(this,RegisterActivity.class);
         startActivity(intent_register);
     }
