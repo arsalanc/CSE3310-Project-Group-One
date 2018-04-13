@@ -22,13 +22,25 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"/>
         <EditText
-            android:id="@+id/utaID"
+            android:id="@+id/Firstname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:textColor="#fff"
             android:textColorHint="#fff"
-            android:hint="UTA ID"
+            android:hint="First Name"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"/>
+        <EditText
+            android:id="@+id/Lastname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:textColor="#fff"
+            android:textColorHint="#fff"
+            android:hint="Last Name"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
             android:layout_marginRight="10dp"
@@ -41,7 +53,7 @@
             android:ems="10"
             android:textColor="#fff"
             android:textColorHint="#fff"
-            android:hint="Username"
+            android:hint="Username/Email"
             android:layout_margin="10dp"/>
 
         <EditText
