@@ -10,9 +10,6 @@ import android.widget.Button;
  * Created by Arsalan on 4/11/2018.
  */
 
-/**
- * Im adding a simple test comment here
- */
 public class CatererAddResourcesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
