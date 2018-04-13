@@ -15,13 +15,20 @@ public class ProfileManagementActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_management);
+
         Button edit_account=findViewById(R.id.edit_account);
         Button delete_account=findViewById(R.id.delete_account);
-        Button Cancel=findViewById(R.id.cancel_PM);
+        Button cancel=findViewById(R.id.cancel_PM);
         delete_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 deleteAccount("","");
+            }
+        });
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cancel();
             }
         });
 
@@ -42,7 +49,9 @@ public class ProfileManagementActivity extends AppCompatActivity {
         Intent intent_editAccount = new Intent(this,EditAccountActivity.class);
         startActivity(intent_editAccount);
     }
-    public void Cancel(){
-        //TODO:redirect to homepage of user type
+
+    public void cancel(){
+        //TODO: check account type of current user and redirect to homepage
+        finish(); //temporary
     }
 }

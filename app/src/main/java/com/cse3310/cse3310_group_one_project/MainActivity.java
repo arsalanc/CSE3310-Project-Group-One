@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     }
     //Testing purposes
     public void login(){
-        Intent intent_login = new Intent(this,CatererHomepageActivity.class);
+        Intent intent_login = new Intent(this,UserHomepageActivity.class);
         startActivity(intent_login);
     }
 

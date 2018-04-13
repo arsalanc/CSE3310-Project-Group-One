@@ -39,17 +39,32 @@
             android:textSize="15dp"
             android:hint="Date"
             android:layout_margin="5dp"/>
-        <EditText
-            android:id="@+id/time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:textColor="#fff"
-            android:textColorHint="#fff"
-            android:textSize="15dp"
-            android:inputType="time"
-            android:hint="Time"
-            android:layout_margin="5dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <EditText
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:textColor="#fff"
+                    android:textColorHint="#fff"
+                    android:textSize="15dp"
+                    android:inputType="number"
+                    android:hint="Time"
+                    android:layout_margin="5dp"/>
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:spinnerMode="dropdown"
+                    android:entries="@array/AM_PM"
+                    android:layout_margin="10dp"
+                    android:gravity="center"
+                    android:text="Event #"
+                    android:textColor="#fff"
+                    android:textSize="20dp" />
+            </LinearLayout>
         <EditText
             android:id="@+id/duration"
             android:layout_width="match_parent"

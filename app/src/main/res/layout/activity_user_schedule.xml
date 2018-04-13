@@ -35,7 +35,8 @@
                     android:gravity="center"
                     android:text="Event #"
                     android:textColor="#fff"
-                    android:textSize="20dp" />
+                    android:textSize="20dp"
+                    />
 
                 <Button
                     android:id="@+id/view_details_schedule"
@@ -48,6 +49,7 @@
             </LinearLayout>
         </ScrollView>
         <Button
+            android:id="@+id/user_schedule_back"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Back"
