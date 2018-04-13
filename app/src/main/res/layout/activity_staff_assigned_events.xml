@@ -25,17 +25,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <!-- Consider making spinner instead of textview -->
-                <TextView
+                <Spinner
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:gravity="center"
+                    android:spinnerMode="dropdown"
                     android:text="Event #"
                     android:textColor="#fff"
                     android:textSize="20dp" />
 
                 <Button
-
                     android:id="@+id/view_details_assigned"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -46,6 +46,7 @@
             </LinearLayout>
         </ScrollView>
         <Button
+            android:id="@+id/assigned_events_back"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Back"
