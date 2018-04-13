@@ -26,7 +26,10 @@
             android:textColor="#fff"
             android:textSize="20dp"
             android:text="Event #"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp"
+            android:backgroundTint="#fff"
+
+            />
         <Button
             android:id="@+id/requested_event_details"
             android:layout_width="match_parent"

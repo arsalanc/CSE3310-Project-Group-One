@@ -26,13 +26,20 @@ public class CatererRequestedEventsActivity extends AppCompatActivity {
                 requested_back();
             }
         });
+        reserve.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reserve();
+            }
+        });
     }
 
     public void viewDetails(){
 
     }
     public void reserve(){
-
+        Intent intent_reserve = new Intent(this,CatererAproveEventActivity.class);
+        startActivity(intent_reserve);
     }
     public void deny(){
 

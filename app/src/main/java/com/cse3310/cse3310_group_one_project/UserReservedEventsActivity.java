@@ -17,10 +17,17 @@ public class UserReservedEventsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_reserved_events);
 
         Button back_button = (Button) findViewById(R.id.user_reserved_events_back);
+        Button view_details = (Button) findViewById(R.id.view_details_reserved_user);
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 back_button();
+            }
+        });
+        view_details.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                view_details();
             }
         });
     }
@@ -28,5 +35,9 @@ public class UserReservedEventsActivity extends AppCompatActivity {
     public void back_button(){
         Intent intent_back = new Intent(this,UserHomepageActivity.class);
         startActivity(intent_back);
+    }
+    public void view_details(){
+        Intent intent_viewDetails = new Intent(this,UserStaffReservedEventDetails.class);
+        startActivity(intent_viewDetails);
     }
 }
