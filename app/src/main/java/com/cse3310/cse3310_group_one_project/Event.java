@@ -26,8 +26,23 @@ public class Event {
     public Event(){
 
     }
-
     // Getters and Setters
+    public int getEvent_id() {
+        return event_id;
+    }
+
+    public void setEvent_id(int event_id) {
+        this.event_id = event_id;
+    }
+
+    public String getHall() {
+        return Hall;
+    }
+
+    public void setHall(String hall) {
+        Hall = hall;
+    }
+
     public int getParty_size() {
         return party_size;
     }

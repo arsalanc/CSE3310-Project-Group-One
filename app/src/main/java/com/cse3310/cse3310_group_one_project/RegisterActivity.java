@@ -16,7 +16,8 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         Button cancel_button = (Button) findViewById(R.id.cancel_register);
-        //TODO: Submit button
+        Button submit_button = (Button) findViewById(R.id.register_submit);
+        //TODO: Create account using edit text data when submit button is clicked
         cancel_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -28,6 +29,10 @@ public class RegisterActivity extends AppCompatActivity {
     public void cancelRegister(){
         Intent cancel_register = new Intent(this,MainActivity.class);
         startActivity(cancel_register);
+    }
+
+    public void submitRegister(){
+
     }
 }
 
