@@ -16,11 +16,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#fff"
-            android:textSize="30dp"
+            android:textSize="20dp"
             android:text="REGISTER"
             android:gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"/>
         <EditText
             android:id="@+id/Firstname"
             android:layout_width="match_parent"
@@ -30,7 +30,7 @@
             android:textColorHint="#fff"
             android:hint="First Name"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="5dp"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"/>
         <EditText
@@ -42,7 +42,7 @@
             android:textColorHint="#fff"
             android:hint="Last Name"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="5dp"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"/>
 
@@ -65,7 +65,10 @@
             android:inputType="textPassword"
             android:hint="Password"
             android:textColorHint="#fff"
-            android:layout_margin="10dp"/>
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"/>
         <EditText
             android:id="@+id/account_type"
             android:layout_width="match_parent"
@@ -74,7 +77,10 @@
             android:textColor="#fff"
             android:textColorHint="#fff"
             android:hint="Account Type"
-            android:layout_margin="10dp"/>
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"/>
         <EditText
 
             android:layout_width="match_parent"
@@ -84,7 +90,10 @@
             android:textColor="#fff"
             android:hint="Phone Number"
             android:textColorHint="#fff"
-            android:layout_margin="10dp"/>
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"/>
 
         <Button
             android:id="@+id/register_submit"
