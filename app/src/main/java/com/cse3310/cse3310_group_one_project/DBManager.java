@@ -18,7 +18,7 @@ public class DBManager extends SQLiteOpenHelper {
     private static final String KEY_ID = "user_id";
     private static final String KEY_FNAME = "user_fname";
     private static final String KEY_LNAME = "user_lname";
-    private static final String KEY_EMAIL = "user_email";
+    private static final String KEY_EMAIL = "user_emai";
     private static final String KEY_PASS = "user_pass";
     private static final String KEY_ROLE = "user_role";
     private static final String KEY_PHONE = "user_phone";
@@ -30,13 +30,13 @@ public class DBManager extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_TABLE_USERDATA = "CREATE TABLE " + TABLE_NAME + "(" +
-                KEY_ID + "INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
-                KEY_FNAME + "TEXT," +
-                KEY_LNAME + "TEXT," +
-                KEY_EMAIL + "TEXT," +
-                KEY_PASS + "TEXT," +
-                KEY_ROLE + "TEXT," +
-                KEY_PHONE + "TEXT"+")";
+                KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
+                KEY_FNAME + " TEXT, " +
+                KEY_LNAME + " TEXT, " +
+                KEY_EMAIL + " TEXT, " +
+                KEY_PASS + " TEXT, " +
+                KEY_ROLE + " TEXT, " +
+                KEY_PHONE + " TEXT "+" )";
 
         db.execSQL(CREATE_TABLE_USERDATA);
     }
@@ -47,11 +47,17 @@ public class DBManager extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    public  void recreateTable() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        onCreate(db);
+    }
+
     public void addNewUser(UserModel user) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_FNAME, user.getFname());
-        values.put(KEY_FNAME, user.getLname());
+        values.put(KEY_LNAME, user.getLname());
         values.put(KEY_EMAIL, user.getUsername());
         values.put(KEY_PASS, user.getPassword());
         values.put(KEY_ROLE, user.getAccountType());
@@ -63,7 +69,7 @@ public class DBManager extends SQLiteOpenHelper {
     public UserModel retrieveUser(String username, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
 
-        String query = "SELECT * from " + TABLE_NAME + "WHERE " + KEY_EMAIL + "= \""
+        String query = "SELECT * from " + TABLE_NAME + " WHERE " + KEY_EMAIL + " = \""
                 + username + "\" AND " + KEY_PASS + "= \"" + password + "\";";
 
         Cursor cursor = db.rawQuery(query, null);
