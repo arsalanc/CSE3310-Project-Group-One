@@ -64,7 +64,7 @@ public class DBManager extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         String query = "SELECT * from " + TABLE_NAME + "WHERE " + KEY_EMAIL + "= \""
-                + username + "\" AND " + KEY_PASS + "= \"" password + "\";";
+                + username + "\" AND " + KEY_PASS + "= \"" + password + "\";";
 
         Cursor cursor = db.rawQuery(query, null);
         UserModel model = new UserModel();
