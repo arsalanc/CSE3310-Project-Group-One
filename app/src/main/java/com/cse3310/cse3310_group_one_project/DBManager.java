@@ -23,7 +23,7 @@ public class DBManager extends SQLiteOpenHelper {
     private static final String KEY_ROLE = "user_role";
     private static final String KEY_PHONE = "user_phone";
 
-    public DbManager(Context context) {
+    public DBManager(Context context) {
         super(context, DB_NAME, null, Db_VERSION);
     }
 
@@ -36,7 +36,7 @@ public class DBManager extends SQLiteOpenHelper {
                 KEY_EMAIL + "TEXT," +
                 KEY_PASS + "TEXT," +
                 KEY_ROLE + "TEXT," +
-                KEY_PHONE + "TEXT";
+                KEY_PHONE + "TEXT"+")";
 
         db.execSQL(CREATE_TABLE_USERDATA);
     }
