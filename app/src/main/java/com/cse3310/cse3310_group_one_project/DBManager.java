@@ -23,7 +23,6 @@ public class DBManager extends SQLiteOpenHelper {
     private static final String KEY_ROLE = "user_role";
     private static final String KEY_PHONE = "user_phone";
 
-
     public DbManager(Context context) {
         super(context, DB_NAME, null, Db_VERSION);
     }
@@ -41,13 +40,14 @@ public class DBManager extends SQLiteOpenHelper {
 
         db.execSQL(CREATE_TABLE_USERDATA);
     }
+
     @Override
-    public void onUpgrade (SQLiteDatabase db, int oldVersion, int newVersion) {
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
 
-    public void addNewUser(UserModel user){
+    public void addNewUser(UserModel user) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_FNAME, user.getFname());
@@ -56,18 +56,19 @@ public class DBManager extends SQLiteOpenHelper {
         values.put(KEY_PASS, user.getPassword());
         values.put(KEY_ROLE, user.getAccountType());
         values.put(KEY_PHONE, user.getPhoneNumber());
-        db.insert(TABLE_NAME,null,values);
+        db.insert(TABLE_NAME, null, values);
         db.close();
     }
+
     public UserModel retrieveUser(String username, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
 
-        String query = "SELECT * from "  + TABLE_NAME + "WHERE " + KEY_EMAIL + "= \""
+        String query = "SELECT * from " + TABLE_NAME + "WHERE " + KEY_EMAIL + "= \""
                 + username + "\" AND " + KEY_PASS + "= \"" password + "\";";
 
-        Cursor cursor = db.rawQuery(query,null);
+        Cursor cursor = db.rawQuery(query, null);
         UserModel model = new UserModel();
-        if (cursor.moveToFirst()){
+        if (cursor.moveToFirst()) {
             model.setId(cursor.getInt(cursor.getColumnIndex(KEY_ID)));
             model.setFname(cursor.getString((cursor.getColumnIndex(KEY_FNAME))));
             model.setLname(cursor.getString(cursor.getColumnIndex(KEY_LNAME)));
@@ -76,7 +77,9 @@ public class DBManager extends SQLiteOpenHelper {
             model.setAccountType(cursor.getString(cursor.getColumnIndex(KEY_ROLE)));
             model.setPhoneNumber(cursor.getString(cursor.getColumnIndex(KEY_PHONE)));
 
+        } else {
+            model = null;
         }
-        return null;
+        return model;
     }
-} //DBManager
+}
