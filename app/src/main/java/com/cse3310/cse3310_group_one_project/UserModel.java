@@ -7,7 +7,7 @@ import java.io.Serializable;
  */
 
 public class UserModel implements Serializable {
-    //private int id; I didn't delete just in case.
+    private int id;
     private String Fname;
     private String Lname;
     private String username;
@@ -15,14 +15,13 @@ public class UserModel implements Serializable {
     private String accountType;
     private String phoneNumber;
 
-    /*
+
     public int getId() {
         return id;
     }
     public void setId(int id) {
         this.id = id;
     }
-    */
     public String getFname() { return Fname; }
 
     public void setFname(String fname) { Fname = fname; }

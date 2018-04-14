@@ -37,7 +37,7 @@ public class DBManager extends SQLiteOpenHelper {
                 KEY_EMAIL + "TEXT," +
                 KEY_PASS + "TEXT," +
                 KEY_ROLE + "TEXT," +
-                KEY_PHONE + "INT[10]";
+                KEY_PHONE + "TEXT";
 
         db.execSQL(CREATE_TABLE_USERDATA);
     }
@@ -67,7 +67,16 @@ public class DBManager extends SQLiteOpenHelper {
 
         Cursor cursor = db.rawQuery(query,null);
         UserModel model = new UserModel();
+        if (cursor.moveToFirst()){
+            model.setId(cursor.getInt(cursor.getColumnIndex(KEY_ID)));
+            model.setFname(cursor.getString((cursor.getColumnIndex(KEY_FNAME))));
+            model.setLname(cursor.getString(cursor.getColumnIndex(KEY_LNAME)));
+            model.setUsername(cursor.getString(cursor.getColumnIndex(KEY_EMAIL)));
+            model.setPassword(cursor.getString(cursor.getColumnIndex(KEY_PASS)));
+            model.setAccountType(cursor.getString(cursor.getColumnIndex(KEY_ROLE)));
+            model.setPhoneNumber(cursor.getString(cursor.getColumnIndex(KEY_PHONE)));
 
+        }
         return null;
     }
 } //DBManager
