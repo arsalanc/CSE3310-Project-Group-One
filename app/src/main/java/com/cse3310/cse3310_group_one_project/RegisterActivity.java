@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 /**
@@ -13,7 +15,8 @@ import android.widget.Toast;
  */
 
 public class RegisterActivity extends AppCompatActivity {
-    EditText fname,lname,username,password,account_type,phone_number;
+    EditText fname,lname,username,password,phone_number;
+    Spinner account_type;
     DBManager db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +31,11 @@ public class RegisterActivity extends AppCompatActivity {
         lname=(EditText) findViewById(R.id.Lastname);
         username=(EditText) findViewById(R.id.username);
         password=(EditText) findViewById(R.id.password);
-        account_type=(EditText) findViewById(R.id.account_type);
+        account_type =(Spinner) findViewById(R.id.spinner1);
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(RegisterActivity.this,
+                R.layout.spinner_item,getResources().getStringArray(R.array.Account_Types));
+        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        account_type.setAdapter(myAdapter);
         phone_number=(EditText) findViewById(R.id.phone_number);
         //TODO: Create account using edit text data when submit button is clicked
         cancel_button.setOnClickListener(new View.OnClickListener() {
@@ -52,22 +59,47 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void submitRegister(DBManager db){
         UserModel user =new UserModel();
-        user.setFname(fname.getText().toString());
-        user.setLname(lname.getText().toString());
-        user.setUsername(username.getText().toString());
-        user.setPassword(password.getText().toString());
-        user.setPhoneNumber(phone_number.getText().toString());
-        String acct_type = account_type.getText().toString().toLowerCase();
-        if(acct_type.equalsIgnoreCase("caterer")||acct_type.equalsIgnoreCase("user")||acct_type.equalsIgnoreCase("staff"))
-        {
-            user.setAccountType(acct_type);
+        boolean readyToSubmit = true;
+        String acct_type_temp,fname_temp,lname_temp,username_temp,
+                password_temp,phone_number_temp;
+        fname_temp=fname.getText().toString();
+        lname_temp=lname.getText().toString();
+        username_temp=username.getText().toString();
+        password_temp = password.getText().toString();
+        phone_number_temp = phone_number.getText().toString();
+        acct_type_temp = account_type.getSelectedItem().toString().toLowerCase();
+
+        if ((fname_temp != null && !fname_temp.isEmpty()) && (lname_temp != null && !lname_temp.isEmpty()) && (username_temp != null && !username_temp.isEmpty())
+                && (password_temp != null && !password_temp.isEmpty()) && (phone_number_temp != null && !phone_number_temp.isEmpty())) {
+            user.setFname(fname_temp);
+            user.setLname(lname_temp);
+            user.setUsername(username_temp);
+            user.setPassword(password_temp);
+            if( phone_number_temp.length() == 10) {
+                user.setPhoneNumber(phone_number_temp);
+            }
+            else{
+                readyToSubmit = false;
+                Toast.makeText(this, "10-Digit Phone Number Required", Toast.LENGTH_LONG).show();
+            }
+            if(acct_type_temp.equalsIgnoreCase("caterer")||acct_type_temp.equalsIgnoreCase("user")||acct_type_temp.equalsIgnoreCase("staff"))
+            {
+                user.setAccountType(acct_type_temp);
+            }
+            else {
+                readyToSubmit = false;
+                Toast.makeText(this, "Please choose an Account Type", Toast.LENGTH_LONG).show();
+            }
+        }
+        else{
+            readyToSubmit = false;
+            Toast.makeText(this, "Empty Text Field(s)", Toast.LENGTH_LONG).show();
+        }
+
+        if(readyToSubmit){
             db.addNewUser(user);
             Intent submit_register = new Intent(this, MainActivity.class);
             startActivity(submit_register);
-
-        }
-        else {
-            Toast.makeText(this, "Change account type to caterer,staff or user", Toast.LENGTH_LONG).show();
         }
     }
 }

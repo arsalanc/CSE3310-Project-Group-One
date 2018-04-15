@@ -3,6 +3,12 @@
     <string-array name="AM_PM">
         <item>AM</item>
         <item>PM</item>
+    </string-array>
 
+    <string-array name="Account_Types">
+        <item>Please Select an Account Type</item>
+        <item>Caterer</item>
+        <item>User</item>
+        <item>Staff</item>
     </string-array>
 </resources>

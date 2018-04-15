@@ -9,78 +9,76 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:background="@color/colorRed"
-        >
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="127dp"
+        tools:layout_editor_absoluteY="0dp">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#fff"
-            android:textSize="20dp"
-            android:text="REGISTER"
-            android:gravity="center"
+            android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"/>
+            android:gravity="center"
+            android:text="REGISTER"
+            android:textColor="#fff"
+            android:textSize="20dp" />
+
         <EditText
             android:id="@+id/Firstname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:textColor="#fff"
-            android:textColorHint="#fff"
-            android:hint="First Name"
-            android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginTop="5dp"
+            android:ems="10"
+            android:hint="First Name"
+            android:textColor="#fff"
+            android:textColorHint="#fff" />
+
         <EditText
             android:id="@+id/Lastname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:textColor="#fff"
-            android:textColorHint="#fff"
-            android:hint="Last Name"
-            android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginTop="5dp"
+            android:ems="10"
+            android:hint="Last Name"
+            android:textColor="#fff"
+            android:textColorHint="#fff" />
 
         <EditText
             android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:ems="10"
-            android:textColor="#fff"
-            android:textColorHint="#fff"
             android:hint="Username/Email"
-            android:layout_margin="10dp"/>
+            android:textColor="#fff"
+            android:textColorHint="#fff" />
 
         <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:textColor="#fff"
-            android:inputType="textPassword"
-            android:hint="Password"
-            android:textColorHint="#fff"
-            android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"/>
-        <EditText
-            android:id="@+id/account_type"
+            android:layout_marginTop="5dp"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:textColor="#fff"
+            android:textColorHint="#fff" />
+
+        <Spinner
+            android:id="@+id/spinner1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:textColor="#fff"
-            android:textColorHint="#fff"
-            android:hint="Account Type"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"/>
+            android:visibility="visible" />
 
         <EditText
 
@@ -101,16 +99,17 @@
             android:id="@+id/register_submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Submit"
             android:layout_margin="5dp"
-            android:background="@color/colorOrange"/>
+            android:background="@color/colorOrange"
+            android:text="Submit" />
+
         <Button
             android:id="@+id/cancel_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cancel"
             android:layout_margin="5dp"
-            android:background="@color/colorOrange"/>
+            android:background="@color/colorOrange"
+            android:text="Cancel" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
