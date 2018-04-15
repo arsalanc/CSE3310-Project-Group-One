@@ -18,7 +18,7 @@ public class DBManager extends SQLiteOpenHelper {
     private static final String KEY_ID = "user_id";
     private static final String KEY_FNAME = "user_fname";
     private static final String KEY_LNAME = "user_lname";
-    private static final String KEY_EMAIL = "user_emai";
+    private static final String KEY_EMAIL = "user_email";
     private static final String KEY_PASS = "user_pass";
     private static final String KEY_ROLE = "user_role";
     private static final String KEY_PHONE = "user_phone";
@@ -51,6 +51,11 @@ public class DBManager extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
+    }
+
+    public void deleteUser(int id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_NAME, KEY_ID+ " = "+id, null);
     }
 
     public void addNewUser(UserModel user) {

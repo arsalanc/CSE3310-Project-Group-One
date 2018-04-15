@@ -17,19 +17,23 @@
             android:text="Edit Account"
             android:gravity="center"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="10dp"/>
+
+            />
         <EditText
+            android:id="@+id/current_pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:textColorHint="#fff"
             android:textSize="20dp"
-            android:hint="New Username"
+            android:hint="Current Password"
             android:maxLines="1"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="10dp"
             />
+
         <EditText
-            android:id="@+id/password_input"
+            android:id="@+id/new_pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
@@ -38,9 +42,10 @@
             android:textSize="20dp"
             android:hint="New Password"
             android:maxLines="1"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             />
         <EditText
+            android:id="@+id/new_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
@@ -49,7 +54,7 @@
             android:inputType="phone"
             android:hint="New Phone Number"
             android:maxLines="1"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             />
 
         <Button

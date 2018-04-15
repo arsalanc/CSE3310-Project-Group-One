@@ -53,14 +53,20 @@ public class CatererHomepageActivity extends AppCompatActivity {
     }
     public void profile_management(){
         Intent intent_profileManagement = new Intent(this, ProfileManagementActivity.class);
+        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        intent_profileManagement.putExtra("USER", user);
         startActivity(intent_profileManagement);
     }
     public void view_reserved_events(){
         Intent intent_reserved_events = new Intent(this, CatererReservedEventsActivity.class);
+        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        intent_reserved_events.putExtra("USER", user);
         startActivity(intent_reserved_events);
     }
     public void view_requested_events(){
         Intent intent_requested_events = new Intent(this, CatererRequestedEventsActivity.class);
+        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        intent_requested_events.putExtra("USER", user);
         startActivity(intent_requested_events);
     }
 }

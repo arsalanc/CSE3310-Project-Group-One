@@ -15,11 +15,11 @@ public class UserModel implements Serializable {
     private String accountType;
     private String phoneNumber;
 
-    /*
+
     public int getId() {
         return id;
     }
-    */
+
     public void setId(int id) {
         this.id = id;
     }

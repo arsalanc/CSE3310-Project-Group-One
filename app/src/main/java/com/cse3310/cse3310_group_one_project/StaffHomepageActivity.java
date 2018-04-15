@@ -42,6 +42,8 @@ public class StaffHomepageActivity extends AppCompatActivity {
 
     public void viewAssignedEvents(){
         Intent intent_assignedEvents = new Intent(this,StaffAssignedEventsActivity.class);
+        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        intent_assignedEvents.putExtra("USER", user);
         startActivity(intent_assignedEvents);
     }
     public void logout(){
@@ -50,6 +52,8 @@ public class StaffHomepageActivity extends AppCompatActivity {
     }
     public void profile_management(){
         Intent intent_profileManagement = new Intent(this, ProfileManagementActivity.class);
+        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        intent_profileManagement.putExtra("USER", user);
         startActivity(intent_profileManagement);
     }
 }

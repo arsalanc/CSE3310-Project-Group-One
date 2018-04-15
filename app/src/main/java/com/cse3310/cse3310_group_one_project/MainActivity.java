@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
         Button login_button = (Button) findViewById(R.id.login);
         username = (EditText) findViewById(R.id.username_input);
         password = (EditText) findViewById(R.id.password_input);
-        //TODO: connect to database login using information stored in database
         register_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
