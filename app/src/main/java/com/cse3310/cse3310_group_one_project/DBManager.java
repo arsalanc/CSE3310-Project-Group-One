@@ -165,16 +165,15 @@ public class DBManager extends SQLiteOpenHelper {
         }
         return event;
     }
-    public List<Event> retrieveRequests(String hall){
+    public List<Event> retrieveRequests(){
         List<Event> getRequests= new ArrayList<>();
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        // This query is suppose to get all the events where the hall is null but it doesnt work
-        String query = "SELECT * from " + EVENT_TABLE_NAME + " WHERE " + KEY_HALL + " = "
-                + hall + ";";
-        //temporary for testing
-        Cursor cursor = db.rawQuery("Select * from event_data ", null);
+        String query = "SELECT * from " + EVENT_TABLE_NAME + " WHERE " + KEY_HALL + " "
+                + "ISNULL" + ";";
+
+        Cursor cursor = db.rawQuery(query, null);
 
         if(cursor.moveToFirst()) {
             while (!cursor.isAfterLast()) {

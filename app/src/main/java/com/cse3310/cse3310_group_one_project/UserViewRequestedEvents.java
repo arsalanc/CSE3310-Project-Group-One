@@ -25,7 +25,7 @@ public class UserViewRequestedEvents extends AppCompatActivity {
         setContentView(R.layout.activity_user_requested_events);
 
         db = new DBManager(this);
-        final List<Event> requests = db.retrieveRequests(null);
+        final List<Event> requests = db.retrieveRequests();
         Button back_button = (Button) findViewById(R.id.user_requested_events_back);
         Button view_details_button = (Button) findViewById(R.id.user_view_details_requests);
         requested_events = (Spinner) findViewById(R.id.requested_events_spinner);
