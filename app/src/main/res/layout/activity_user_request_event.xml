@@ -28,6 +28,7 @@
             android:textSize="15dp"
             android:hint="Party Size"
             android:layout_margin="5dp"/>
+
         <EditText
             android:id="@+id/date"
             android:layout_width="match_parent"
@@ -37,24 +38,26 @@
             android:textColorHint="#fff"
             android:inputType="date"
             android:textSize="15dp"
-            android:hint="Date"
+            android:hint="Date (dd/mm/yyyy)"
             android:layout_margin="5dp"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <EditText
                     android:id="@+id/time"
-                    android:layout_width="wrap_content"
+                    android:layout_width="93dp"
                     android:layout_height="wrap_content"
-                    android:ems="10"
+                    android:layout_margin="5dp"
+                    android:ems="2"
+                    android:hint="Time"
+                    android:inputType="number"
                     android:textColor="#fff"
                     android:textColorHint="#fff"
-                    android:textSize="15dp"
-                    android:inputType="number"
-                    android:hint="Time"
-                    android:layout_margin="5dp"/>
+                    android:textSize="15dp" />
                 <Spinner
+                    android:id="@+id/ampm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:spinnerMode="dropdown"
@@ -96,7 +99,27 @@
             android:textSize="15dp"
             android:hint="Food Venue Type (French, etc.)"
             android:layout_margin="5dp"/>
-        <EditText
+        <Spinner
+            android:id="@+id/meal_formality"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dropdown"
+            android:entries="@array/Formality"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textSize="20dp" />
+        <Spinner
+            android:id="@+id/drink"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dropdown"
+            android:entries="@array/Drink"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textSize="20dp" />
+        <!--<EditText
             android:id="@+id/meal_formality"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -105,8 +128,8 @@
             android:textColorHint="#fff"
             android:textSize="15dp"
             android:hint="Meal Formality (Formal/Informal)"
-            android:layout_margin="5dp"/>
-        <EditText
+            android:layout_margin="5dp"/>-->
+        <!--<EditText
             android:id="@+id/drink_venue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -115,7 +138,9 @@
             android:textColorHint="#fff"
             android:textSize="15dp"
             android:hint="Drink Venue (Standard/Alcohol)"
-            android:layout_margin="5dp"/>
+            android:layout_margin="5dp"/>-->
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

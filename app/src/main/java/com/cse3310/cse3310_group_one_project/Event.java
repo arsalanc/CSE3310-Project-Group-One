@@ -13,9 +13,9 @@ public class Event {
     //Probably need to change certain data types
     int event_id;
     int party_size;
-    Date date;
-    Time time;
-    double duration; //hours
+    String date;
+    String time;
+    int duration; //hours
     String Meal_type;
     String Meal_venue;
     String Formality;
@@ -25,6 +25,17 @@ public class Event {
     //Default constructor
     public Event(){
 
+    }
+
+    public Event(int party_size, String date, String time, int duration, String meal_type, String meal_venue, String formality, String drink_venue) {
+        this.party_size = party_size;
+        this.date = date;
+        this.time = time;
+        this.duration = duration;
+        Meal_type = meal_type;
+        Meal_venue = meal_venue;
+        Formality = formality;
+        Drink_venue = drink_venue;
     }
     // Getters and Setters
     public int getEvent_id() {
@@ -51,19 +62,19 @@ public class Event {
         this.party_size = party_size;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public Time getTime() {
+    public String  getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
@@ -71,7 +82,7 @@ public class Event {
         return duration;
     }
 
-    public void setDuration(double duration) {
+    public void setDuration(int duration) {
         this.duration = duration;
     }
 
