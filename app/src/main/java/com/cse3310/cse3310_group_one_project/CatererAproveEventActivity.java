@@ -27,8 +27,10 @@ public class CatererAproveEventActivity extends AppCompatActivity {
     }
 
     public void backButton(){
-        Intent intent_register = new Intent(this,CatererRequestedEventsActivity.class);
-        startActivity(intent_register);
+        Intent intent_back = new Intent(this,CatererRequestedEventsActivity.class);
+        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        intent_back.putExtra("USER", user);
+        startActivity(intent_back);
     }
     public void submitButton(){
 

@@ -42,10 +42,14 @@ public class CatererReservedEventsActivity extends AppCompatActivity {
     }
     public void editEvent(){
         Intent intent_editEvent = new Intent(this,CatererEditEventActivity.class);
+        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        intent_editEvent.putExtra("USER", user);
         startActivity(intent_editEvent);
     }
     public void backEvent(){
         Intent intent_backEvent = new Intent(this,CatererHomepageActivity.class);
+        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        intent_backEvent.putExtra("USER", user);
         startActivity(intent_backEvent);
     }
 }

@@ -65,8 +65,11 @@ public class UserViewRequestedEvents extends AppCompatActivity {
     public void view_details(DBManager db){
 
         //TODO: get event id from spinner, parse, send as extra
+        String select = requested_events.getSelectedItem().toString();
+        int selected_event = Integer.parseInt(select);
         Intent intent_viewDetails = new Intent(this,UserEventDetailsActivity.class);
         UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        intent_viewDetails.putExtra("EVENT_ID",selected_event);
         intent_viewDetails.putExtra("USER", user);
         startActivity(intent_viewDetails);
     }

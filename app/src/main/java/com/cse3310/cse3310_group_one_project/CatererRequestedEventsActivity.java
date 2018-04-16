@@ -39,6 +39,8 @@ public class CatererRequestedEventsActivity extends AppCompatActivity {
     }
     public void reserve(){
         Intent intent_reserve = new Intent(this,CatererAproveEventActivity.class);
+        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        intent_reserve.putExtra("USER", user);
         startActivity(intent_reserve);
     }
     public void deny(){
@@ -46,6 +48,8 @@ public class CatererRequestedEventsActivity extends AppCompatActivity {
     }
     public void requested_back(){
         Intent intent_requestBack = new Intent(this,CatererHomepageActivity.class);
+        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        intent_requestBack.putExtra("USER", user);
         startActivity(intent_requestBack);
     }
 }

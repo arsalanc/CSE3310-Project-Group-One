@@ -31,6 +31,8 @@ public class CatererAssignStaffActivity extends AppCompatActivity {
     }
     public void assignStaffBack(){
         Intent intent_back = new Intent(this,CatererEditEventActivity.class);
+        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        intent_back.putExtra("USER", user);
         startActivity(intent_back);
     }
 }

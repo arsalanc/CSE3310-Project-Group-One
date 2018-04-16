@@ -52,6 +52,8 @@ public class UserRequestEventActivity extends AppCompatActivity {
 
     public void cancel(){
         Intent intent_cancel = new Intent(this,UserHomepageActivity.class);
+        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        intent_cancel.putExtra("USER", user);
         startActivity(intent_cancel);
     }
 
@@ -61,7 +63,7 @@ public class UserRequestEventActivity extends AppCompatActivity {
         int partySize = Integer.parseInt(party_size.getText().toString());
         String Date = date.getText().toString();
         String Time = time.getText().toString() + ampm.getSelectedItem().toString();
-        int Duration = Integer.parseInt(duration.getText().toString());
+        int Duration = Integer.parseInt(duration.getText().toString() );
         String mealType = meal_type.getText().toString();
         String mealVenue = meal_venue.getText().toString();
         String Formality = formality.getSelectedItem().toString();

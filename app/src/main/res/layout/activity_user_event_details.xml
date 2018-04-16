@@ -18,6 +18,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"/>
         <TextView
+            android:id="@+id/party_size_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -26,6 +27,7 @@
             android:textColor="#fff"
             android:textSize="20dp" />
         <TextView
+            android:id="@+id/date_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -34,6 +36,7 @@
             android:textColor="#fff"
             android:textSize="20dp" />
         <TextView
+            android:id="@+id/time_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -42,6 +45,7 @@
             android:textColor="#fff"
             android:textSize="20dp" />
         <TextView
+            android:id="@+id/duration_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -50,6 +54,7 @@
             android:textColor="#fff"
             android:textSize="20dp" />
         <TextView
+            android:id="@+id/meal_type_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -58,6 +63,7 @@
             android:textColor="#fff"
             android:textSize="20dp" />
         <TextView
+            android:id="@+id/venue_type_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -66,6 +72,7 @@
             android:textColor="#fff"
             android:textSize="20dp" />
         <TextView
+            android:id="@+id/formality_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -74,6 +81,7 @@
             android:textColor="#fff"
             android:textSize="20dp" />
         <TextView
+            android:id="@+id/drink_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"

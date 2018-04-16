@@ -32,6 +32,8 @@ public class CatererRemoveStaffActivity extends AppCompatActivity {
 
     public void removeStaffBack(){
         Intent intent_removeStaffBack = new Intent(this,CatererEditEventActivity.class);
+        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        intent_removeStaffBack.putExtra("USER", user);
         startActivity(intent_removeStaffBack);
     }
 }

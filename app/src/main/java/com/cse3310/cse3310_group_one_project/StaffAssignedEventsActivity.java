@@ -34,10 +34,14 @@ public class StaffAssignedEventsActivity extends AppCompatActivity {
 
     public void viewDetails(){
         Intent intent_viewDetails = new Intent(this,UserStaffReservedEventDetails.class);
+        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        intent_viewDetails.putExtra("USER", user);
         startActivity(intent_viewDetails);
     }
     public void backButton(){
         Intent intent_back = new Intent(this,StaffHomepageActivity.class);
+        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        intent_back.putExtra("USER", user);
         startActivity(intent_back);
     }
 

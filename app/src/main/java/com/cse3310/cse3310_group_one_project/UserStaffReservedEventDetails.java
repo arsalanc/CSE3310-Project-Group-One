@@ -36,6 +36,8 @@ public class UserStaffReservedEventDetails extends AppCompatActivity {
     }
     public void caterer_info(){
         Intent intent_catererInfo = new Intent(this,ViewCatererInfoActivity.class);
+        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        intent_catererInfo.putExtra("USER", user);
         startActivity(intent_catererInfo);
     }
 }

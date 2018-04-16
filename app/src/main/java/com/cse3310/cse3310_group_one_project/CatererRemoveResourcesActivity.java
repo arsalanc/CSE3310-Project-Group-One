@@ -32,6 +32,8 @@ public class CatererRemoveResourcesActivity extends AppCompatActivity {
 
     public void removeResourcesBack(){
         Intent intent_removeResourcesBack = new Intent(this,CatererEditEventActivity.class);
+        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        intent_removeResourcesBack.putExtra("USER", user);
         startActivity(intent_removeResourcesBack);
     }
 }

@@ -34,10 +34,14 @@ public class UserReservedEventsActivity extends AppCompatActivity {
 
     public void back_button(){
         Intent intent_back = new Intent(this,UserHomepageActivity.class);
+        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        intent_back.putExtra("USER", user);
         startActivity(intent_back);
     }
     public void view_details(){
         Intent intent_viewDetails = new Intent(this,UserStaffReservedEventDetails.class);
+        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        intent_viewDetails.putExtra("USER", user);
         startActivity(intent_viewDetails);
     }
 }
