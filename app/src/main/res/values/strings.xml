@@ -30,6 +30,7 @@
         <item>Dinner</item>
     </string-array>
     <string-array name="Venue_Type">
+        <item>Venue Type</item>
         <item>American</item>
         <item>Chinese</item>
         <item>French</item>
