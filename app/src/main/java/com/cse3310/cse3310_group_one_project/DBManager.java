@@ -30,6 +30,8 @@ public class DBManager extends SQLiteOpenHelper {
     //Event
     private static final String EVENT_TABLE_NAME = "event_data";
     private static final String KEY_EVENT_ID = "event_id";
+    private static final String KEY_OWNER_ID = "owner_id";
+    private static final String KEY_CATERER_ID = "caterer_id";
     private static final String KEY_PARTY_SIZE = "event_party_size";
     private static final String KEY_DATE = "event_date";
     private static final String KEY_TIME = "event_time";
@@ -60,6 +62,8 @@ public class DBManager extends SQLiteOpenHelper {
 
         String CREATE_TABLE_EVENTDATA = "CREATE TABLE "+ EVENT_TABLE_NAME + "(" +
                 KEY_EVENT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "+
+                KEY_OWNER_ID + " INTEGER," +
+                KEY_CATERER_ID + " INTEGER," +
                 KEY_PARTY_SIZE + " INTEGER, " +
                 KEY_DATE + " TEXT, " +
                 KEY_TIME + " TEXT, " +
@@ -128,6 +132,8 @@ public class DBManager extends SQLiteOpenHelper {
     public void addNewEvent(Event event){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
+        values.put(KEY_OWNER_ID, event.getOwner_id());
+        values.put(KEY_CATERER_ID, event.getCaterer_id());
         values.put(KEY_PARTY_SIZE,event.getParty_size());
         values.put(KEY_DATE,event.getDate());
         values.put(KEY_TIME,event.getTime());
@@ -142,15 +148,13 @@ public class DBManager extends SQLiteOpenHelper {
 
     }
 
-    public Event retrieveEvent(int eventID){
-
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * from " + EVENT_TABLE_NAME + " WHERE " + KEY_EVENT_ID + " = \""
-                + eventID + "\";";
-        Cursor cursor = db.rawQuery(query, null);
+    private Event build_event(Cursor cursor)
+    {
         Event event = new Event();
         if(cursor.moveToFirst()){
             event.setEvent_id(cursor.getInt(cursor.getColumnIndex(KEY_EVENT_ID)));
+            event.setOwner_id(cursor.getInt(cursor.getColumnIndex(KEY_OWNER_ID)));
+            event.setCaterer_id(cursor.getInt(cursor.getColumnIndex(KEY_CATERER_ID)));
             event.setParty_size(cursor.getInt(cursor.getColumnIndex(KEY_PARTY_SIZE)));
             event.setDate(cursor.getString(cursor.getColumnIndex(KEY_DATE)));
             event.setTime(cursor.getString(cursor.getColumnIndex(KEY_TIME)));
@@ -165,6 +169,17 @@ public class DBManager extends SQLiteOpenHelper {
         }
         return event;
     }
+
+    public Event retrieveEvent(int eventID){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * from " + EVENT_TABLE_NAME + " WHERE " + KEY_EVENT_ID + " = \""
+                + eventID + "\";";
+        Cursor cursor = db.rawQuery(query, null);
+        Event event = build_event(cursor);
+        return event;
+    }
+
     public List<Event> retrieveRequests(){
         List<Event> getRequests= new ArrayList<>();
 
@@ -175,25 +190,34 @@ public class DBManager extends SQLiteOpenHelper {
 
         Cursor cursor = db.rawQuery(query, null);
 
+
+        while (!cursor.isAfterLast()) {
+            Event event = build_event(cursor);
+            getRequests.add(event);
+            cursor.moveToNext();
+        }
+
+        return getRequests;
+    }
+
+    public List<Event> retrieveRequestsByUserID(int user_id){
+        List<Event> getRequests= new ArrayList<>();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT * from " + EVENT_TABLE_NAME + " WHERE ( " + KEY_OWNER_ID + " = '" + user_id + "') and ( " + KEY_HALL + " "
+                + "ISNULL" + ");";
+
+        Cursor cursor = db.rawQuery(query, null);
+
         if(cursor.moveToFirst()) {
             while (!cursor.isAfterLast()) {
-                Event event = new Event();
-                event.setEvent_id(cursor.getInt(cursor.getColumnIndex(KEY_EVENT_ID)));
-                event.setParty_size(cursor.getInt(cursor.getColumnIndex(KEY_PARTY_SIZE)));
-                event.setDate(cursor.getString(cursor.getColumnIndex(KEY_DATE)));
-                event.setTime(cursor.getString(cursor.getColumnIndex(KEY_TIME)));
-                event.setDuration(cursor.getInt(cursor.getColumnIndex(KEY_DURATION)));
-                event.setMeal_type(cursor.getString(cursor.getColumnIndex(KEY_MEAL_TYPE)));
-                event.setMeal_venue(cursor.getString(cursor.getColumnIndex(KEY_MEAL_VENUE)));
-                event.setFormality(cursor.getString(cursor.getColumnIndex(KEY_FORMALITY)));
-                event.setDrink_venue(cursor.getString(cursor.getColumnIndex(KEY_DRINK_VENUE)));
-                event.setHall(cursor.getString(cursor.getColumnIndex(KEY_HALL)));
+                Event event = build_event(cursor);
                 getRequests.add(event);
                 cursor.moveToNext();
             }
         }
         return getRequests;
     }
-
 
 }

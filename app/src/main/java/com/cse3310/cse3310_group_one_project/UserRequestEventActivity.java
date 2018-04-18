@@ -112,7 +112,11 @@ public class UserRequestEventActivity extends AppCompatActivity implements
             Toast.makeText(this, "MUST FILL IN ALL FIELDS", Toast.LENGTH_LONG).show();
             return;
         }
+        Intent intent_requestEvent = new Intent(this,UserHomepageActivity.class);
+        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+
         int partySize = Integer.parseInt(party_size.getText().toString());
+        int owner_id = user.getId();
         String Date = Integer.toString(mMonth) + "/" + Integer.toString(mDay) + "/" + Integer.toString(mYear);
         String Time = Integer.toString(mHour) + ":" + Integer.toString(mMinute);
         int Duration = Integer.parseInt(duration.getText().toString() );
@@ -120,12 +124,10 @@ public class UserRequestEventActivity extends AppCompatActivity implements
         String mealVenue = meal_venue.getSelectedItem().toString();
         String Formality = formality.getSelectedItem().toString();
         String Drink = drink.getSelectedItem().toString();
-        Event event = new Event(partySize,Date,Time,Duration,mealType,mealVenue,Formality,Drink);
+        Event event = new Event(owner_id,partySize,Date,Time,Duration,mealType,mealVenue,Formality,Drink);
 
         db.addNewEvent(event);
 
-        Intent intent_requestEvent = new Intent(this,UserHomepageActivity.class);
-        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
         intent_requestEvent.putExtra("USER", user);
         startActivity(intent_requestEvent);
     }
