@@ -66,6 +66,11 @@ public class UserRequestEventActivity extends AppCompatActivity implements
             public void onClick(View v) {
                 // Adds 1 to the counter
                 counter = counter + 1;
+
+                if(!btn_sub.isEnabled())
+                {
+                    btn_sub.setEnabled(true);
+                }
                 duration.setText(Integer.toString(counter));
             }
         });
@@ -79,6 +84,7 @@ public class UserRequestEventActivity extends AppCompatActivity implements
                 // Can't have negative time
                 if(counter <= 0) {
                     counter = 0;
+                    btn_sub.setEnabled(false);
                 }
 
                 duration.setText(Integer.toString(counter));
