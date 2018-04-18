@@ -56,6 +56,7 @@
                     android:textColor="#fff"
                     android:textColorHint="#fff"
                     android:textSize="15dp" />
+
                 <Spinner
                     android:id="@+id/ampm"
                     android:layout_width="wrap_content"
@@ -67,6 +68,7 @@
                     android:text="Event #"
                     android:textColor="#fff"
                     android:textSize="20dp" />
+
             </LinearLayout>
         <EditText
             android:id="@+id/duration"
@@ -99,24 +101,26 @@
             android:textSize="15dp"
             android:hint="Food Venue Type (French, etc.)"
             android:layout_margin="5dp"/>
+
         <Spinner
             android:id="@+id/meal_formality"
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:spinnerMode="dropdown"
-            android:entries="@array/Formality"
             android:layout_margin="10dp"
+            android:entries="@array/Formality"
             android:gravity="center"
+            android:spinnerMode="dropdown"
             android:textColor="#fff"
             android:textSize="20dp" />
+
         <Spinner
             android:id="@+id/drink"
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:spinnerMode="dropdown"
-            android:entries="@array/Drink"
             android:layout_margin="10dp"
+            android:entries="@array/Drink"
             android:gravity="center"
+            android:spinnerMode="dropdown"
             android:textColor="#fff"
             android:textSize="20dp" />
         <!--<EditText

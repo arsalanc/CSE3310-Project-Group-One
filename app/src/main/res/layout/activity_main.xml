@@ -21,13 +21,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="106dp"
                     android:gravity="center"
-                    android:textSize="30dp"
-                    android:text="Mav's Event Catering System"
-                    android:textColor="#fff"/>
+                    android:text="Maverick Catering"
+                    android:textColor="#fff"
+                    android:textSize="30dp" />
                 <EditText
                     android:id="@+id/username_input"
                     android:layout_width="match_parent"
