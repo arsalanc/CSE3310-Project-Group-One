@@ -34,7 +34,7 @@ public class UserRequestEventActivity extends AppCompatActivity implements
     EditText txtDate, txtTime;
     TextView duration;
     private int mYear, mMonth, mDay, mHour, mMinute = -1;
-    int counter = 0;
+    int durCounter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
@@ -59,26 +59,7 @@ public class UserRequestEventActivity extends AppCompatActivity implements
 
         party_size = (EditText) findViewById(R.id.party_size);
         duration = (TextView) findViewById(R.id.duration);
-        duration.setText(counter);
-        /* I think this is the source of the bug
-        btn_add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Adds 1 to the counter
-                counter = counter + 1;
-                duration.setText(counter);
-            }
-        });
 
-        btn_sub.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Subtract 1 from counter
-                counter = counter - 1;
-                duration.setText(counter);
-            }
-        });
-        */
         meal_type = (Spinner) findViewById(R.id.meal_type);
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(UserRequestEventActivity.this,
                 R.layout.spinner_item,getResources().getStringArray(R.array.Meal_Types));
@@ -112,6 +93,7 @@ public class UserRequestEventActivity extends AppCompatActivity implements
                 confirm(db);
             }
         });
+        // I think this is the source of the bug
     }
 
     public void cancel(){
@@ -203,5 +185,17 @@ public class UserRequestEventActivity extends AppCompatActivity implements
             timePickerDialog.show();
         }
 
+    }
+    public void btn_add(View v) {
+        durCounter = durCounter + 1;
+        display(durCounter);
+
+    }public void btn_sub(View v) {
+        durCounter = durCounter - 1;
+        display(durCounter);
+    }
+
+    private void display(int number) {
+        duration.setText("" + number);
     }
 }
