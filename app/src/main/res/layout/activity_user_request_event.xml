@@ -196,18 +196,18 @@
             android:orientation="horizontal">
             <Button
                 android:id="@+id/request_event_cancel"
-                android:layout_width="175dp"
+                android:layout_width="165dp"
                 android:layout_height="50dp"
                 android:text="Cancel"
-                android:layout_margin="10dp"
+                android:layout_margin="8dp"
                 android:layout_gravity="center"
                 android:background="@color/colorOrange"/>
             <Button
                 android:id="@+id/request_event_confirm"
-                android:layout_width="175dp"
+                android:layout_width="165dp"
                 android:layout_height="50dp"
                 android:text="Confirm"
-                android:layout_margin="5dp"
+                android:layout_margin="8dp"
                 android:layout_gravity="center"
                 android:background="@color/colorOrange"/>
         </LinearLayout>
