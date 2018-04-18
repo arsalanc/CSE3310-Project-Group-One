@@ -56,8 +56,6 @@ public class UserRequestEventActivity extends AppCompatActivity implements
         Button cancel = (Button) findViewById(R.id.request_event_cancel);
         Button confirm = (Button) findViewById(R.id.request_event_confirm);
 
-        //party_size = (EditText) findViewById(R.id.party_size);
-        //duration = (TextView) findViewById(R.id.duration);
 
         meal_type = (Spinner) findViewById(R.id.meal_type);
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(UserRequestEventActivity.this,
