@@ -190,20 +190,30 @@ public class UserRequestEventActivity extends AppCompatActivity implements
         displayDuration(durCounter);
 
     }public void decreaseIntegerDuration(View v) {
-        durCounter = durCounter - 1;
-        displayDuration(durCounter);
+        if (durCounter <= 0 ) {
+            Toast.makeText(this, "You can't do that.", Toast.LENGTH_LONG).show();
+        }
+        else{
+            durCounter = durCounter - 1;
+            displayDuration(durCounter);
+        }
     }
     private void displayDuration(int number) {
         duration = (TextView) findViewById(R.id.duration);
-        duration.setText("Duration: " + number);
+        duration.setText("Duration(hrs): " + number);
     }
     public void increaseIntegerPS(View v) {
-        partyCounter = partyCounter + 1;
+        partyCounter = partyCounter + 10;
         displayPS(partyCounter);
 
     }public void decreaseIntegerPS(View v) {
-        partyCounter = partyCounter - 1;
-        displayPS(partyCounter);
+        if (partyCounter <= 0) {
+            Toast.makeText(this, "You can't do that.", Toast.LENGTH_LONG).show();
+        }
+        else{
+            partyCounter = partyCounter - 10;
+            displayPS(partyCounter);
+        }
     }
     private void displayPS(int number) {
         party_size = (TextView) findViewById(R.id.partySize);
