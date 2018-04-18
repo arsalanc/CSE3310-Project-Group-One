@@ -1,9 +1,5 @@
 <resources>
     <string name="app_name">CSE3310_Group_One_Project</string>
-    <string-array name="AM_PM">
-        <item>AM</item>
-        <item>PM</item>
-    </string-array>
 
     <string-array name="Drink">
         <item>Drink Type</item>

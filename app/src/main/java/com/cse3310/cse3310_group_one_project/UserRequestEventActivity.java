@@ -75,6 +75,12 @@ public class UserRequestEventActivity extends AppCompatActivity implements
             public void onClick(View v) {
                 // Subtract 1 from counter
                 counter = counter - 1;
+
+                // Can't have negative time
+                if(counter <= 0) {
+                    counter = 0;
+                }
+
                 duration.setText(Integer.toString(counter));
             }
         });
