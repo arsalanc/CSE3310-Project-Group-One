@@ -7,6 +7,7 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,12 +27,14 @@ import android.widget.ArrayAdapter;
 
 public class UserRequestEventActivity extends AppCompatActivity implements
         View.OnClickListener {
-    EditText party_size, duration;
+    EditText party_size;
     DBManager db;
     Spinner formality, drink, meal_type, meal_venue;
-    Button btnDatePicker, btnTimePicker;
+    Button btnDatePicker, btnTimePicker, btn_add, btn_sub;
     EditText txtDate, txtTime;
+    TextView duration;
     private int mYear, mMonth, mDay, mHour, mMinute = -1;
+    int counter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
@@ -48,11 +51,34 @@ public class UserRequestEventActivity extends AppCompatActivity implements
         btnDatePicker.setOnClickListener(this);
         btnTimePicker.setOnClickListener(this);
 
+        btn_add = (Button)findViewById(R.id.btn_add);
+        btn_sub = (Button)findViewById(R.id.btn_sub);
+
         Button cancel = (Button) findViewById(R.id.request_event_cancel);
         Button confirm = (Button) findViewById(R.id.request_event_confirm);
 
         party_size = (EditText) findViewById(R.id.party_size);
-        duration = (EditText) findViewById(R.id.duration);
+        duration = (TextView) findViewById(R.id.duration);
+        duration.setText(counter);
+        /* I think this is the source of the bug
+        btn_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Adds 1 to the counter
+                counter = counter + 1;
+                duration.setText(counter);
+            }
+        });
+
+        btn_sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Subtract 1 from counter
+                counter = counter - 1;
+                duration.setText(counter);
+            }
+        });
+        */
         meal_type = (Spinner) findViewById(R.id.meal_type);
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(UserRequestEventActivity.this,
                 R.layout.spinner_item,getResources().getStringArray(R.array.Meal_Types));
@@ -176,5 +202,6 @@ public class UserRequestEventActivity extends AppCompatActivity implements
                     }, mHour, mMinute, false);
             timePickerDialog.show();
         }
+
     }
 }
