@@ -25,9 +25,9 @@ import java.util.Calendar;
 
 public class UserRequestEventActivity extends AppCompatActivity implements
         View.OnClickListener {
-    EditText party_size, duration, meal_type, meal_venue;
+    EditText party_size, duration;
     DBManager db;
-    Spinner formality,drink;
+    Spinner formality, drink, meal_type, meal_venue;
     Button btnDatePicker, btnTimePicker;
     EditText txtDate, txtTime;
     private int mYear, mMonth, mDay, mHour, mMinute = -1;
@@ -52,8 +52,8 @@ public class UserRequestEventActivity extends AppCompatActivity implements
 
         party_size = (EditText) findViewById(R.id.party_size);
         duration = (EditText) findViewById(R.id.duration);
-        meal_type = (EditText) findViewById(R.id.meal_type);
-        meal_venue = (EditText) findViewById(R.id.venue_type);
+        meal_type = (Spinner) findViewById(R.id.meal_type);
+        meal_venue = (Spinner) findViewById(R.id.venue_type);
         formality = (Spinner) findViewById(R.id.meal_formality);
         drink = (Spinner) findViewById(R.id.drink);
 
@@ -91,8 +91,8 @@ public class UserRequestEventActivity extends AppCompatActivity implements
         String Date = Integer.toString(mMonth) + "/" + Integer.toString(mDay) + "/" + Integer.toString(mYear);
         String Time = Integer.toString(mHour) + ":" + Integer.toString(mMinute);
         int Duration = Integer.parseInt(duration.getText().toString() );
-        String mealType = meal_type.getText().toString();
-        String mealVenue = meal_venue.getText().toString();
+        String mealType = meal_type.getSelectedItem().toString();
+        String mealVenue = meal_venue.getSelectedItem().toString();
         String Formality = formality.getSelectedItem().toString();
         String Drink = drink.getSelectedItem().toString();
         Event event = new Event(partySize,Date,Time,Duration,mealType,mealVenue,Formality,Drink);

@@ -23,4 +23,13 @@
         <item>User</item>
         <item>Staff</item>
     </string-array>
+    <string-array name="Meal_Types">
+        <item>Meal Type</item>
+        <item>Breakfast</item>
+        <item>Lunch</item>
+        <item>Dinner</item>
+    </string-array>
+    <string-array name="Venue_Type">
+        <item>Venue Type</item>
+    </string-array>
 </resources>

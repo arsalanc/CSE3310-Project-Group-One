@@ -82,7 +82,7 @@ public class RegisterActivity extends AppCompatActivity {
                 readyToSubmit = false;
                 Toast.makeText(this, "10-Digit Phone Number Required", Toast.LENGTH_LONG).show();
             }
-            if(acct_type_temp.equalsIgnoreCase("caterer")||acct_type_temp.equalsIgnoreCase("user")||acct_type_temp.equalsIgnoreCase("staff"))
+            if(acct_type_temp.equalsIgnoreCase("caterer") || acct_type_temp.equalsIgnoreCase("user") || acct_type_temp.equalsIgnoreCase("staff"))
             {
                 user.setAccountType(acct_type_temp);
             }

@@ -89,6 +89,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
                 android:text="Select Date"
                 android:id="@+id/btn_date"
                 android:layout_alignBottom="@+id/in_date"
@@ -107,6 +108,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
                 android:text="Select Time"
                 android:id="@+id/btn_time"
                 android:layout_below="@+id/btn_date"
@@ -126,26 +128,26 @@
             android:textSize="15dp"
             android:hint="Duration (hours)"
             android:layout_margin="5dp"/>
-        <EditText
+        <Spinner
             android:id="@+id/meal_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
+            android:layout_margin="10dp"
+            android:entries="@array/Meal_Types"
+            android:spinnerMode="dropdown"
             android:textColor="#fff"
-            android:textColorHint="#fff"
-            android:textSize="15dp"
-            android:hint="Food Meal Type (Breakfast, etc.)"
-            android:layout_margin="5dp"/>
-        <EditText
+            android:textSize="20dp" />
+
+        <Spinner
             android:id="@+id/venue_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
+            android:layout_margin="10dp"
+            android:entries="@array/Venue_Type"
+            android:gravity="center"
+            android:spinnerMode="dropdown"
             android:textColor="#fff"
-            android:textColorHint="#fff"
-            android:textSize="15dp"
-            android:hint="Food Venue Type (French, etc.)"
-            android:layout_margin="5dp"/>
+            android:textSize="20dp" />
 
         <Spinner
             android:id="@+id/meal_formality"
