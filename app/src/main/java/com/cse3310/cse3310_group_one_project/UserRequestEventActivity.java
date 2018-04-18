@@ -109,14 +109,34 @@ public class UserRequestEventActivity extends AppCompatActivity implements
             Toast.makeText(this, "MUST FILL IN ALL FIELDS", Toast.LENGTH_LONG).show();
             return;
         }
+        if(meal_type.getSelectedItem().toString().equalsIgnoreCase( "Meal Type"))
+        {
+            Toast.makeText(this, "Select Meal Type", Toast.LENGTH_LONG).show();
+            return;
+        }
+        else if(meal_venue.getSelectedItem().toString().equalsIgnoreCase( "Venue Type"))
+        {
+            Toast.makeText(this, "Select Venue Type", Toast.LENGTH_LONG).show();
+            return;
+        }
+        else if(formality.getSelectedItem().toString().equalsIgnoreCase("Meal Formality"))
+        {
+            Toast.makeText(this, "Select Formality", Toast.LENGTH_LONG).show();
+            return;
+        }
+        else if(drink.getSelectedItem().toString().equalsIgnoreCase( "Drink Type"))
+        {
+            Toast.makeText(this, "Select Drink Type", Toast.LENGTH_LONG).show();
+            return;
+        }
         Intent intent_requestEvent = new Intent(this,UserHomepageActivity.class);
         UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
 
-        int partySize = Integer.parseInt(party_size.getText().toString());
+        int partySize = partyCounter;
         int owner_id = user.getId();
         String Date = Integer.toString(mMonth) + "/" + Integer.toString(mDay) + "/" + Integer.toString(mYear);
         String Time = Integer.toString(mHour) + ":" + Integer.toString(mMinute);
-        int Duration = Integer.parseInt(duration.getText().toString() );
+        int Duration = durCounter;
         String mealType = meal_type.getSelectedItem().toString();
         String mealVenue = meal_venue.getSelectedItem().toString();
         String Formality = formality.getSelectedItem().toString();
