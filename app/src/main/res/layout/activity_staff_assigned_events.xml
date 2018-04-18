@@ -17,16 +17,10 @@
             android:gravity="center"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"/>
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="356dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <!-- Consider making spinner instead of textview -->
                 <Spinner
-                    android:layout_width="wrap_content"
+                    android:id="@+id/staff_assigned_events_spinner"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:gravity="center"
@@ -43,8 +37,7 @@
                     android:background="@color/colorOrange"
                     android:text="View Details" />
 
-            </LinearLayout>
-        </ScrollView>
+
         <Button
             android:id="@+id/assigned_events_back"
             android:layout_width="match_parent"

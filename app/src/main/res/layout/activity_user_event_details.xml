@@ -95,18 +95,18 @@
             android:orientation="horizontal">
             <Button
                 android:id="@+id/cancel_event_user"
-                android:layout_width="175dp"
+                android:layout_width="160dp"
                 android:layout_height="50dp"
                 android:text="Cancel Event"
-                android:layout_margin="10dp"
+                android:layout_margin="8dp"
                 android:layout_gravity="center"
                 android:background="@color/colorOrange"/>
             <Button
                 android:id="@+id/event_details_back_user"
-                android:layout_width="175dp"
+                android:layout_width="160dp"
                 android:layout_height="50dp"
                 android:text="Back"
-                android:layout_margin="5dp"
+                android:layout_margin="8dp"
                 android:layout_gravity="center"
                 android:background="@color/colorOrange"/>
 
