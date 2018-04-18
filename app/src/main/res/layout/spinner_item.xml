@@ -4,7 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:singleLine="true"
-    android:textColor="#000"
-    android:textSize="18.5dp"
-    android:padding="12.5dp"
+    android:textColor="#fff"
+    android:textSize="18dp"
+    android:padding="2.5dp"
     />

@@ -18,6 +18,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.Calendar;
+import android.widget.ArrayAdapter;
 
 /**
  * Created by Arsalan on 4/11/2018.
@@ -53,9 +54,25 @@ public class UserRequestEventActivity extends AppCompatActivity implements
         party_size = (EditText) findViewById(R.id.party_size);
         duration = (EditText) findViewById(R.id.duration);
         meal_type = (Spinner) findViewById(R.id.meal_type);
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(UserRequestEventActivity.this,
+                R.layout.spinner_item,getResources().getStringArray(R.array.Meal_Types));
+        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        meal_type.setAdapter(myAdapter);
         meal_venue = (Spinner) findViewById(R.id.venue_type);
+        myAdapter = new ArrayAdapter<String>(UserRequestEventActivity.this,
+                R.layout.spinner_item,getResources().getStringArray(R.array.Venue_Type));
+        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        meal_venue.setAdapter(myAdapter);
         formality = (Spinner) findViewById(R.id.meal_formality);
+        myAdapter = new ArrayAdapter<String>(UserRequestEventActivity.this,
+                R.layout.spinner_item,getResources().getStringArray(R.array.Formality));
+        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        formality.setAdapter(myAdapter);
         drink = (Spinner) findViewById(R.id.drink);
+        myAdapter = new ArrayAdapter<String>(UserRequestEventActivity.this,
+                R.layout.spinner_item,getResources().getStringArray(R.array.Drink));
+        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        drink.setAdapter(myAdapter);
 
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
