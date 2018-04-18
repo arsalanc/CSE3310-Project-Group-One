@@ -9,9 +9,10 @@ import java.util.Date;
 
 public class Event {
 
-
     //Probably need to change certain data types
     int event_id;
+    int owner_id;
+    int caterer_id = -1; // this won't be determined until a caterer selects the event
     int party_size;
     String date;
     String time;
@@ -27,7 +28,9 @@ public class Event {
 
     }
 
-    public Event(int party_size, String date, String time, int duration, String meal_type, String meal_venue, String formality, String drink_venue) {
+    public Event(int owner_id, int party_size, String date, String time, int duration,
+                 String meal_type, String meal_venue, String formality, String drink_venue) {
+        this.owner_id = owner_id;
         this.party_size = party_size;
         this.date = date;
         this.time = time;
@@ -45,6 +48,14 @@ public class Event {
     public void setEvent_id(int event_id) {
         this.event_id = event_id;
     }
+
+    public int getOwner_id() { return this.owner_id; }
+
+    public void setOwner_id(int owner_id) { this.owner_id = owner_id; }
+
+    public int getCaterer_id() { return this.caterer_id; }
+
+    public void setCaterer_id(int caterer_id) { this.caterer_id = caterer_id; }
 
     public String getHall() {
         return Hall;

@@ -59,14 +59,14 @@ public class UserRequestEventActivity extends AppCompatActivity implements
 
         party_size = (EditText) findViewById(R.id.party_size);
         duration = (TextView) findViewById(R.id.duration);
-        duration.setText(counter);
-        /* I think this is the source of the bug
+        duration.setText(Integer.toString(counter));
+
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Adds 1 to the counter
                 counter = counter + 1;
-                duration.setText(counter);
+                duration.setText(Integer.toString(counter));
             }
         });
 
@@ -75,10 +75,10 @@ public class UserRequestEventActivity extends AppCompatActivity implements
             public void onClick(View v) {
                 // Subtract 1 from counter
                 counter = counter - 1;
-                duration.setText(counter);
+                duration.setText(Integer.toString(counter));
             }
         });
-        */
+
         meal_type = (Spinner) findViewById(R.id.meal_type);
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(UserRequestEventActivity.this,
                 R.layout.spinner_item,getResources().getStringArray(R.array.Meal_Types));
@@ -130,7 +130,11 @@ public class UserRequestEventActivity extends AppCompatActivity implements
             Toast.makeText(this, "MUST FILL IN ALL FIELDS", Toast.LENGTH_LONG).show();
             return;
         }
+        Intent intent_requestEvent = new Intent(this,UserHomepageActivity.class);
+        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+
         int partySize = Integer.parseInt(party_size.getText().toString());
+        int owner_id = user.getId();
         String Date = Integer.toString(mMonth) + "/" + Integer.toString(mDay) + "/" + Integer.toString(mYear);
         String Time = Integer.toString(mHour) + ":" + Integer.toString(mMinute);
         int Duration = Integer.parseInt(duration.getText().toString() );
@@ -138,12 +142,10 @@ public class UserRequestEventActivity extends AppCompatActivity implements
         String mealVenue = meal_venue.getSelectedItem().toString();
         String Formality = formality.getSelectedItem().toString();
         String Drink = drink.getSelectedItem().toString();
-        Event event = new Event(partySize,Date,Time,Duration,mealType,mealVenue,Formality,Drink);
+        Event event = new Event(owner_id,partySize,Date,Time,Duration,mealType,mealVenue,Formality,Drink);
 
         db.addNewEvent(event);
 
-        Intent intent_requestEvent = new Intent(this,UserHomepageActivity.class);
-        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
         intent_requestEvent.putExtra("USER", user);
         startActivity(intent_requestEvent);
     }
