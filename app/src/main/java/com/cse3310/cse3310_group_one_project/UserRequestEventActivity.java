@@ -27,14 +27,13 @@ import android.widget.ArrayAdapter;
 
 public class UserRequestEventActivity extends AppCompatActivity implements
         View.OnClickListener {
-    EditText party_size;
     DBManager db;
     Spinner formality, drink, meal_type, meal_venue;
     Button btnDatePicker, btnTimePicker, btn_add, btn_sub;
     EditText txtDate, txtTime;
-    TextView duration;
+    TextView duration, party_size;
     private int mYear, mMonth, mDay, mHour, mMinute = -1;
-    int durCounter = 0;
+    int durCounter,partyCounter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
@@ -57,8 +56,8 @@ public class UserRequestEventActivity extends AppCompatActivity implements
         Button cancel = (Button) findViewById(R.id.request_event_cancel);
         Button confirm = (Button) findViewById(R.id.request_event_confirm);
 
-        party_size = (EditText) findViewById(R.id.party_size);
-        duration = (TextView) findViewById(R.id.duration);
+        //party_size = (EditText) findViewById(R.id.party_size);
+        //duration = (TextView) findViewById(R.id.duration);
 
         meal_type = (Spinner) findViewById(R.id.meal_type);
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(UserRequestEventActivity.this,
@@ -188,16 +187,28 @@ public class UserRequestEventActivity extends AppCompatActivity implements
         }
 
     }
-    public void btn_add(View v) {
+    public void increaseIntegerDuration(View v) {
         durCounter = durCounter + 1;
-        display(durCounter);
+        displayDuration(durCounter);
 
-    }public void btn_sub(View v) {
+    }public void decreaseIntegerDuration(View v) {
         durCounter = durCounter - 1;
-        display(durCounter);
+        displayDuration(durCounter);
     }
+    private void displayDuration(int number) {
+        duration = (TextView) findViewById(R.id.duration);
+        duration.setText("Duration: " + number);
+    }
+    public void increaseIntegerPS(View v) {
+        partyCounter = partyCounter + 1;
+        displayPS(partyCounter);
 
-    private void display(int number) {
-        duration.setText("" + number);
+    }public void decreaseIntegerPS(View v) {
+        partyCounter = partyCounter - 1;
+        displayPS(partyCounter);
+    }
+    private void displayPS(int number) {
+        party_size = (TextView) findViewById(R.id.partySize);
+        party_size.setText("Party Size: " + number);
     }
 }
