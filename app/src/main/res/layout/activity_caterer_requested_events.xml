@@ -20,6 +20,7 @@
 
         <!-- Consider making spinner instead of textview -->
         <Spinner
+            android:id="@+id/caterer_requested_events_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:spinnerMode="dropdown"

@@ -54,18 +54,41 @@ public class UserEventDetails extends AppCompatActivity {
     }
 
     public void back_button(){
-        Intent intent_back = new Intent(this,UserViewRequestedEvents.class);
+        Intent intent_back;
+       // Intent intent_back = new Intent(this,UserViewRequestedEvents.class);
         User user = (User) getIntent().getSerializableExtra("USER");
-        intent_back.putExtra("USER", user);
-        startActivity(intent_back);
+        if(user.getAccountType().equalsIgnoreCase("user"))
+        {
+            intent_back = new Intent(this,UserViewRequestedEvents.class);
+            intent_back.putExtra("USER", user);
+            startActivity(intent_back);
+        }
+        else if(user.getAccountType().equalsIgnoreCase("caterer"))
+        {
+            intent_back = new Intent(this,CatererRequestedEvents.class);
+            intent_back.putExtra("USER", user);
+            startActivity(intent_back);
+        }
+
+
     }
     public void cancel_event(DBManager db){
+        Intent intent_cancel;
         int event_id = (Integer) getIntent().getSerializableExtra("EVENT_ID");
         db.deleteEvent(event_id);
-        Intent intent_back = new Intent(this,UserViewRequestedEvents.class);
         User user = (User) getIntent().getSerializableExtra("USER");
-        intent_back.putExtra("USER", user);
-        startActivity(intent_back);
+        if(user.getAccountType().equalsIgnoreCase("user"))
+        {
+            intent_cancel = new Intent(this,UserViewRequestedEvents.class);
+            intent_cancel.putExtra("USER", user);
+            startActivity(intent_cancel);
+        }
+        else if(user.getAccountType().equalsIgnoreCase("caterer"))
+        {
+            intent_cancel = new Intent(this,CatererRequestedEvents.class);
+            intent_cancel.putExtra("USER", user);
+            startActivity(intent_cancel);
+        }
 
     }
     public void set_text(DBManager db){
