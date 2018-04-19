@@ -1,16 +1,18 @@
-package com.cse3310.cse3310_group_one_project;
+package com.cse3310.cse3310_group_one_project.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import com.cse3310.cse3310_group_one_project.Models.User;
+import com.cse3310.cse3310_group_one_project.R;
 
 /**
  * Created by Arsalan on 4/11/2018.
  */
 
-public class CatererRemoveStaffActivity extends AppCompatActivity {
+public class CatererRemoveStaff extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
@@ -31,8 +33,8 @@ public class CatererRemoveStaffActivity extends AppCompatActivity {
     }
 
     public void removeStaffBack(){
-        Intent intent_removeStaffBack = new Intent(this,CatererEditEventActivity.class);
-        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        Intent intent_removeStaffBack = new Intent(this,CatererEditEvent.class);
+        User user = (User) getIntent().getSerializableExtra("USER");
         intent_removeStaffBack.putExtra("USER", user);
         startActivity(intent_removeStaffBack);
     }

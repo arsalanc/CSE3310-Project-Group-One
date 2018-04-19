@@ -1,4 +1,4 @@
-package com.cse3310.cse3310_group_one_project;
+package com.cse3310.cse3310_group_one_project.Models;
 
 import java.io.Serializable;
 
@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by Arsalan on 4/12/2018.
  */
 
-public class UserModel implements Serializable {
+public class User implements Serializable {
     private int id;
     private String Fname;
     private String Lname;

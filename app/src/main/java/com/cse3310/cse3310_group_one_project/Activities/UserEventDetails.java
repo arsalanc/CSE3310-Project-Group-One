@@ -1,18 +1,21 @@
-package com.cse3310.cse3310_group_one_project;
+package com.cse3310.cse3310_group_one_project.Activities;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import com.cse3310.cse3310_group_one_project.Models.User;
+import com.cse3310.cse3310_group_one_project.Models.DBManager;
+import com.cse3310.cse3310_group_one_project.Models.Event;
+import com.cse3310.cse3310_group_one_project.R;
 
 /**
  * Created by Arsalan on 4/11/2018.
  */
 
-public class UserEventDetailsActivity extends AppCompatActivity {
+public class UserEventDetails extends AppCompatActivity {
     TextView party_size,date,time,duration,meal_type,venue_type,formality,drink;
     DBManager db;
     @Override
@@ -52,7 +55,7 @@ public class UserEventDetailsActivity extends AppCompatActivity {
 
     public void back_button(){
         Intent intent_back = new Intent(this,UserViewRequestedEvents.class);
-        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        User user = (User) getIntent().getSerializableExtra("USER");
         intent_back.putExtra("USER", user);
         startActivity(intent_back);
     }
@@ -60,7 +63,7 @@ public class UserEventDetailsActivity extends AppCompatActivity {
         int event_id = (Integer) getIntent().getSerializableExtra("EVENT_ID");
         db.deleteEvent(event_id);
         Intent intent_back = new Intent(this,UserViewRequestedEvents.class);
-        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        User user = (User) getIntent().getSerializableExtra("USER");
         intent_back.putExtra("USER", user);
         startActivity(intent_back);
 

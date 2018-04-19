@@ -9,80 +9,80 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity">
+        <activity android:name=".Activities.Register">
             
         </activity>
-        <activity android:name=".CatererAddResourcesActivity">
+        <activity android:name=".Activities.CatererAddResources">
             
         </activity>
-        <activity android:name=".CatererApproveEventActivity">
+        <activity android:name=".Activities.CatererApproveEvent">
+
+        </activity>
+        <activity android:name=".Activities.CatererAssignStaff">
             
         </activity>
-        <activity android:name=".CatererAssignStaffActivity">
+        <activity android:name=".Activities.CatererEditEvent">
             
         </activity>
-        <activity android:name=".CatererEditEventActivity">
+        <activity android:name=".Activities.CatererHomepage">
             
         </activity>
-        <activity android:name=".CatererHomepageActivity">
+        <activity android:name=".Activities.CatererRemoveResources">
             
         </activity>
-        <activity android:name=".CatererRemoveResourcesActivity">
+        <activity android:name=".Activities.CatererRemoveStaff">
             
         </activity>
-        <activity android:name=".CatererRemoveStaffActivity">
+        <activity android:name=".Activities.CatererRequestedEvents">
             
         </activity>
-        <activity android:name=".CatererRequestedEventsActivity">
-            
-        </activity>
-        <activity android:name=".CatererReservedEventsActivity">
+        <activity android:name=".Activities.CatererReservedEvents">
 
         </activity>
-        <activity android:name=".CatererViewUserInfoActivity">
+        <activity android:name=".Activities.CatererViewUserInfo">
 
         </activity>
-        <activity android:name=".EditAccountActivity">
+        <activity android:name=".Activities.EditAccount">
 
         </activity>
-        <activity android:name=".ProfileManagementActivity">
+        <activity android:name=".Activities.ProfileManagement">
 
         </activity>
-        <activity android:name=".StaffAssignedEventsActivity">
+        <activity android:name=".Activities.StaffAssignedEvents">
 
         </activity>
-        <activity android:name=".StaffHomepageActivity">
+        <activity android:name=".Activities.StaffHomepage">
 
         </activity>
-        <activity android:name=".UserEventDetailsActivity">
+        <activity android:name=".Activities.UserEventDetails">
 
         </activity>
-        <activity android:name=".UserHomepageActivity">
+        <activity android:name=".Activities.UserHomepage">
 
         </activity>
-        <activity android:name=".UserRequestEventActivity">
+        <activity android:name=".Activities.UserRequestEvent">
 
         </activity>
-        <activity android:name=".UserReservedEventsActivity">
+        <activity android:name=".Activities.UserReservedEvents">
 
         </activity>
-        <activity android:name=".UserScheduleActivity">
+        <activity android:name=".Activities.UserSchedule">
 
         </activity>
-        <activity android:name=".UserStaffReservedEventDetails">
+        <activity android:name=".Activities.UserStaffReservedEventDetails">
 
         </activity>
-        <activity android:name=".UserViewRequestedEvents">
+        <activity android:name=".Activities.UserViewRequestedEvents">
 
         </activity>
-        <activity android:name=".ViewCatererInfoActivity">
+        <activity android:name=".Activities.ViewCatererInfo">
 
         </activity>
     </application>

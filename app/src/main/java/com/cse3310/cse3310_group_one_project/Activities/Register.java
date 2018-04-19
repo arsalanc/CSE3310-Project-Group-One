@@ -1,4 +1,4 @@
-package com.cse3310.cse3310_group_one_project;
+package com.cse3310.cse3310_group_one_project.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,11 +10,15 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.cse3310.cse3310_group_one_project.Models.User;
+import com.cse3310.cse3310_group_one_project.Models.DBManager;
+import com.cse3310.cse3310_group_one_project.R;
+
 /**
  * Created by Arsalan on 4/11/2018.
  */
 
-public class RegisterActivity extends AppCompatActivity {
+public class Register extends AppCompatActivity {
     EditText fname,lname,username,password,phone_number;
     Spinner account_type;
     DBManager db;
@@ -32,7 +36,7 @@ public class RegisterActivity extends AppCompatActivity {
         username=(EditText) findViewById(R.id.username);
         password=(EditText) findViewById(R.id.password);
         account_type =(Spinner) findViewById(R.id.spinner1);
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(RegisterActivity.this,
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(Register.this,
                 R.layout.spinner_item,getResources().getStringArray(R.array.Account_Types));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         account_type.setAdapter(myAdapter);
@@ -58,7 +62,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void submitRegister(DBManager db){
-        UserModel user =new UserModel();
+        User user =new User();
         boolean readyToSubmit = true;
         String acct_type_temp,fname_temp,lname_temp,username_temp,
                 password_temp,phone_number_temp;

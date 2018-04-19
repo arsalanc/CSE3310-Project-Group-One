@@ -1,10 +1,8 @@
-package com.cse3310.cse3310_group_one_project;
+package com.cse3310.cse3310_group_one_project.Models;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.MatrixCursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -97,7 +95,7 @@ public class DBManager extends SQLiteOpenHelper {
         db.delete(EVENT_TABLE_NAME, KEY_EVENT_ID+ " = "+id, null);
     }
 
-    public void addNewUser(UserModel user) {
+    public void addNewUser(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_FNAME, user.getFname());
@@ -109,14 +107,14 @@ public class DBManager extends SQLiteOpenHelper {
         db.insert(TABLE_NAME, null, values);
         db.close();
     }
-    public UserModel retrieveUser(String username, String password) {
+    public User retrieveUser(String username, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         String query = "SELECT * from " + TABLE_NAME + " WHERE " + KEY_EMAIL + " = \""
                 + username + "\" AND " + KEY_PASS + "= \"" + password + "\";";
 
         Cursor cursor = db.rawQuery(query, null);
-        UserModel model = new UserModel();
+        User model = new User();
         if (cursor.moveToFirst()) {
             model.setId(cursor.getInt(cursor.getColumnIndex(KEY_ID)));
             model.setFname(cursor.getString((cursor.getColumnIndex(KEY_FNAME))));

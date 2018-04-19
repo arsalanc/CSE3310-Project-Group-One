@@ -1,16 +1,18 @@
-package com.cse3310.cse3310_group_one_project;
+package com.cse3310.cse3310_group_one_project.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import com.cse3310.cse3310_group_one_project.Models.User;
+import com.cse3310.cse3310_group_one_project.R;
 
 /**
  * Created by Arsalan on 4/11/2018.
  */
 
-public class CatererEditEventActivity extends AppCompatActivity {
+public class CatererEditEvent extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
@@ -69,32 +71,32 @@ public class CatererEditEventActivity extends AppCompatActivity {
 
     }
     public void assignStaff(){
-        Intent intent_assignStaff = new Intent(this,CatererAssignStaffActivity.class);
-        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        Intent intent_assignStaff = new Intent(this,CatererAssignStaff.class);
+        User user = (User) getIntent().getSerializableExtra("USER");
         intent_assignStaff.putExtra("USER", user);
         startActivity(intent_assignStaff);
     }
     public void removeStaff(){
-        Intent intent_removeStaff = new Intent(this,CatererRemoveStaffActivity.class);
-        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        Intent intent_removeStaff = new Intent(this,CatererRemoveStaff.class);
+        User user = (User) getIntent().getSerializableExtra("USER");
         intent_removeStaff.putExtra("USER", user);
         startActivity(intent_removeStaff);
     }
     public void addResources(){
-        Intent intent_addResources = new Intent(this,CatererAddResourcesActivity.class);
-        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        Intent intent_addResources = new Intent(this,CatererAddResources.class);
+        User user = (User) getIntent().getSerializableExtra("USER");
         intent_addResources.putExtra("USER", user);
         startActivity(intent_addResources);
     }
     public void viewUserInfo(){
-        Intent intent_viewUserInfo = new Intent(this,CatererViewUserInfoActivity.class);
-        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        Intent intent_viewUserInfo = new Intent(this,CatererViewUserInfo.class);
+        User user = (User) getIntent().getSerializableExtra("USER");
         intent_viewUserInfo.putExtra("USER", user);
         startActivity(intent_viewUserInfo);
     }
     public void removeResources(){
-        Intent intent_removeResources = new Intent(this,CatererRemoveResourcesActivity.class);
-        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        Intent intent_removeResources = new Intent(this,CatererRemoveResources.class);
+        User user = (User) getIntent().getSerializableExtra("USER");
         intent_removeResources.putExtra("USER", user);
         startActivity(intent_removeResources);
     }
@@ -102,8 +104,8 @@ public class CatererEditEventActivity extends AppCompatActivity {
         //TODO: remove event
     }
     public void prev_page(){
-        Intent intent_prev = new Intent(this,CatererReservedEventsActivity.class);
-        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        Intent intent_prev = new Intent(this,CatererReservedEvents.class);
+        User user = (User) getIntent().getSerializableExtra("USER");
         intent_prev.putExtra("USER", user);
         startActivity(intent_prev);
     }

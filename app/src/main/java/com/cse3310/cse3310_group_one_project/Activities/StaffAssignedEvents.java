@@ -1,16 +1,18 @@
-package com.cse3310.cse3310_group_one_project;
+package com.cse3310.cse3310_group_one_project.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import com.cse3310.cse3310_group_one_project.Models.User;
+import com.cse3310.cse3310_group_one_project.R;
 
 /**
  * Created by Arsalan on 4/11/2018.
  */
 
-public class StaffAssignedEventsActivity extends AppCompatActivity {
+public class StaffAssignedEvents extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
@@ -34,13 +36,13 @@ public class StaffAssignedEventsActivity extends AppCompatActivity {
 
     public void viewDetails(){
         Intent intent_viewDetails = new Intent(this,UserStaffReservedEventDetails.class);
-        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        User user = (User) getIntent().getSerializableExtra("USER");
         intent_viewDetails.putExtra("USER", user);
         startActivity(intent_viewDetails);
     }
     public void backButton(){
-        Intent intent_back = new Intent(this,StaffHomepageActivity.class);
-        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        Intent intent_back = new Intent(this,StaffHomepage.class);
+        User user = (User) getIntent().getSerializableExtra("USER");
         intent_back.putExtra("USER", user);
         startActivity(intent_back);
     }
