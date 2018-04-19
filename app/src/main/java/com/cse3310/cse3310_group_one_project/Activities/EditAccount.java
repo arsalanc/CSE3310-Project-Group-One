@@ -1,4 +1,4 @@
-package com.cse3310.cse3310_group_one_project;
+package com.cse3310.cse3310_group_one_project.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,12 +7,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import com.cse3310.cse3310_group_one_project.Models.DBManager;
+import com.cse3310.cse3310_group_one_project.Models.User;
+import com.cse3310.cse3310_group_one_project.R;
 
 /**
  * Created by Arsalan on 4/11/2018.
  */
 
-public class EditAccountActivity extends AppCompatActivity {
+public class EditAccount extends AppCompatActivity {
     EditText current_pass, new_pass, new_phone;
     DBManager db;
     @Override
@@ -42,14 +45,14 @@ public class EditAccountActivity extends AppCompatActivity {
     }
 
     public void cancel(){
-        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
-        Intent intent_cancel = new Intent(this,ProfileManagementActivity.class);
+        User user = (User) getIntent().getSerializableExtra("USER");
+        Intent intent_cancel = new Intent(this,ProfileManagement.class);
         intent_cancel.putExtra("USER", user);
         startActivity(intent_cancel);
     }
     public void submit(DBManager db){
         //TODO: Change account details
-        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        User user = (User) getIntent().getSerializableExtra("USER");
         String cur_pass =current_pass.getText().toString();
         if(!user.getPassword().equals(cur_pass))
         {
@@ -68,7 +71,7 @@ public class EditAccountActivity extends AppCompatActivity {
             int id = user.getId();
             db.deleteUser(id);
             db.addNewUser(user);
-            Intent intent_submit = new Intent(this,ProfileManagementActivity.class);
+            Intent intent_submit = new Intent(this,ProfileManagement.class);
             intent_submit.putExtra("USER", user);
             startActivity(intent_submit);
         }

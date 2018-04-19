@@ -1,4 +1,4 @@
-package com.cse3310.cse3310_group_one_project;
+package com.cse3310.cse3310_group_one_project.Models;
 
 import java.sql.Time;
 import java.util.Date;

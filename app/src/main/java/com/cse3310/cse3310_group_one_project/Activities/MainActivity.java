@@ -1,4 +1,4 @@
-package com.cse3310.cse3310_group_one_project;
+package com.cse3310.cse3310_group_one_project.Activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.cse3310.cse3310_group_one_project.Models.User;
+import com.cse3310.cse3310_group_one_project.Models.DBManager;
+import com.cse3310.cse3310_group_one_project.R;
+
 
 //hello
 public class MainActivity extends AppCompatActivity {
@@ -40,25 +45,25 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     public void openRegister(){
-        Intent intent_register = new Intent(this,RegisterActivity.class);
+        Intent intent_register = new Intent(this,Register.class);
         startActivity(intent_register);
     }
     //Testing purposes
     public void login(DBManager db){
         //DBManager handler = new DBManager(this);
-        UserModel user = db.retrieveUser(username.getText().toString(), password.getText().toString());
-        Intent intent = new Intent(this, CatererHomepageActivity.class);
+        User user = db.retrieveUser(username.getText().toString(), password.getText().toString());
+        Intent intent = new Intent(this, CatererHomepage.class);
         if (user != null) {
             if(user.getAccountType().equalsIgnoreCase("caterer")) {
-                intent = new Intent(this, CatererHomepageActivity.class);
+                intent = new Intent(this, CatererHomepage.class);
                 intent.putExtra("USER", user);
             }
             else if(user.getAccountType().equalsIgnoreCase("user")){
-                intent = new Intent(this, UserHomepageActivity.class);
+                intent = new Intent(this, UserHomepage.class);
                 intent.putExtra("USER", user);
             }
             else if(user.getAccountType().equalsIgnoreCase("staff")) {
-                intent = new Intent(this, StaffHomepageActivity.class);
+                intent = new Intent(this, StaffHomepage.class);
                 intent.putExtra("USER", user);
             }
             startActivity(intent);

@@ -1,4 +1,4 @@
-package com.cse3310.cse3310_group_one_project;
+package com.cse3310.cse3310_group_one_project.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,11 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.cse3310.cse3310_group_one_project.Models.User;
+import com.cse3310.cse3310_group_one_project.R;
+
 /**
  * Created by Arsalan on 4/11/2018.
  */
 
-public class UserHomepageActivity extends AppCompatActivity {
+public class UserHomepage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
@@ -62,32 +65,32 @@ public class UserHomepageActivity extends AppCompatActivity {
     }
 
     public void request_event(){
-        Intent intent_requestEvent = new Intent(this,UserRequestEventActivity.class);
-        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        Intent intent_requestEvent = new Intent(this,UserRequestEvent.class);
+        User user = (User) getIntent().getSerializableExtra("USER");
         intent_requestEvent.putExtra("USER", user);
         startActivity(intent_requestEvent);
     }
     public void view_requested_events(){
         Intent intent_viewRequests = new Intent(this,UserViewRequestedEvents.class);
-        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        User user = (User) getIntent().getSerializableExtra("USER");
         intent_viewRequests.putExtra("USER", user);
         startActivity(intent_viewRequests);
     }
     public void view_reserved_events(){
-        Intent intent_viewReserved = new Intent(this,UserReservedEventsActivity.class);
-        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        Intent intent_viewReserved = new Intent(this,UserReservedEvents.class);
+        User user = (User) getIntent().getSerializableExtra("USER");
         intent_viewReserved.putExtra("USER", user);
         startActivity(intent_viewReserved);
     }
     public void view_schedule(){
-        Intent intent_viewSchedule = new Intent(this,UserScheduleActivity.class);
-        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        Intent intent_viewSchedule = new Intent(this,UserSchedule.class);
+        User user = (User) getIntent().getSerializableExtra("USER");
         intent_viewSchedule.putExtra("USER", user);
         startActivity(intent_viewSchedule);
     }
     public void profile_management(){
-        Intent intent_profileManagement = new Intent(this,ProfileManagementActivity.class);
-        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        Intent intent_profileManagement = new Intent(this,ProfileManagement.class);
+        User user = (User) getIntent().getSerializableExtra("USER");
         intent_profileManagement.putExtra("USER", user);
         startActivity(intent_profileManagement);
     }

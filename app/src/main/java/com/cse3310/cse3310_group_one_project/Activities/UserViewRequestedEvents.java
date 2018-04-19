@@ -1,4 +1,4 @@
-package com.cse3310.cse3310_group_one_project;
+package com.cse3310.cse3310_group_one_project.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,10 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import com.cse3310.cse3310_group_one_project.Models.User;
+import com.cse3310.cse3310_group_one_project.Models.DBManager;
+import com.cse3310.cse3310_group_one_project.Models.Event;
+import com.cse3310.cse3310_group_one_project.R;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,7 +28,7 @@ public class UserViewRequestedEvents extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_requested_events);
-        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        User user = (User) getIntent().getSerializableExtra("USER");
 
         db = new DBManager(this);
         final List<Event> requests = db.retrieveRequestsByUserID(user.getId());
@@ -58,8 +62,8 @@ public class UserViewRequestedEvents extends AppCompatActivity {
     }
 
     public void back_button(){
-        Intent intent_back = new Intent(this,UserHomepageActivity.class);
-        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        Intent intent_back = new Intent(this,UserHomepage.class);
+        User user = (User) getIntent().getSerializableExtra("USER");
         intent_back.putExtra("USER", user);
         startActivity(intent_back);
     }
@@ -69,8 +73,8 @@ public class UserViewRequestedEvents extends AppCompatActivity {
         //TODO: get event id from spinner, parse, send as extra
         String select = requested_events.getSelectedItem().toString();
         int selected_event = Integer.parseInt(select);
-        Intent intent_viewDetails = new Intent(this,UserEventDetailsActivity.class);
-        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        Intent intent_viewDetails = new Intent(this,UserEventDetails.class);
+        User user = (User) getIntent().getSerializableExtra("USER");
         intent_viewDetails.putExtra("EVENT_ID",selected_event);
         intent_viewDetails.putExtra("USER", user);
         startActivity(intent_viewDetails);

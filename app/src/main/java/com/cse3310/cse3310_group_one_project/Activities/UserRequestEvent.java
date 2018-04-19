@@ -1,9 +1,8 @@
-package com.cse3310.cse3310_group_one_project;
+package com.cse3310.cse3310_group_one_project.Activities;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 
-import android.util.Log;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -13,27 +12,31 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.Calendar;
 import android.widget.ArrayAdapter;
 
+import com.cse3310.cse3310_group_one_project.Models.User;
+import com.cse3310.cse3310_group_one_project.Models.DBManager;
+import com.cse3310.cse3310_group_one_project.Models.Event;
+import com.cse3310.cse3310_group_one_project.R;
+
 /**
  * Created by Arsalan on 4/11/2018.
  */
 
-public class UserRequestEventActivity extends AppCompatActivity implements
+public class UserRequestEvent extends AppCompatActivity implements
         View.OnClickListener {
     DBManager db;
     Spinner formality, drink, meal_type, meal_venue;
     Button btnDatePicker, btnTimePicker, btn_add, btn_sub;
     EditText txtDate, txtTime;
     TextView duration, party_size;
-    private int mYear, mMonth, mDay, mHour, mMinute = -1;
-    int durCounter,partyCounter = 0;
+    private int mYear = -1, mMonth = -1, mDay = -1, mHour = -1, mMinute = -1;
+
+    int durCounter = 0, partyCounter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
@@ -56,24 +59,23 @@ public class UserRequestEventActivity extends AppCompatActivity implements
         Button cancel = (Button) findViewById(R.id.request_event_cancel);
         Button confirm = (Button) findViewById(R.id.request_event_confirm);
 
-
         meal_type = (Spinner) findViewById(R.id.meal_type);
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(UserRequestEventActivity.this,
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(UserRequestEvent.this,
                 R.layout.spinner_item,getResources().getStringArray(R.array.Meal_Types));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         meal_type.setAdapter(myAdapter);
         meal_venue = (Spinner) findViewById(R.id.venue_type);
-        myAdapter = new ArrayAdapter<String>(UserRequestEventActivity.this,
+        myAdapter = new ArrayAdapter<String>(UserRequestEvent.this,
                 R.layout.spinner_item,getResources().getStringArray(R.array.Venue_Type));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         meal_venue.setAdapter(myAdapter);
         formality = (Spinner) findViewById(R.id.meal_formality);
-        myAdapter = new ArrayAdapter<String>(UserRequestEventActivity.this,
+        myAdapter = new ArrayAdapter<String>(UserRequestEvent.this,
                 R.layout.spinner_item,getResources().getStringArray(R.array.Formality));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         formality.setAdapter(myAdapter);
         drink = (Spinner) findViewById(R.id.drink);
-        myAdapter = new ArrayAdapter<String>(UserRequestEventActivity.this,
+        myAdapter = new ArrayAdapter<String>(UserRequestEvent.this,
                 R.layout.spinner_item,getResources().getStringArray(R.array.Drink));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         drink.setAdapter(myAdapter);
@@ -94,19 +96,32 @@ public class UserRequestEventActivity extends AppCompatActivity implements
     }
 
     public void cancel(){
-        Intent intent_cancel = new Intent(this,UserHomepageActivity.class);
-        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        Intent intent_cancel = new Intent(this,UserHomepage.class);
+        User user = (User) getIntent().getSerializableExtra("USER");
         intent_cancel.putExtra("USER", user);
         startActivity(intent_cancel);
     }
 
     public void confirm(DBManager db){
         //TODO: Error check information
-        if(party_size == null || mMonth == -1 || mDay == -1 || mYear == -1 || mHour == -1
-                || mMinute == -1 || duration == null || meal_type == null || meal_venue == null
-                || formality == null || drink == null)
+        if(mMonth == -1 || mDay == -1 || mYear == -1 )
         {
-            Toast.makeText(this, "MUST FILL IN ALL FIELDS", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Select a day for the event", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (mHour == -1 || mMinute == -1)
+        {
+            Toast.makeText(this, "Select a time for the event", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if(durCounter == 0)
+        {
+            Toast.makeText(this, "Select the duration of your event", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if(partyCounter == 0)
+        {
+            Toast.makeText(this, "Select the amount of people coming to your event", Toast.LENGTH_LONG).show();
             return;
         }
         if(meal_type.getSelectedItem().toString().equalsIgnoreCase( "Meal Type"))
@@ -129,8 +144,8 @@ public class UserRequestEventActivity extends AppCompatActivity implements
             Toast.makeText(this, "Select Drink Type", Toast.LENGTH_LONG).show();
             return;
         }
-        Intent intent_requestEvent = new Intent(this,UserHomepageActivity.class);
-        UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
+        Intent intent_requestEvent = new Intent(this,UserHomepage.class);
+        User user = (User) getIntent().getSerializableExtra("USER");
 
         int partySize = partyCounter;
         int owner_id = user.getId();
@@ -142,7 +157,6 @@ public class UserRequestEventActivity extends AppCompatActivity implements
         String Formality = formality.getSelectedItem().toString();
         String Drink = drink.getSelectedItem().toString();
         Event event = new Event(owner_id,partySize,Date,Time,Duration,mealType,mealVenue,Formality,Drink);
-
         db.addNewEvent(event);
 
         intent_requestEvent.putExtra("USER", user);
@@ -154,13 +168,11 @@ public class UserRequestEventActivity extends AppCompatActivity implements
     public void onClick(View v) {
         if (v == btnDatePicker) {
 
-            // Get Current Date
+            // Get current date to initialize date picker
             final Calendar c = Calendar.getInstance();
-            mYear = c.get(Calendar.YEAR);
-            mMonth = c.get(Calendar.MONTH); // 0 indexed so add 1
-            mDay = c.get(Calendar.DAY_OF_MONTH);
-            String Date = Integer.toString(mMonth) + "/" + Integer.toString(mDay) + "/" + Integer.toString(mYear);
-            Log.d("EVAN", Date);
+            int current_year = c.get(Calendar.YEAR);
+            int current_month = c.get(Calendar.MONTH); // 0 indexed so add 1
+            int current_day = c.get(Calendar.DAY_OF_MONTH);
 
             DatePickerDialog datePickerDialog = new DatePickerDialog(this,
                     new DatePickerDialog.OnDateSetListener() {
@@ -176,15 +188,15 @@ public class UserRequestEventActivity extends AppCompatActivity implements
                             mDay = dayOfMonth;
                             mYear = year;
                         }
-                    }, mYear, mMonth, mDay);
+                    }, current_year, current_month, current_day);
             datePickerDialog.show();
         }
         if (v == btnTimePicker) {
 
-            // Get Current Time
+            // Get current time to set up time picker
             final Calendar c = Calendar.getInstance();
-            mHour = c.get(Calendar.HOUR_OF_DAY);
-            mMinute = c.get(Calendar.MINUTE);
+            int current_hour = c.get(Calendar.HOUR_OF_DAY);
+            int current_minute = c.get(Calendar.MINUTE);
 
             // Launch Time Picker Dialog
             TimePickerDialog timePickerDialog = new TimePickerDialog(this,
@@ -200,7 +212,7 @@ public class UserRequestEventActivity extends AppCompatActivity implements
                             mHour = hourOfDay;
                             mMinute = minute;
                         }
-                    }, mHour, mMinute, false);
+                    }, current_hour, current_minute, false);
             timePickerDialog.show();
         }
 
