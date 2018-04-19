@@ -37,4 +37,12 @@
         <item>Mexican</item>
         <item>Pizza</item>
     </string-array>
+    <string-array name="Halls">
+        <item>Select a Hall</item>
+        <item>Mavrick</item>
+        <item>KC</item>
+        <item>Arlington</item>
+        <item>Shard</item>
+        <item>Liberty</item>v
+    </string-array>
 </resources>

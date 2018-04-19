@@ -22,7 +22,7 @@
         <activity android:name=".CatererAddResourcesActivity">
             
         </activity>
-        <activity android:name=".CatererAproveEventActivity">
+        <activity android:name=".CatererApproveEventActivity">
             
         </activity>
         <activity android:name=".CatererAssignStaffActivity">

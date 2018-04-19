@@ -38,7 +38,7 @@ public class CatererRequestedEventsActivity extends AppCompatActivity {
 
     }
     public void reserve(){
-        Intent intent_reserve = new Intent(this,CatererAproveEventActivity.class);
+        Intent intent_reserve = new Intent(this,CatererApproveEventActivity.class);
         UserModel user = (UserModel) getIntent().getSerializableExtra("USER");
         intent_reserve.putExtra("USER", user);
         startActivity(intent_reserve);

@@ -26,55 +26,19 @@
             android:textSize="20dp"
             android:text="Available Halls"
             android:layout_margin="10dp"/>
-        <TextView
+        <Spinner
+            android:id="@+id/select_hall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#fff"
-            android:textSize="15dp"
-            android:text="Mavrick"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="10dp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#fff"
-            android:textSize="15dp"
-            android:text="KC"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="10dp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#fff"
-            android:textSize="15dp"
-            android:text="Arlington"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="10dp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#fff"
-            android:textSize="15dp"
-            android:text="Shard"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="10dp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#fff"
-            android:textSize="15dp"
-            android:text="Liberty"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="10dp"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:textColorHint="#fff"
+            android:spinnerMode="dropdown"
+            android:textColor="#000"
             android:textSize="20dp"
-            android:hint="Hall Name"
-            android:maxLines="1"
-            android:layout_marginTop="20dp" />
+            android:text="Event #"
+            android:layout_margin="10dp"
+            android:backgroundTint="#fff">
+
+        </Spinner>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
