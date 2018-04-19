@@ -65,7 +65,6 @@ public class UserEventDetailsActivity extends AppCompatActivity {
         startActivity(intent_back);
 
     }
-
     public void set_text(DBManager db){
         int event_id = (Integer) getIntent().getSerializableExtra("EVENT_ID");
         Event e = db.retrieveEvent(event_id);

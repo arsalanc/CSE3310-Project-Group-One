@@ -151,7 +151,7 @@ public class DBManager extends SQLiteOpenHelper {
     private Event build_event(Cursor cursor)
     {
         Event event = new Event();
-        //if(cursor.moveToFirst()){
+        if(cursor.moveToFirst()){
             event.setEvent_id(cursor.getInt(cursor.getColumnIndex(KEY_EVENT_ID)));
             event.setOwner_id(cursor.getInt(cursor.getColumnIndex(KEY_OWNER_ID)));
             event.setCaterer_id(cursor.getInt(cursor.getColumnIndex(KEY_CATERER_ID)));
@@ -164,9 +164,9 @@ public class DBManager extends SQLiteOpenHelper {
             event.setFormality(cursor.getString(cursor.getColumnIndex(KEY_FORMALITY)));
             event.setDrink_venue(cursor.getString(cursor.getColumnIndex(KEY_DRINK_VENUE)));
             event.setHall(cursor.getString(cursor.getColumnIndex(KEY_HALL)));
-        //} else{
-       //     event = null;
-       // }
+        } else{
+            event = null;
+        }
         return event;
     }
 
@@ -177,7 +177,6 @@ public class DBManager extends SQLiteOpenHelper {
                 + eventID + "\";";
         Cursor cursor = db.rawQuery(query, null);
         Event event = build_event(cursor);
-
         return event;
     }
 
