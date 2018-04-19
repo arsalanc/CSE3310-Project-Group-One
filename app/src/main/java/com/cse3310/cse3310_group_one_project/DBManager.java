@@ -177,6 +177,7 @@ public class DBManager extends SQLiteOpenHelper {
                 + eventID + "\";";
         Cursor cursor = db.rawQuery(query, null);
         Event event = build_event(cursor);
+
         return event;
     }
 
@@ -212,7 +213,20 @@ public class DBManager extends SQLiteOpenHelper {
 
         if(cursor.moveToFirst()) {
             while (!cursor.isAfterLast()) {
-                Event event = build_event(cursor);
+                //Event event = build_event(cursor);
+                Event event = new Event();
+                event.setEvent_id(cursor.getInt(cursor.getColumnIndex(KEY_EVENT_ID)));
+                event.setOwner_id(cursor.getInt(cursor.getColumnIndex(KEY_OWNER_ID)));
+                event.setCaterer_id(cursor.getInt(cursor.getColumnIndex(KEY_CATERER_ID)));
+                event.setParty_size(cursor.getInt(cursor.getColumnIndex(KEY_PARTY_SIZE)));
+                event.setDate(cursor.getString(cursor.getColumnIndex(KEY_DATE)));
+                event.setTime(cursor.getString(cursor.getColumnIndex(KEY_TIME)));
+                event.setDuration(cursor.getInt(cursor.getColumnIndex(KEY_DURATION)));
+                event.setMeal_type(cursor.getString(cursor.getColumnIndex(KEY_MEAL_TYPE)));
+                event.setMeal_venue(cursor.getString(cursor.getColumnIndex(KEY_MEAL_VENUE)));
+                event.setFormality(cursor.getString(cursor.getColumnIndex(KEY_FORMALITY)));
+                event.setDrink_venue(cursor.getString(cursor.getColumnIndex(KEY_DRINK_VENUE)));
+                event.setHall(cursor.getString(cursor.getColumnIndex(KEY_HALL)));
                 getRequests.add(event);
                 cursor.moveToNext();
             }
