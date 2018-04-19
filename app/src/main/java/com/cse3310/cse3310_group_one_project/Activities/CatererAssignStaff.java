@@ -18,13 +18,17 @@ public class CatererAssignStaff extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_caterer_assign_staff);
         //TODO: Submit button functionality
-        Button Assign_staff_submit=findViewById(R.id.assign_staff_submit);
+        Button assign_staff_submit=findViewById(R.id.assign_staff_submit);
         Button back_assign_staff=findViewById(R.id.back_assign_staff);
-        back_assign_staff.setOnClickListener(new View.OnClickListener() {
+        back_assign_staff.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 assignStaffBack();
             }
+        });
+        assign_staff_submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {assignStaffSubmit();}
         });
     }
 

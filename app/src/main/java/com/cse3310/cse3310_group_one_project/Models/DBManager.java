@@ -178,17 +178,13 @@ public class DBManager extends SQLiteOpenHelper {
         String query = "SELECT * from " + EVENT_TABLE_NAME + " WHERE " + KEY_EVENT_ID + " = \""
                 + eventID + "\";";
         Cursor cursor = db.rawQuery(query, null);
-<<<<<<< HEAD:app/src/main/java/com/cse3310/cse3310_group_one_project/DBManager.java
-        Event event = build_event(cursor);
-        return event;
-=======
+
         if(cursor.moveToFirst()) {
             Event event = build_event(cursor);
             return event;
         }
         // do some error handling if this is the case
         return null;
->>>>>>> d1466cb5e4b3ea6d32022c560861b37420a61c05:app/src/main/java/com/cse3310/cse3310_group_one_project/Models/DBManager.java
     }
 
     public List<Event> retrieveRequests(){
