@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
+import com.cse3310.cse3310_group_one_project.Models.DBManager;
+import com.cse3310.cse3310_group_one_project.Models.Event;
 import com.cse3310.cse3310_group_one_project.Models.User;
 import com.cse3310.cse3310_group_one_project.R;
 
@@ -17,6 +19,7 @@ import com.cse3310.cse3310_group_one_project.R;
 
 public class CatererApproveEvent extends AppCompatActivity {
     Spinner hall;
+    DBManager db;
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
@@ -30,10 +33,17 @@ public class CatererApproveEvent extends AppCompatActivity {
 
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         hall.setAdapter(myAdapter);
+        db = new DBManager(this);
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 backButton();
+            }
+        });
+        submit_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                submitButton(db);
             }
         });
     }
@@ -44,7 +54,19 @@ public class CatererApproveEvent extends AppCompatActivity {
         intent_back.putExtra("USER", user);
         startActivity(intent_back);
     }
-    public void submitButton(){
+    public void submitButton(DBManager db){
+        String select = hall.getSelectedItem().toString();
+        //int selected_hall = Integer.parseInt(select);
+        int event_id =  (int) getIntent().getSerializableExtra("EVENT_ID");
+        Event e = db.retrieveEvent(event_id);
+        db.deleteEvent(event_id);
+        e.setHall(select);
+        db.addNewEvent(e);
+
+        Intent intent_submit = new Intent(this,CatererRequestedEvents.class);
+        User user = (User) getIntent().getSerializableExtra("USER");
+        intent_submit.putExtra("USER", user);
+        startActivity(intent_submit);
 
     }
 }
