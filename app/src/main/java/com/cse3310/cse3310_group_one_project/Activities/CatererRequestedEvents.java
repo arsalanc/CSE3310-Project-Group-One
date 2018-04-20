@@ -67,6 +67,12 @@ public class CatererRequestedEvents extends AppCompatActivity {
                 viewDetails();
             }
         });
+        deny.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deny(db);
+            }
+        });
     }
 
     public void viewDetails(){
@@ -87,7 +93,14 @@ public class CatererRequestedEvents extends AppCompatActivity {
         intent_reserve.putExtra("USER", user);
         startActivity(intent_reserve);
     }
-    public void deny(){
+    public void deny(DBManager db){
+        String select = select_event.getSelectedItem().toString();
+        int selected_event = Integer.parseInt(select);
+        db.deleteEvent(selected_event);
+        Intent intent_deny = new Intent(this,CatererHomepage.class);
+        User user = (User) getIntent().getSerializableExtra("USER");
+        intent_deny.putExtra("USER",user);
+        startActivity(intent_deny);
 
     }
     public void requested_back(){

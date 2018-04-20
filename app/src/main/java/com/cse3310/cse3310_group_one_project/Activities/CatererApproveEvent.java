@@ -13,6 +13,9 @@ import com.cse3310.cse3310_group_one_project.Models.Event;
 import com.cse3310.cse3310_group_one_project.Models.User;
 import com.cse3310.cse3310_group_one_project.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Arsalan on 4/11/2018.
  */
@@ -20,6 +23,7 @@ import com.cse3310.cse3310_group_one_project.R;
 public class CatererApproveEvent extends AppCompatActivity {
     Spinner hall;
     DBManager db;
+    List<String> eventID = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
@@ -56,7 +60,6 @@ public class CatererApproveEvent extends AppCompatActivity {
     }
     public void submitButton(DBManager db){
         String select = hall.getSelectedItem().toString();
-        //int selected_hall = Integer.parseInt(select);
         int event_id =  (int) getIntent().getSerializableExtra("EVENT_ID");
         Event e = db.retrieveEvent(event_id);
         db.deleteEvent(event_id);

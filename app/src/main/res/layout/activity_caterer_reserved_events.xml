@@ -19,6 +19,7 @@
             android:layout_marginBottom="20dp"/>
         <!-- Consider making spinner instead of textview -->
         <Spinner
+            android:id="@+id/caterer_reserved_events_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#fff"
