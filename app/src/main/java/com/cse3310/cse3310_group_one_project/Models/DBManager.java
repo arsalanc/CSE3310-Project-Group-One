@@ -129,7 +129,26 @@ public class DBManager extends SQLiteOpenHelper {
         }
         return model;
     }
+    public User retrieveUserById(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
 
+        String query = "SELECT * from " + TABLE_NAME + " WHERE " + KEY_ID + " = " + id + ";";
+        Cursor cursor = db.rawQuery(query, null);
+        User model = new User();
+        if (cursor.moveToFirst()) {
+            model.setId(cursor.getInt(cursor.getColumnIndex(KEY_ID)));
+            model.setFname(cursor.getString((cursor.getColumnIndex(KEY_FNAME))));
+            model.setLname(cursor.getString(cursor.getColumnIndex(KEY_LNAME)));
+            model.setUsername(cursor.getString(cursor.getColumnIndex(KEY_EMAIL)));
+            model.setPassword(cursor.getString(cursor.getColumnIndex(KEY_PASS)));
+            model.setAccountType(cursor.getString(cursor.getColumnIndex(KEY_ROLE)));
+            model.setPhoneNumber(cursor.getString(cursor.getColumnIndex(KEY_PHONE)));
+
+        } else {
+            model = null;
+        }
+        return model;
+    }
     public void addNewEvent(Event event){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -206,6 +225,24 @@ public class DBManager extends SQLiteOpenHelper {
         return getRequests;
     }
 
+    public List<Event> retrieveReserved(){
+        List<Event> getReserved= new ArrayList<>();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT * from " + EVENT_TABLE_NAME + " WHERE " + KEY_HALL + " "
+                + "NOTNULL" + ";";
+
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor.moveToFirst()) {
+            while (!cursor.isAfterLast()) {
+                Event event = build_event(cursor);
+                getReserved.add(event);
+                cursor.moveToNext();
+            }
+        }
+        return getReserved;
+    }
     public List<Event> retrieveRequestsByUserID(int user_id){
         List<Event> getRequests= new ArrayList<>();
 
