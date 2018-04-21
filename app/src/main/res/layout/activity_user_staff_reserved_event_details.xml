@@ -18,6 +18,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"/>
         <TextView
+            android:id="@+id/reserved_event_party_size"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -26,6 +27,7 @@
             android:textColor="#fff"
             android:textSize="20dp" />
         <TextView
+            android:id="@+id/reserved_event_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -34,6 +36,7 @@
             android:textColor="#fff"
             android:textSize="20dp" />
         <TextView
+            android:id="@+id/reserved_event_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -42,6 +45,7 @@
             android:textColor="#fff"
             android:textSize="20dp" />
         <TextView
+            android:id="@+id/reserved_event_duration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -50,6 +54,7 @@
             android:textColor="#fff"
             android:textSize="20dp" />
         <TextView
+            android:id="@+id/reserved_event_Meal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -58,6 +63,7 @@
             android:textColor="#fff"
             android:textSize="20dp" />
         <TextView
+            android:id="@+id/reserved_event_venue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -66,6 +72,7 @@
             android:textColor="#fff"
             android:textSize="20dp" />
         <TextView
+            android:id="@+id/reserved_event_formality"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -74,6 +81,7 @@
             android:textColor="#fff"
             android:textSize="20dp" />
         <TextView
+            android:id="@+id/reserved_event_drink"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -82,6 +90,7 @@
             android:textColor="#fff"
             android:textSize="20dp" />
         <TextView
+            android:id="@+id/reserved_event_hall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"

@@ -39,13 +39,6 @@
             android:layout_margin="8dp"
             android:background="@color/colorOrange"/>
         <Button
-            android:id="@+id/view_user_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="View User Info"
-            android:layout_margin="8dp"
-            android:background="@color/colorOrange"/>
-        <Button
             android:id="@+id/remove_resources"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

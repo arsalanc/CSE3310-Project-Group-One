@@ -25,7 +25,6 @@ public class CatererEditEvent extends AppCompatActivity {
         Button Assign_staff=findViewById(R.id.assign_staff);
         Button Remove_staff=findViewById(R.id.remove_staff);
         Button Add_resources=findViewById(R.id.add_resources);
-        Button View_user_info=findViewById(R.id.view_user_info);
         Button Remove_resources=findViewById(R.id.remove_resources);
         Button Remove_event=findViewById(R.id.remove_event);
         Button Back=findViewById(R.id.back_caterer);
@@ -46,12 +45,6 @@ public class CatererEditEvent extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 addResources();
-            }
-        });
-        View_user_info.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                viewUserInfo();
             }
         });
         Remove_resources.setOnClickListener(new View.OnClickListener() {
@@ -98,14 +91,7 @@ public class CatererEditEvent extends AppCompatActivity {
         intent_addResources.putExtra("USER", user);
         startActivity(intent_addResources);
     }
-    public void viewUserInfo(){
-        Intent intent_viewUserInfo = new Intent(this,CatererViewUserInfo.class);
-        User user = (User) getIntent().getSerializableExtra("USER");
-        int event_id = (int) getIntent().getSerializableExtra("EVENT_ID");
-        intent_viewUserInfo.putExtra("EVENT_ID",event_id);
-        intent_viewUserInfo.putExtra("USER", user);
-        startActivity(intent_viewUserInfo);
-    }
+
     public void removeResources(){
         Intent intent_removeResources = new Intent(this,CatererRemoveResources.class);
         User user = (User) getIntent().getSerializableExtra("USER");
