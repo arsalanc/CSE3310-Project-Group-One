@@ -31,6 +31,22 @@ public class StaffAssignedEvents extends AppCompatActivity {
         //TODO: view_details button
         Button view_details = (Button) findViewById(R.id.view_details_assigned);
         Button back_button= (Button) findViewById(R.id.assigned_events_back);
+        db= new DBManager(this);
+        User user = (User) getIntent().getSerializableExtra("USER");
+        assigned_events = (Spinner) findViewById(R.id.staff_assigned_events_spinner);
+        int id = user.getId();
+        List<Event> assigned = db.retrieveAssignedEvents(id);
+        for(Event e: assigned)
+        {
+            String v = Integer.toString(e.getEvent_id());
+            eventID.add(v);
+
+        }
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(StaffAssignedEvents.this,
+                R.layout.spinner_item,eventID);
+        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        assigned_events.setAdapter(myAdapter);
+        myAdapter.notifyDataSetChanged();
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,24 +59,15 @@ public class StaffAssignedEvents extends AppCompatActivity {
                 viewDetails();
             }
         });
-        assigned_events = (Spinner) findViewById(R.id.staff_assigned_events_spinner);
-        final List<Event> assigned = db.retrieveReserved();
-        for(Event e: assigned)
-        {
-            String v = Integer.toString(e.getEvent_id());
-            eventID.add(v);
 
-        }
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(StaffAssignedEvents.this,
-                R.layout.spinner_item,eventID);
-        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        assigned_events.setAdapter(myAdapter);
-        myAdapter.notifyDataSetChanged();
     }
 
     public void viewDetails(){
+        String select = assigned_events.getSelectedItem().toString();
+        int selected_event = Integer.parseInt(select);
         Intent intent_viewDetails = new Intent(this,UserStaffReservedEventDetails.class);
         User user = (User) getIntent().getSerializableExtra("USER");
+        intent_viewDetails.putExtra("EVENT_ID",selected_event);
         intent_viewDetails.putExtra("USER", user);
         startActivity(intent_viewDetails);
     }

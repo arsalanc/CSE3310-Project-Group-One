@@ -279,6 +279,24 @@ public class DBManager extends SQLiteOpenHelper {
         return null;
     }
 
+    public List<Event> retrieveAssignedEvents(int staff_id){
+        List<Event> getEvents= new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * from " + EVENT_TABLE_NAME + " WHERE "+ KEY_EVENT_ID + " = (" +
+        "SELECT "+ KEY_EVENT_IDf +" FROM "+ STAFF_TABLE_NAME + " WHERE "+ STAFF_TABLE_NAME +"."+KEY_STAFF_ID + " = "+
+                staff_id + ");";
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor.moveToFirst()) {
+            while (!cursor.isAfterLast()) {
+                Event event = build_event(cursor);
+                getEvents.add(event);
+                cursor.moveToNext();
+            }
+        }
+        return getEvents;
+
+    }
+
     public List<Event> retrieveRequests(){
         List<Event> getRequests= new ArrayList<>();
 
