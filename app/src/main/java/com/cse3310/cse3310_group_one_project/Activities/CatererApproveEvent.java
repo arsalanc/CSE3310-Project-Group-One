@@ -59,15 +59,16 @@ public class CatererApproveEvent extends AppCompatActivity {
         startActivity(intent_back);
     }
     public void submitButton(DBManager db){
+        User user = (User) getIntent().getSerializableExtra("USER");
         String select = hall.getSelectedItem().toString();
         int event_id =  (int) getIntent().getSerializableExtra("EVENT_ID");
         Event e = db.retrieveEvent(event_id);
         db.deleteEvent(event_id);
         e.setHall(select);
+        e.setCaterer_id(user.getId());
+        e.setEvent_id(e.getEvent_id());
         db.addNewEvent(e);
-
         Intent intent_submit = new Intent(this,CatererRequestedEvents.class);
-        User user = (User) getIntent().getSerializableExtra("USER");
         intent_submit.putExtra("USER", user);
         startActivity(intent_submit);
 

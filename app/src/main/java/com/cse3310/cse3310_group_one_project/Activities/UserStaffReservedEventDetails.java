@@ -66,6 +66,18 @@ public class UserStaffReservedEventDetails extends AppCompatActivity {
             intent_back.putExtra("USER", user);
             startActivity(intent_back);
         }
+        else if(user.getAccountType().equalsIgnoreCase("staff"))
+        {
+            Intent intent_back = new Intent(this,StaffAssignedEvents.class);
+            intent_back.putExtra("USER", user);
+            startActivity(intent_back);
+        }
+        else if(user.getAccountType().equalsIgnoreCase("user"))
+        {
+            Intent intent_back = new Intent(this,UserHomepage.class);
+            intent_back.putExtra("USER", user);
+            startActivity(intent_back);
+        }
         finish();
     }
     public void caterer_info(){

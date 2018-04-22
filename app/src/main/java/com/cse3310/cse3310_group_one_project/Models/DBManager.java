@@ -225,6 +225,8 @@ public class DBManager extends SQLiteOpenHelper {
     public void addNewEvent(Event event){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
+        if(event.getEvent_id()>0)
+            values.put(KEY_EVENT_ID,event.getEvent_id());
         values.put(KEY_OWNER_ID, event.getOwner_id());
         values.put(KEY_CATERER_ID, event.getCaterer_id());
         values.put(KEY_PARTY_SIZE,event.getParty_size());
