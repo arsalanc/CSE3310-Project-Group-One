@@ -34,8 +34,10 @@ public class CatererAssignStaff extends AppCompatActivity {
         Button assign_staff_submit = findViewById(R.id.assign_staff_submit);
         Button back_assign_staff = findViewById(R.id.back_assign_staff);
         available_staff = (Spinner) findViewById(R.id.available_staff);
+
+        int event_id =  (int) getIntent().getSerializableExtra("EVENT_ID");
         db = new DBManager(this);
-        staffNames=db.retrieveStaff();
+        staffNames=db.retrieveStaff(event_id);
 
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(CatererAssignStaff.this,
                 R.layout.spinner_item,staffNames);

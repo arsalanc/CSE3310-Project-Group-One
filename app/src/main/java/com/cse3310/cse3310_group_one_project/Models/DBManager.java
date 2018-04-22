@@ -193,14 +193,14 @@ public class DBManager extends SQLiteOpenHelper {
         db.close();
     }
 
-    public List<String> retrieveStaff(){
+    public List<String> retrieveStaff(int event_id){
         List<String> getStaff= new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();
 
        String query = "SELECT * FROM "+ TABLE_NAME + " WHERE " + KEY_ROLE + " = \'"
                + "staff" + "\' AND NOT EXISTS ("+
                "SELECT * FROM "+ STAFF_TABLE_NAME + " WHERE "+ STAFF_TABLE_NAME +"."+KEY_STAFF_ID + " = "+
-                TABLE_NAME +"."+KEY_ID + ");";
+                TABLE_NAME +"."+KEY_ID + " AND "+ event_id + " = " + KEY_EVENT_IDf+ ");";
 
         Cursor cursor = db.rawQuery(query, null);
         //User model = new User();
@@ -284,9 +284,9 @@ public class DBManager extends SQLiteOpenHelper {
     public List<Event> retrieveAssignedEvents(int staff_id){
         List<Event> getEvents= new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * from " + EVENT_TABLE_NAME + " WHERE "+ KEY_EVENT_ID + " = (" +
-        "SELECT "+ KEY_EVENT_IDf +" FROM "+ STAFF_TABLE_NAME + " WHERE "+ STAFF_TABLE_NAME +"."+KEY_STAFF_ID + " = "+
-                staff_id + ");";
+        String query = "SELECT * FROM "+ EVENT_TABLE_NAME + " INNER JOIN "+ STAFF_TABLE_NAME + " ON "+ STAFF_TABLE_NAME+ "."+KEY_EVENT_IDf + " = "+
+                EVENT_TABLE_NAME+ "."+KEY_EVENT_ID + " WHERE "+KEY_STAFF_ID+ " = "+staff_id+ ";";
+
         Cursor cursor = db.rawQuery(query, null);
         if(cursor.moveToFirst()) {
             while (!cursor.isAfterLast()) {
