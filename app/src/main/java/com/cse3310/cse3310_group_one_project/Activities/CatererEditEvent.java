@@ -76,6 +76,7 @@ public class CatererEditEvent extends AppCompatActivity {
         Intent intent_assignStaff = new Intent(this,CatererAssignStaff.class);
         User user = (User) getIntent().getSerializableExtra("USER");
         int event_id = (int) getIntent().getSerializableExtra("EVENT_ID");
+        intent_assignStaff.putExtra("PREVIOUS_PAGE", getIntent().getSerializableExtra("PREVIOUS_PAGE"));
         intent_assignStaff.putExtra("USER", user);
         intent_assignStaff.putExtra("EVENT_ID",event_id);
         startActivity(intent_assignStaff);
@@ -84,6 +85,7 @@ public class CatererEditEvent extends AppCompatActivity {
         Intent intent_removeStaff = new Intent(this,CatererRemoveStaff.class);
         User user = (User) getIntent().getSerializableExtra("USER");
         int event_id = (int) getIntent().getSerializableExtra("EVENT_ID");
+        intent_removeStaff.putExtra("PREVIOUS_PAGE", getIntent().getSerializableExtra("PREVIOUS_PAGE"));
         intent_removeStaff.putExtra("USER", user);
         intent_removeStaff.putExtra("EVENT_ID",event_id);
         startActivity(intent_removeStaff);
@@ -92,6 +94,7 @@ public class CatererEditEvent extends AppCompatActivity {
         Intent intent_addResources = new Intent(this,CatererAddResources.class);
         User user = (User) getIntent().getSerializableExtra("USER");
         int event_id = (int) getIntent().getSerializableExtra("EVENT_ID");
+        intent_addResources.putExtra("PREVIOUS_PAGE", getIntent().getSerializableExtra("PREVIOUS_PAGE"));
         intent_addResources.putExtra("EVENT_ID",event_id);
         intent_addResources.putExtra("USER", user);
         startActivity(intent_addResources);
@@ -101,6 +104,7 @@ public class CatererEditEvent extends AppCompatActivity {
         Intent intent_removeResources = new Intent(this,CatererRemoveResources.class);
         User user = (User) getIntent().getSerializableExtra("USER");
         int event_id = (int) getIntent().getSerializableExtra("EVENT_ID");
+        intent_removeResources.putExtra("PREVIOUS_PAGE", getIntent().getSerializableExtra("PREVIOUS_PAGE"));
         intent_removeResources.putExtra("EVENT_ID",event_id);
         intent_removeResources.putExtra("USER", user);
         startActivity(intent_removeResources);
@@ -114,7 +118,7 @@ public class CatererEditEvent extends AppCompatActivity {
         startActivity(intent_removeEvent);
     }
     public void prev_page(){
-        Intent intent_prev = new Intent(this,CatererReservedEvents.class);
+        Intent intent_prev = new Intent(this, (Class) getIntent().getSerializableExtra("PREVIOUS_PAGE"));
         User user = (User) getIntent().getSerializableExtra("USER");
         intent_prev.putExtra("USER", user);
         startActivity(intent_prev);

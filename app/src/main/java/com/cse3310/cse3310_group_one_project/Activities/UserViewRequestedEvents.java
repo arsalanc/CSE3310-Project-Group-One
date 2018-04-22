@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
+
 import com.cse3310.cse3310_group_one_project.Models.User;
 import com.cse3310.cse3310_group_one_project.Models.DBManager;
 import com.cse3310.cse3310_group_one_project.Models.Event;
@@ -69,17 +71,19 @@ public class UserViewRequestedEvents extends AppCompatActivity {
     }
 
     public void view_details(DBManager db){
-
+        if(requested_events.getSelectedItem() == null)
+        {
+            Toast.makeText(this, "You don't have any requested events", Toast.LENGTH_LONG).show();
+            return;
+        }
         //TODO: get event id from spinner, parse, send as extra
         String select = requested_events.getSelectedItem().toString();
         int selected_event = Integer.parseInt(select);
         Intent intent_viewDetails = new Intent(this,UserEventDetails.class);
         User user = (User) getIntent().getSerializableExtra("USER");
         intent_viewDetails.putExtra("EVENT_ID",selected_event);
+        intent_viewDetails.putExtra("PREVIOUS_PAGE", UserViewRequestedEvents.class);
         intent_viewDetails.putExtra("USER", user);
         startActivity(intent_viewDetails);
     }
-
-
-
 }

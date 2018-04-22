@@ -54,43 +54,24 @@ public class UserEventDetails extends AppCompatActivity {
     }
 
     public void back_button(){
-        Intent intent_back;
-       // Intent intent_back = new Intent(this,UserViewRequestedEvents.class);
-        User user = (User) getIntent().getSerializableExtra("USER");
-        if(user.getAccountType().equalsIgnoreCase("user"))
-        {
-            intent_back = new Intent(this,UserViewRequestedEvents.class);
-            intent_back.putExtra("USER", user);
-            startActivity(intent_back);
-        }
-        else if(user.getAccountType().equalsIgnoreCase("caterer"))
-        {
-            intent_back = new Intent(this,CatererRequestedEvents.class);
-            intent_back.putExtra("USER", user);
-            startActivity(intent_back);
-        }
-
-
+        return_to_previous_page();
     }
     public void cancel_event(DBManager db){
         Intent intent_cancel;
         int event_id = (Integer) getIntent().getSerializableExtra("EVENT_ID");
         db.deleteEvent(event_id);
-        User user = (User) getIntent().getSerializableExtra("USER");
-        if(user.getAccountType().equalsIgnoreCase("user"))
-        {
-            intent_cancel = new Intent(this,UserViewRequestedEvents.class);
-            intent_cancel.putExtra("USER", user);
-            startActivity(intent_cancel);
-        }
-        else if(user.getAccountType().equalsIgnoreCase("caterer"))
-        {
-            intent_cancel = new Intent(this,CatererRequestedEvents.class);
-            intent_cancel.putExtra("USER", user);
-            startActivity(intent_cancel);
-        }
-
+        return_to_previous_page();
     }
+
+    public void return_to_previous_page()
+    {
+        Intent intent_back;
+        User user = (User) getIntent().getSerializableExtra("USER");
+        intent_back = new Intent(this, (Class) getIntent().getSerializableExtra("PREVIOUS_PAGE"));
+        intent_back.putExtra("USER", user);
+        startActivity(intent_back);
+    }
+
     public void set_text(DBManager db){
         int event_id = (Integer) getIntent().getSerializableExtra("EVENT_ID");
         Event e = db.retrieveEvent(event_id);

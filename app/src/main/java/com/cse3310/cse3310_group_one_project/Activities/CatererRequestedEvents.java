@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.cse3310.cse3310_group_one_project.Models.DBManager;
 import com.cse3310.cse3310_group_one_project.Models.Event;
@@ -76,15 +77,26 @@ public class CatererRequestedEvents extends AppCompatActivity {
     }
 
     public void viewDetails(){
+        if(select_event.getSelectedItem() == null)
+        {
+            Toast.makeText(this, "You don't have any requested events", Toast.LENGTH_LONG).show();
+            return;
+        }
         String select = select_event.getSelectedItem().toString();
         int selected_event = Integer.parseInt(select);
         Intent intent_viewDetails = new Intent(this,UserEventDetails.class);
         User user = (User) getIntent().getSerializableExtra("USER");
         intent_viewDetails.putExtra("EVENT_ID",selected_event);
+        intent_viewDetails.putExtra("PREVIOUS_PAGE", CatererRequestedEvents.class);
         intent_viewDetails.putExtra("USER", user);
         startActivity(intent_viewDetails);
     }
     public void reserve(){
+        if(select_event.getSelectedItem() == null)
+        {
+            Toast.makeText(this, "You don't have any requested events", Toast.LENGTH_LONG).show();
+            return;
+        }
         String select = select_event.getSelectedItem().toString();
         int selected_event = Integer.parseInt(select);
         Intent intent_reserve = new Intent(this,CatererApproveEvent.class);
@@ -94,6 +106,11 @@ public class CatererRequestedEvents extends AppCompatActivity {
         startActivity(intent_reserve);
     }
     public void deny(DBManager db){
+        if(select_event.getSelectedItem() == null)
+        {
+            Toast.makeText(this, "You don't have any requested events", Toast.LENGTH_LONG).show();
+            return;
+        }
         String select = select_event.getSelectedItem().toString();
         int selected_event = Integer.parseInt(select);
         db.deleteEvent(selected_event);

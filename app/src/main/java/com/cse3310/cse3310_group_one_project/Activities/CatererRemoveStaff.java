@@ -33,9 +33,12 @@ public class CatererRemoveStaff extends AppCompatActivity {
     }
 
     public void removeStaffBack(){
-        Intent intent_removeStaffBack = new Intent(this,CatererEditEvent.class);
+        Intent intent_back = new Intent(this,CatererEditEvent.class);
+        int event_id = (int) getIntent().getSerializableExtra("EVENT_ID");
+        intent_back.putExtra("EVENT_ID",event_id);
         User user = (User) getIntent().getSerializableExtra("USER");
-        intent_removeStaffBack.putExtra("USER", user);
-        startActivity(intent_removeStaffBack);
+        intent_back.putExtra("PREVIOUS_PAGE", (Class) getIntent().getSerializableExtra("PREVIOUS_PAGE"));
+        intent_back.putExtra("USER", user);
+        startActivity(intent_back);
     }
 }

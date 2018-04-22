@@ -36,7 +36,10 @@ public class CatererAddResources extends AppCompatActivity {
     }
     public void addResourcesBack(){
         Intent intent_back = new Intent(this,CatererEditEvent.class);
+        int event_id = (int) getIntent().getSerializableExtra("EVENT_ID");
+        intent_back.putExtra("EVENT_ID",event_id);
         User user = (User) getIntent().getSerializableExtra("USER");
+        intent_back.putExtra("PREVIOUS_PAGE", (Class) getIntent().getSerializableExtra("PREVIOUS_PAGE"));
         intent_back.putExtra("USER", user);
         startActivity(intent_back);
     }

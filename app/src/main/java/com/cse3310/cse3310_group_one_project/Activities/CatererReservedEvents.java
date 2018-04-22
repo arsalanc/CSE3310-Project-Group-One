@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.cse3310.cse3310_group_one_project.Models.DBManager;
 import com.cse3310.cse3310_group_one_project.Models.Event;
@@ -71,21 +72,33 @@ public class CatererReservedEvents extends AppCompatActivity {
     }
 
     public void view_details(){
+        if(reserved_events.getSelectedItem() == null)
+        {
+            Toast.makeText(this, "You don't have any reserved events", Toast.LENGTH_LONG).show();
+            return;
+        }
         //Probably need to create a new view and activity for Caterer view reserved event details
         String select = reserved_events.getSelectedItem().toString();
         int selected_event = Integer.parseInt(select);
         Intent intent_viewDetails = new Intent(this,UserStaffReservedEventDetails.class);
         User user = (User) getIntent().getSerializableExtra("USER");
         intent_viewDetails.putExtra("EVENT_ID",selected_event);
+        intent_viewDetails.putExtra("PREVIOUS_PAGE", CatererReservedEvents.class);
         intent_viewDetails.putExtra("USER", user);
         startActivity(intent_viewDetails);
     }
     public void editEvent(){
+        if(reserved_events.getSelectedItem() == null)
+        {
+            Toast.makeText(this, "You don't have any reserved events", Toast.LENGTH_LONG).show();
+            return;
+        }
         String select = reserved_events.getSelectedItem().toString();
         int selected_event = Integer.parseInt(select);
         Intent intent_editEvent = new Intent(this,CatererEditEvent.class);
         User user = (User) getIntent().getSerializableExtra("USER");
         intent_editEvent.putExtra("EVENT_ID",selected_event);
+        intent_editEvent.putExtra("PREVIOUS_PAGE", CatererReservedEvents.class);
         intent_editEvent.putExtra("USER", user);
         startActivity(intent_editEvent);
     }

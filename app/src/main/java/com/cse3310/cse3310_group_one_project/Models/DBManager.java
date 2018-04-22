@@ -324,7 +324,7 @@ public class DBManager extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         String query = "SELECT * from " + EVENT_TABLE_NAME + " WHERE " + KEY_HALL + " "
-                + "NOTNULL" + ";";
+                + "IS NOT NULL" + ";";
 
         Cursor cursor = db.rawQuery(query, null);
         if(cursor.moveToFirst()) {
@@ -343,6 +343,25 @@ public class DBManager extends SQLiteOpenHelper {
 
         String query = "SELECT * from " + EVENT_TABLE_NAME + " WHERE ( " + KEY_OWNER_ID + " = '" + user_id + "') and ( " + KEY_HALL + " "
                 + "ISNULL" + ");";
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if(cursor.moveToFirst()) {
+            while (!cursor.isAfterLast()) {
+                Event event = build_event(cursor);
+                getRequests.add(event);
+                cursor.moveToNext();
+            }
+        }
+        return getRequests;
+    }
+    public List<Event> retrieveReservedByUserID(int user_id){
+        List<Event> getRequests= new ArrayList<>();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT * from " + EVENT_TABLE_NAME + " WHERE ( " + KEY_OWNER_ID + " = '" + user_id + "') and ( " + KEY_HALL + " "
+                + "IS NOT NULL" + ");";
 
         Cursor cursor = db.rawQuery(query, null);
 
