@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.cse3310.cse3310_group_one_project.Models.DBManager;
 import com.cse3310.cse3310_group_one_project.Models.Event;
@@ -61,6 +62,11 @@ public class CatererApproveEvent extends AppCompatActivity {
     public void submitButton(DBManager db){
         User user = (User) getIntent().getSerializableExtra("USER");
         String select = hall.getSelectedItem().toString();
+        if(select.equalsIgnoreCase("Select a Hall"))
+        {
+            Toast.makeText(this, "You must select a hall first", Toast.LENGTH_LONG).show();
+            return;
+        }
         int event_id =  (int) getIntent().getSerializableExtra("EVENT_ID");
         Event e = db.retrieveEvent(event_id);
         db.deleteEvent(event_id);

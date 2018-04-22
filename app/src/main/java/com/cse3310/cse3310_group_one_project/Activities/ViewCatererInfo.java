@@ -46,10 +46,11 @@ public class ViewCatererInfo extends AppCompatActivity {
 
     }
     public void back_button(){
-        int event_id = (Integer) getIntent().getSerializableExtra("EVENT_ID");
-        Intent intent_back = new Intent(this,UserStaffReservedEventDetails.class);
+        Intent intent_back = new Intent(this, UserStaffReservedEventDetails.class);
+        int event_id = (int) getIntent().getSerializableExtra("EVENT_ID");
+        intent_back.putExtra("EVENT_ID",event_id);
         User user = (User) getIntent().getSerializableExtra("USER");
-        intent_back.putExtra("EVENT_ID", event_id);
+        intent_back.putExtra("PREVIOUS_PAGE", getIntent().getSerializableExtra("PREVIOUS_PAGE"));
         intent_back.putExtra("USER", user);
         startActivity(intent_back);
     }

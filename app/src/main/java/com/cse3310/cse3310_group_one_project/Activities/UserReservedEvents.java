@@ -78,7 +78,7 @@ public class UserReservedEvents extends AppCompatActivity {
         //TODO: get event id from spinner, parse, send as extra
         String select = reserved_events.getSelectedItem().toString();
         int selected_event = Integer.parseInt(select);
-        Intent intent_viewDetails = new Intent(this,UserEventDetails.class);
+        Intent intent_viewDetails = new Intent(this,UserStaffReservedEventDetails.class);
         User user = (User) getIntent().getSerializableExtra("USER");
         intent_viewDetails.putExtra("EVENT_ID",selected_event);
         intent_viewDetails.putExtra("PREVIOUS_PAGE", UserReservedEvents.class);

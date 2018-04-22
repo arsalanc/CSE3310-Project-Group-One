@@ -81,23 +81,21 @@ public class UserStaffReservedEventDetails extends AppCompatActivity {
         finish();
     }
     public void caterer_info(){
-        User user = (User) getIntent().getSerializableExtra("USER");
 
+        Intent intent;
+        User user = (User) getIntent().getSerializableExtra("USER");
         if(user.getAccountType().equalsIgnoreCase("caterer"))
         {
-            Intent intent_userInfo = new Intent(this, CatererViewUserInfo.class);
-            int event_id = (Integer) getIntent().getSerializableExtra("EVENT_ID");
-            intent_userInfo.putExtra("USER", user);
-            intent_userInfo.putExtra("EVENT_ID", event_id);
-            startActivity(intent_userInfo);
+            intent = new Intent(this, CatererViewUserInfo.class);
         }
         else {
-            Intent intent_catererInfo = new Intent(this, ViewCatererInfo.class);
-            int event_id = (Integer) getIntent().getSerializableExtra("EVENT_ID");
-            intent_catererInfo.putExtra("USER", user);
-            intent_catererInfo.putExtra("EVENT_ID", event_id);
-            startActivity(intent_catererInfo);
+            intent = new Intent(this, ViewCatererInfo.class);
         }
+        int event_id = (int) getIntent().getSerializableExtra("EVENT_ID");
+        intent.putExtra("EVENT_ID",event_id);
+        intent.putExtra("PREVIOUS_PAGE", getIntent().getSerializableExtra("PREVIOUS_PAGE"));
+        intent.putExtra("USER", user);
+        startActivity(intent);
     }
     public void set_text(DBManager db){
         int event_id = (Integer) getIntent().getSerializableExtra("EVENT_ID");

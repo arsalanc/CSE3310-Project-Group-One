@@ -68,6 +68,8 @@ public class UserEventDetails extends AppCompatActivity {
         Intent intent_back;
         User user = (User) getIntent().getSerializableExtra("USER");
         intent_back = new Intent(this, (Class) getIntent().getSerializableExtra("PREVIOUS_PAGE"));
+        intent_back.putExtra("PREVIOUS_PAGE", getIntent().getSerializableExtra("PREVIOUS_PAGE"));
+        intent_back.putExtra("EVENT_ID", getIntent().getSerializableExtra("EVENT_ID"));
         intent_back.putExtra("USER", user);
         startActivity(intent_back);
     }
