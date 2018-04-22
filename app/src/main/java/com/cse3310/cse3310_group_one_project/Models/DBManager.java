@@ -129,6 +129,7 @@ public class DBManager extends SQLiteOpenHelper {
         }
         return model;
     }
+
     public User retrieveUserById(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
 
