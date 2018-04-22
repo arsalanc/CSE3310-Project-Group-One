@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.cse3310.cse3310_group_one_project.Models.DBManager;
 import com.cse3310.cse3310_group_one_project.Models.User;
@@ -15,6 +16,7 @@ import com.cse3310.cse3310_group_one_project.R;
  */
 
 public class CatererEditEvent extends AppCompatActivity {
+    TextView event_number;
     DBManager db;
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
@@ -28,6 +30,9 @@ public class CatererEditEvent extends AppCompatActivity {
         Button Remove_resources=findViewById(R.id.remove_resources);
         Button Remove_event=findViewById(R.id.remove_event);
         Button Back=findViewById(R.id.back_caterer);
+        event_number = (TextView)findViewById(R.id.edit_event_number);
+        int event_id = (int) getIntent().getSerializableExtra("EVENT_ID");
+        event_number.setText(event_number.getText().toString() + " "+ event_id );
 
         Assign_staff.setOnClickListener(new View.OnClickListener() {
             @Override

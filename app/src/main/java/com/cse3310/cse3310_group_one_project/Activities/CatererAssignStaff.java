@@ -52,14 +52,20 @@ public class CatererAssignStaff extends AppCompatActivity {
         assign_staff_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                assignStaffSubmit();
+                assignStaffSubmit(db);
             }
         });
         
     }
-    public void assignStaffSubmit(){
-        Intent intent_submit = new Intent(this,CatererEditEvent.class);
+    public void assignStaffSubmit(DBManager db){
+        String selected=available_staff.getSelectedItem().toString();
         int event_id = (int) getIntent().getSerializableExtra("EVENT_ID");
+        // 0 is fname 1 is lname
+        String[] name = selected.split("\\s+");
+        int staff_id=db.retrieveUserID(name[0],name[1]);
+        //adds to table
+        db.assignStaff(event_id,staff_id);
+        Intent intent_submit = new Intent(this,CatererEditEvent.class);
         intent_submit.putExtra("EVENT_ID",event_id);
         User user = (User) getIntent().getSerializableExtra("USER");
         intent_submit.putExtra("USER", user);

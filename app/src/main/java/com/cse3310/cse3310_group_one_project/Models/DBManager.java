@@ -43,6 +43,13 @@ public class DBManager extends SQLiteOpenHelper {
     private static final String KEY_DRINK_VENUE = "event_venue";
     private static final String KEY_HALL = "event_hall";
 
+    // Assigned staff
+    private static final String STAFF_TABLE_NAME = "staff_data";
+    private static final String KEY_STAFF_ID = "staff_id";
+    private static final String KEY_EVENT_IDf = "event_id_f";
+
+    // allocated resources
+
 
 
     public DBManager(Context context) {
@@ -75,14 +82,22 @@ public class DBManager extends SQLiteOpenHelper {
                 KEY_DRINK_VENUE + " TEXT, " +
                 KEY_HALL + " TEXT " + ")";
 
+        String CREATE_TABLE_STAFF_ASSIGN = "CREATE TABLE " + STAFF_TABLE_NAME + "(" +
+                KEY_STAFF_ID + " INTEGER, " +
+                KEY_EVENT_IDf + " INTEGER, " +
+                "FOREIGN KEY (" +KEY_EVENT_IDf + ") " + "REFERENCES "+ EVENT_TABLE_NAME + "("+KEY_EVENT_ID + ")"+
+                ", FOREIGN KEY ("+KEY_STAFF_ID + ") " + "REFERENCES "+ TABLE_NAME + "("+KEY_ID + "))";
+
         db.execSQL(CREATE_TABLE_USERDATA);
         db.execSQL(CREATE_TABLE_EVENTDATA);
+        db.execSQL(CREATE_TABLE_STAFF_ASSIGN);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS "+ EVENT_TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS "+ STAFF_TABLE_NAME);
         onCreate(db);
     }
 
@@ -151,12 +166,41 @@ public class DBManager extends SQLiteOpenHelper {
         return model;
     }
 
+    public int retrieveUserID(String fname, String lname){
+        SQLiteDatabase db = this.getWritableDatabase();
+        int id=-1;
+        String query = "SELECT * from " + TABLE_NAME + " WHERE " + KEY_FNAME + " = \'" + fname + "\' AND "+ KEY_LNAME + " = \'"+ lname+"\';";
+        Cursor cursor = db.rawQuery(query, null);
+        User model = new User();
+        if (cursor.moveToFirst()) {
+            model.setId(cursor.getInt(cursor.getColumnIndex(KEY_ID)));
+            model.setFname(cursor.getString((cursor.getColumnIndex(KEY_FNAME))));
+            model.setLname(cursor.getString(cursor.getColumnIndex(KEY_LNAME)));
+            model.setUsername(cursor.getString(cursor.getColumnIndex(KEY_EMAIL)));
+            model.setPassword(cursor.getString(cursor.getColumnIndex(KEY_PASS)));
+            model.setAccountType(cursor.getString(cursor.getColumnIndex(KEY_ROLE)));
+            model.setPhoneNumber(cursor.getString(cursor.getColumnIndex(KEY_PHONE)));
+            id = model.getId();
+        }
+        return id;
+    }
+    public void assignStaff(int event_id, int staff_id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_STAFF_ID, staff_id);
+        values.put(KEY_EVENT_IDf, event_id);
+        db.insert(STAFF_TABLE_NAME, null, values);
+        db.close();
+    }
+
     public List<String> retrieveStaff(){
         List<String> getStaff= new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();
 
-        String query = "SELECT * from " + TABLE_NAME + " WHERE " + KEY_ROLE + " = \'"
-                + "staff" + "\';";
+       String query = "SELECT * FROM "+ TABLE_NAME + " WHERE " + KEY_ROLE + " = \'"
+               + "staff" + "\' AND NOT EXISTS ("+
+               "SELECT * FROM "+ STAFF_TABLE_NAME + " WHERE "+ STAFF_TABLE_NAME +"."+KEY_STAFF_ID + " = "+
+                TABLE_NAME +"."+KEY_ID + ");";
 
         Cursor cursor = db.rawQuery(query, null);
         //User model = new User();

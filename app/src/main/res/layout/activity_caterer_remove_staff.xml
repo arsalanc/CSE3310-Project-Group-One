@@ -17,30 +17,25 @@
             android:gravity="center"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"/>
-
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:textSize="20dp"
+            android:text="Current Staff:"
+            android:layout_margin="10dp"/>
+
+        <Spinner
+            android:id="@+id/remove_staff_spinner"
+            android:spinnerMode="dropdown"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#fff"
             android:textSize="20dp"
             android:text="Staff Assigned"
             android:layout_margin="10dp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#fff"
-            android:textSize="15dp"
-            android:text="Jane doe"
-            android:layout_margin="10dp"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:textColorHint="#fff"
-            android:textSize="20dp"
-            android:hint="Staff Name"
-            android:maxLines="1"
-            android:layout_marginTop="50dp" />
+
+
         <Button
             android:id="@+id/remove_staff_submit"
             android:layout_width="match_parent"
