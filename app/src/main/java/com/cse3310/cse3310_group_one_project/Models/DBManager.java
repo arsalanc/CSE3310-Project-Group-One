@@ -193,6 +193,11 @@ public class DBManager extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void removeStaff(int event_id, int staff_id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(STAFF_TABLE_NAME, KEY_STAFF_ID+ " = "+staff_id + " AND "+ KEY_EVENT_IDf+" = "+event_id, null);
+    }
+
     public List<String> retrieveStaff(int event_id){
         List<String> getStaff= new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();
@@ -200,6 +205,33 @@ public class DBManager extends SQLiteOpenHelper {
        String query = "SELECT * FROM "+ TABLE_NAME + " WHERE " + KEY_ROLE + " = \'"
                + "staff" + "\' AND NOT EXISTS ("+
                "SELECT * FROM "+ STAFF_TABLE_NAME + " WHERE "+ STAFF_TABLE_NAME +"."+KEY_STAFF_ID + " = "+
+                TABLE_NAME +"."+KEY_ID + " AND "+ event_id + " = " + KEY_EVENT_IDf+ ");";
+
+        Cursor cursor = db.rawQuery(query, null);
+        //User model = new User();
+        if(cursor.moveToFirst()) {
+            while (!cursor.isAfterLast()) {
+                User model = new User();
+                model.setId(cursor.getInt(cursor.getColumnIndex(KEY_ID)));
+                model.setFname(cursor.getString((cursor.getColumnIndex(KEY_FNAME))));
+                model.setLname(cursor.getString(cursor.getColumnIndex(KEY_LNAME)));
+                model.setUsername(cursor.getString(cursor.getColumnIndex(KEY_EMAIL)));
+                model.setPassword(cursor.getString(cursor.getColumnIndex(KEY_PASS)));
+                model.setAccountType(cursor.getString(cursor.getColumnIndex(KEY_ROLE)));
+                model.setPhoneNumber(cursor.getString(cursor.getColumnIndex(KEY_PHONE)));
+                getStaff.add(model.getFname()+ " "+model.getLname());
+                cursor.moveToNext();
+            }
+        }
+        return getStaff;
+    }
+    public List<String> currentStaff(int event_id){
+        List<String> getStaff= new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT * FROM "+ TABLE_NAME + " WHERE " + KEY_ROLE + " = \'"
+                + "staff" + "\' AND EXISTS ("+
+                "SELECT * FROM "+ STAFF_TABLE_NAME + " WHERE "+ STAFF_TABLE_NAME +"."+KEY_STAFF_ID + " = "+
                 TABLE_NAME +"."+KEY_ID + " AND "+ event_id + " = " + KEY_EVENT_IDf+ ");";
 
         Cursor cursor = db.rawQuery(query, null);

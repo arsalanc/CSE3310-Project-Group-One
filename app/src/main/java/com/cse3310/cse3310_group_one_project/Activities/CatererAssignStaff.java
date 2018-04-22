@@ -70,6 +70,7 @@ public class CatererAssignStaff extends AppCompatActivity {
         Intent intent_submit = new Intent(this,CatererEditEvent.class);
         intent_submit.putExtra("EVENT_ID",event_id);
         User user = (User) getIntent().getSerializableExtra("USER");
+        intent_submit.putExtra("PREVIOUS_PAGE", (Class) getIntent().getSerializableExtra("PREVIOUS_PAGE"));
         intent_submit.putExtra("USER", user);
         startActivity(intent_submit);
     }
