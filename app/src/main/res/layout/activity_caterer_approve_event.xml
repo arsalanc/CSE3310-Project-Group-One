@@ -39,25 +39,23 @@
 
         </Spinner>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+z
+
+        <Button
+            android:id="@+id/reserve_event_back"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/reserve_event_submit"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="Submit"
-                android:layout_margin="10dp"
-                android:background="@color/colorOrange"/>
-            <Button
-                android:id="@+id/reserve_event_back"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="Back"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="50dp"
-                android:background="@color/colorOrange"/>
-        </LinearLayout>
+            android:layout_margin="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorOrange"
+            android:text="Back" />
+
+        <Button
+            android:id="@+id/reserve_event_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@color/colorOrange"
+            android:text="Submit" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

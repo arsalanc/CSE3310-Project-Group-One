@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:text="Delete Account"
             android:layout_margin="10dp"
-            android:background="@color/colorOrange"/>
+            android:background="@color/colorYellow"/>
         <Button
             android:id="@+id/cancel_PM"
             android:layout_width="match_parent"
