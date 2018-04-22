@@ -18,7 +18,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"/>
 
-        <EditText
+        <Spinner
             android:id="@+id/resource_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,26 +28,43 @@
             android:hint="Resource Type"
             android:maxLines="1"
             android:layout_marginTop="20dp" />
-        <EditText
-            android:id="@+id/resource_name"
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:textColorHint="#fff"
-            android:textSize="20dp"
-            android:hint="Resource Name"
-            android:maxLines="1"
-            android:layout_marginTop="20dp" />
-        <EditText
-            android:id="@+id/resource_amount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:textColorHint="#fff"
-            android:textSize="20dp"
-            android:hint="Resource Amount"
-            android:maxLines="1"
-            android:layout_marginTop="20dp" />
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/resource_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="Amount: "
+                android:maxLines="1"
+                android:padding="10dp"
+                android:textColorHint="#fff"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/btn_sub_resources"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/resource_amount"
+                android:layout_toEndOf="@+id/resource_amount"
+                android:layout_toRightOf="@+id/resource_amount"
+                android:layout_marginLeft="75dp"
+                android:text="-" />
+
+            <Button
+                android:id="@+id/btn_add_resources"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/btn_sub_resources"
+                android:layout_toEndOf="@+id/btn_sub_resources"
+                android:layout_toRightOf="@+id/btn_sub_resources"
+                android:text="+" />
+
+        </RelativeLayout>
+
         <Button
             android:id="@+id/add_resources_submit"
             android:layout_width="match_parent"
