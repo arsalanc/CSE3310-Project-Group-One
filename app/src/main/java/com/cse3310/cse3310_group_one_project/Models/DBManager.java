@@ -150,6 +150,34 @@ public class DBManager extends SQLiteOpenHelper {
         }
         return model;
     }
+
+    public List<String> retrieveStaff(){
+        List<String> getStaff= new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT * from " + TABLE_NAME + " WHERE " + KEY_ROLE + " = \'"
+                + "staff" + "\';";
+
+        Cursor cursor = db.rawQuery(query, null);
+        //User model = new User();
+        if(cursor.moveToFirst()) {
+            while (!cursor.isAfterLast()) {
+                User model = new User();
+                model.setId(cursor.getInt(cursor.getColumnIndex(KEY_ID)));
+                model.setFname(cursor.getString((cursor.getColumnIndex(KEY_FNAME))));
+                model.setLname(cursor.getString(cursor.getColumnIndex(KEY_LNAME)));
+                model.setUsername(cursor.getString(cursor.getColumnIndex(KEY_EMAIL)));
+                model.setPassword(cursor.getString(cursor.getColumnIndex(KEY_PASS)));
+                model.setAccountType(cursor.getString(cursor.getColumnIndex(KEY_ROLE)));
+                model.setPhoneNumber(cursor.getString(cursor.getColumnIndex(KEY_PHONE)));
+                getStaff.add(model.getFname()+ " "+model.getLname());
+                cursor.moveToNext();
+            }
+        }
+        return getStaff;
+    }
+
+
     public void addNewEvent(Event event){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();

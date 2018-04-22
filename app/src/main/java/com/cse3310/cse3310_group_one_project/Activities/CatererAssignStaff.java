@@ -33,6 +33,16 @@ public class CatererAssignStaff extends AppCompatActivity {
         //TODO: Submit button functionality
         Button assign_staff_submit = findViewById(R.id.assign_staff_submit);
         Button back_assign_staff = findViewById(R.id.back_assign_staff);
+        available_staff = (Spinner) findViewById(R.id.available_staff);
+        db = new DBManager(this);
+        staffNames=db.retrieveStaff();
+
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(CatererAssignStaff.this,
+                R.layout.spinner_item,staffNames);
+
+        available_staff.setAdapter(myAdapter);
+        myAdapter.notifyDataSetChanged();
+
         back_assign_staff.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,12 +59,16 @@ public class CatererAssignStaff extends AppCompatActivity {
     }
     public void assignStaffSubmit(){
         Intent intent_submit = new Intent(this,CatererEditEvent.class);
+        int event_id = (int) getIntent().getSerializableExtra("EVENT_ID");
+        intent_submit.putExtra("EVENT_ID",event_id);
         User user = (User) getIntent().getSerializableExtra("USER");
         intent_submit.putExtra("USER", user);
         startActivity(intent_submit);
     }
     public void assignStaffBack(){
         Intent intent_back = new Intent(this,CatererEditEvent.class);
+        int event_id = (int) getIntent().getSerializableExtra("EVENT_ID");
+        intent_back.putExtra("EVENT_ID",event_id);
         User user = (User) getIntent().getSerializableExtra("USER");
         intent_back.putExtra("USER", user);
         startActivity(intent_back);
