@@ -12,7 +12,6 @@ import com.cse3310.cse3310_group_one_project.Models.User;
 import com.cse3310.cse3310_group_one_project.Models.DBManager;
 import com.cse3310.cse3310_group_one_project.R;
 
-
 //hello
 public class MainActivity extends AppCompatActivity {
 
@@ -59,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("USER", user);
             }
             else if(user.getAccountType().equalsIgnoreCase("user")){
+                ;
                 intent = new Intent(this, UserHomepage.class);
                 intent.putExtra("USER", user);
             }
@@ -73,6 +73,15 @@ public class MainActivity extends AppCompatActivity {
         }
         //Intent intent_login = new Intent(this,CatererHomepageActivity.class);
         //startActivity(intent_login);
+    }
+    private String someVariable;
+
+    public String getSomeVariable() {
+        return someVariable;
+    }
+
+    public void setSomeVariable(String someVariable) {
+        this.someVariable = someVariable;
     }
 
 }

@@ -42,7 +42,7 @@ public class UserStaffReservedEventDetails extends AppCompatActivity {
         Button back_button = (Button) findViewById(R.id.event_details_back_user);
         User user = (User) getIntent().getSerializableExtra("USER");
         if(user.getAccountType().equalsIgnoreCase("caterer"))
-        {
+            {
             caterer_info.setText("User info");
         }
         caterer_info.setOnClickListener(new View.OnClickListener() {
@@ -100,19 +100,9 @@ public class UserStaffReservedEventDetails extends AppCompatActivity {
         startActivity(intent);
     }
     public void set_text(DBManager db){
-        String partySize,mealType,drinkType,formalityType;
-        double personsCount = 0;
+        int personsCount;
         int event_id = (Integer) getIntent().getSerializableExtra("EVENT_ID");
         Event e = db.retrieveEvent(event_id);
-        party_size.setText(party_size.getText().toString() + " " + e.getParty_size());
-        date.setText(date.getText().toString() + " " + e.getDate());
-        time.setText(time.getText().toString() + " " + e.getTime());
-        duration.setText(duration.getText().toString() + " " + e.getDuration() + " Hours");
-        meal_type.setText(meal_type.getText().toString() + " " + e.getMeal_type());
-        venue_type.setText(venue_type.getText().toString() + " " + e.getMeal_venue());
-        formality.setText(formality.getText().toString() + " " + e.getFormality());
-        drink.setText(drink.getText().toString() + " " + e.getDrink_venue());
-        hall.setText(hall.getText().toString() + " " + e.getHall());
         personsCount = e.getParty_size();
         if(e.getMeal_type().equalsIgnoreCase("breakfast")){
             cost += 8 * personsCount;
@@ -123,12 +113,27 @@ public class UserStaffReservedEventDetails extends AppCompatActivity {
         else{
             cost += 18 * personsCount;
         }
-        if (e.getFormality().equalsIgnoreCase("formal")) {
-            cost = cost * 1.5;
-        }
         if (e.getDrink_venue().equalsIgnoreCase("alcoholic")){
             cost += 15 * personsCount;
         }
-        total_cost.setText(total_cost.getText().toString() + " $" + String.format("%.2f", cost));
+        if (e.getFormality().equalsIgnoreCase("formal")) {
+            cost = cost * 1.5;
+        }
+        party_size.setText(party_size.getText().toString() + " " + e.getParty_size());
+        date.setText(date.getText().toString() + " " + e.getDate());
+        time.setText(time.getText().toString() + " " + e.getTime());
+        duration.setText(duration.getText().toString() + " " + e.getDuration() + " Hours");
+        meal_type.setText(meal_type.getText().toString() + " " + e.getMeal_type());
+        venue_type.setText(venue_type.getText().toString() + " " + e.getMeal_venue());
+        formality.setText(formality.getText().toString() + " " + e.getFormality());
+        drink.setText(drink.getText().toString() + " " + e.getDrink_venue());
+        hall.setText(hall.getText().toString() + " " + e.getHall());
+        User user = (User) getIntent().getSerializableExtra("USER");
+        if(user.getAccountType().equalsIgnoreCase("user") || user.getAccountType().equalsIgnoreCase("caterer")) {
+            total_cost.setText(total_cost.getText().toString() + " $" + String.format("%.2f", cost));
+        }
+        else {
+            total_cost.setText(total_cost.getText().toString() + " N/a");
+        }
     }
 }

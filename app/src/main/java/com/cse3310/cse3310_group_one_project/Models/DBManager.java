@@ -118,7 +118,6 @@ public class DBManager extends SQLiteOpenHelper {
     public void removeResources(){
 
     }
-
     public void deleteUser(int id){
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_NAME, KEY_ID+ " = "+id, null);
