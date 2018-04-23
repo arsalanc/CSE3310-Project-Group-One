@@ -37,7 +37,7 @@ public class Register extends AppCompatActivity {
         password=(EditText) findViewById(R.id.password);
         account_type =(Spinner) findViewById(R.id.spinner1);
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(Register.this,
-                R.layout.spinner_item,getResources().getStringArray(R.array.Account_Types));
+                R.layout.spinner_item2,getResources().getStringArray(R.array.Account_Types));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         account_type.setAdapter(myAdapter);
         phone_number=(EditText) findViewById(R.id.phone_number);
