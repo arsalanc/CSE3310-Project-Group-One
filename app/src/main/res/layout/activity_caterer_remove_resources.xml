@@ -65,14 +65,14 @@
         </RelativeLayout>
 
         <Button
-            android:id="@+id/add_resources_submit_r"
+            android:id="@+id/remove_resources_submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Submit"
             android:layout_margin="10dp"
             android:background="@color/colorOrange"/>
         <Button
-            android:id="@+id/add_resources_back_r"
+            android:id="@+id/remove_resources_back"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Back"

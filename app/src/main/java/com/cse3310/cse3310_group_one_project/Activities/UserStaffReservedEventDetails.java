@@ -11,14 +11,15 @@ import com.cse3310.cse3310_group_one_project.Models.DBManager;
 import com.cse3310.cse3310_group_one_project.Models.Event;
 import com.cse3310.cse3310_group_one_project.Models.User;
 import com.cse3310.cse3310_group_one_project.R;
-
+import java.lang.String;
 /**
  * Created by Arsalan on 4/11/2018?.
  */
 
 public class UserStaffReservedEventDetails extends AppCompatActivity {
-    TextView party_size,date,time,duration,meal_type,venue_type,formality,drink,hall;
+    TextView party_size,date,time,duration,meal_type,venue_type,formality,drink,hall,total_cost;
     DBManager db;
+    double cost = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
@@ -33,6 +34,7 @@ public class UserStaffReservedEventDetails extends AppCompatActivity {
         formality = (TextView) findViewById(R.id.reserved_event_formality);
         drink = (TextView) findViewById(R.id.reserved_event_drink);
         hall = (TextView) findViewById(R.id.reserved_event_hall);
+        total_cost = (TextView) findViewById(R.id.total_cost);
         db = new DBManager(this);
         set_text(db);
 
@@ -98,6 +100,8 @@ public class UserStaffReservedEventDetails extends AppCompatActivity {
         startActivity(intent);
     }
     public void set_text(DBManager db){
+        String partySize,mealType,drinkType,formalityType;
+        double personsCount = 0;
         int event_id = (Integer) getIntent().getSerializableExtra("EVENT_ID");
         Event e = db.retrieveEvent(event_id);
         party_size.setText(party_size.getText().toString() + " " + e.getParty_size());
@@ -109,5 +113,22 @@ public class UserStaffReservedEventDetails extends AppCompatActivity {
         formality.setText(formality.getText().toString() + " " + e.getFormality());
         drink.setText(drink.getText().toString() + " " + e.getDrink_venue());
         hall.setText(hall.getText().toString() + " " + e.getHall());
+        personsCount = e.getParty_size();
+        if(e.getMeal_type().equalsIgnoreCase("breakfast")){
+            cost += 8 * personsCount;
+        }
+        else if(e.getMeal_type().equalsIgnoreCase("lunch")){
+            cost += 12 * personsCount;
+        }
+        else{
+            cost += 18 * personsCount;
+        }
+        if (e.getFormality().equalsIgnoreCase("formal")) {
+            cost = cost * 1.5;
+        }
+        if (e.getDrink_venue().equalsIgnoreCase("alcoholic")){
+            cost += 15 * personsCount;
+        }
+        total_cost.setText(total_cost.getText().toString() + " $" + String.format("%.2f", cost));
     }
 }

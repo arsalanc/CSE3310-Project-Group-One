@@ -21,8 +21,8 @@ public class CatererAddResources extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_caterer_add_resources);
         //TODO: submit button functionality
-        Button add_resources_submit=findViewById(R.id.add_resources_submit);
-        Button add_resources_back=findViewById(R.id.add_resources_back);
+        Button add_resources_submit=findViewById(R.id.add_resources_submit_a);
+        Button add_resources_back=findViewById(R.id.add_resources_back_a);
         add_resources_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
