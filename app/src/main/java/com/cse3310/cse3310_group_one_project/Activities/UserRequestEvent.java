@@ -235,7 +235,7 @@ public class UserRequestEvent extends AppCompatActivity implements
         duration.setText("Duration(hrs): " + number);
     }
     public void increaseIntegerPS(View v) {
-        partyCounter = partyCounter + 10;
+        partyCounter = partyCounter + 5;
         displayPS(partyCounter);
 
     }public void decreaseIntegerPS(View v) {
@@ -243,7 +243,7 @@ public class UserRequestEvent extends AppCompatActivity implements
             Toast.makeText(this, "You can't do that.", Toast.LENGTH_LONG).show();
         }
         else{
-            partyCounter = partyCounter - 10;
+            partyCounter = partyCounter - 5;
             displayPS(partyCounter);
         }
     }

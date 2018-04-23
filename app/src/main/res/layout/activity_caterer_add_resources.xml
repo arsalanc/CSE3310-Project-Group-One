@@ -45,7 +45,7 @@
                 android:textSize="20dp" />
 
             <Button
-                android:id="@+id/btn_sub_resources"
+                android:id="@+id/btn_sub_resources_a"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/resource_amount"
@@ -55,25 +55,25 @@
                 android:text="-" />
 
             <Button
-                android:id="@+id/btn_add_resources"
+                android:id="@+id/btn_add_resources_a"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/btn_sub_resources"
-                android:layout_toEndOf="@+id/btn_sub_resources"
-                android:layout_toRightOf="@+id/btn_sub_resources"
+                android:layout_alignBottom="@+id/btn_sub_resources_a"
+                android:layout_toEndOf="@+id/btn_sub_resources_a"
+                android:layout_toRightOf="@+id/btn_sub_resources_a"
                 android:text="+" />
 
         </RelativeLayout>
 
         <Button
-            android:id="@+id/add_resources_submit"
+            android:id="@+id/add_resources_submit_a"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Submit"
             android:layout_margin="10dp"
             android:background="@color/colorOrange"/>
         <Button
-            android:id="@+id/add_resources_back"
+            android:id="@+id/add_resources_back_a"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Back"

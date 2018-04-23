@@ -18,50 +18,61 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#fff"
-            android:textSize="20dp"
-            android:text="Resources"
-            android:layout_margin="10dp"/>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#fff"
-                android:textSize="15dp"
-                android:text="Resource name"
-                android:layout_margin="10dp"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#fff"
-                android:textSize="15dp"
-                android:text="Resource Amount"
-                android:layout_margin="10dp"/>
-        </LinearLayout>
-        <EditText
+        <Spinner
+            android:id="@+id/resource_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:textColorHint="#fff"
             android:textSize="20dp"
-            android:hint="Resource Name"
+            android:hint="Resource Type"
             android:maxLines="1"
-            android:layout_marginTop="50dp" />
+            android:layout_marginTop="20dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/resource_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="Amount: "
+                android:maxLines="1"
+                android:padding="10dp"
+                android:textColorHint="#fff"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/btn_sub_resources_r"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/resource_amount"
+                android:layout_toEndOf="@+id/resource_amount"
+                android:layout_toRightOf="@+id/resource_amount"
+                android:layout_marginLeft="75dp"
+                android:text="-" />
+
+            <Button
+                android:id="@+id/btn_add_resource_r"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/btn_sub_resources_r"
+                android:layout_toEndOf="@+id/btn_sub_resources_r"
+                android:layout_toRightOf="@+id/btn_sub_resources_r"
+                android:text="+" />
+        </RelativeLayout>
+
         <Button
-            android:id="@+id/remove_resources_submit"
+            android:id="@+id/add_resources_submit_r"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Submit"
             android:layout_margin="10dp"
             android:background="@color/colorOrange"/>
         <Button
-            android:id="@+id/remove_resources_back"
+            android:id="@+id/add_resources_back_r"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Back"
