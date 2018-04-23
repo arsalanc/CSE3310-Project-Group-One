@@ -16,6 +16,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
+
 import android.widget.ArrayAdapter;
 
 import com.cse3310.cse3310_group_one_project.Models.User;
@@ -34,9 +36,12 @@ public class UserRequestEvent extends AppCompatActivity implements
     Button btnDatePicker, btnTimePicker, btn_add, btn_sub;
     EditText txtDate, txtTime;
     TextView duration, party_size;
+    final Calendar calendar = Calendar.getInstance();
     private int mYear = -1, mMonth = -1, mDay = -1, mHour = -1, mMinute = -1;
+    private long timeNow;
 
-    int durCounter = 0, partyCounter = 0;
+    // minimum duration is 2 hours
+    int durCounter = 2, partyCounter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
@@ -55,6 +60,13 @@ public class UserRequestEvent extends AppCompatActivity implements
 
         btn_add = (Button)findViewById(R.id.btn_add);
         btn_sub = (Button)findViewById(R.id.btn_sub);
+
+        // set duration text on page build
+        displayDuration(durCounter);
+
+        // Set up the calendar before we need it to prevent it incrementing every time a user opens the date picker
+        calendar.add(Calendar.DAY_OF_MONTH, 1);
+        timeNow = calendar.getTimeInMillis();
 
         Button cancel = (Button) findViewById(R.id.request_event_cancel);
         Button confirm = (Button) findViewById(R.id.request_event_confirm);
@@ -114,9 +126,8 @@ public class UserRequestEvent extends AppCompatActivity implements
             Toast.makeText(this, "Select a time for the event", Toast.LENGTH_LONG).show();
             return;
         }
-        if(durCounter == 0)
+        if(!isValidTime(mHour, mMinute, durCounter))
         {
-            Toast.makeText(this, "Select the duration of your event", Toast.LENGTH_LONG).show();
             return;
         }
         if(partyCounter == 0)
@@ -169,10 +180,11 @@ public class UserRequestEvent extends AppCompatActivity implements
         if (v == btnDatePicker) {
 
             // Get current date to initialize date picker
-            final Calendar c = Calendar.getInstance();
-            int current_year = c.get(Calendar.YEAR);
-            int current_month = c.get(Calendar.MONTH); // 0 indexed so add 1
-            int current_day = c.get(Calendar.DAY_OF_MONTH);
+
+            // Add one day to the calendar to give caterers time to approve
+            int current_year = calendar.get(Calendar.YEAR);
+            int current_month = calendar.get(Calendar.MONTH);
+            int current_day = calendar.get(Calendar.DAY_OF_MONTH );
 
             DatePickerDialog datePickerDialog = new DatePickerDialog(this,
                     new DatePickerDialog.OnDateSetListener() {
@@ -187,16 +199,23 @@ public class UserRequestEvent extends AppCompatActivity implements
                             mMonth = monthOfYear+1;
                             mDay = dayOfMonth;
                             mYear = year;
+
+                            // update actual calendar date as well, so if user opens date picker again it will go to their previous selection.
+                            //  Also used in isValidTime()
+                            calendar.set(Calendar.YEAR, year);
+                            calendar.set(Calendar.MONTH, monthOfYear);
+                            calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                         }
                     }, current_year, current_month, current_day);
+            // Prevent user from selecting dates from today or in the past
+            datePickerDialog.getDatePicker().setMinDate(timeNow);
             datePickerDialog.show();
         }
         if (v == btnTimePicker) {
-
             // Get current time to set up time picker
             final Calendar c = Calendar.getInstance();
-            int current_hour = c.get(Calendar.HOUR_OF_DAY);
-            int current_minute = c.get(Calendar.MINUTE);
+            int current_hour = 0;
+            int current_minute = 0;
 
             // Launch Time Picker Dialog
             TimePickerDialog timePickerDialog = new TimePickerDialog(this,
@@ -205,6 +224,15 @@ public class UserRequestEvent extends AppCompatActivity implements
                         @Override
                         public void onTimeSet(TimePicker view, int hourOfDay,
                                               int minute) {
+                            // its probably less of a headache to just error check this when the user
+                            //  tries to submit instead every time the user picks a time/duration
+                            /*if(!isValidTime(hourOfDay, minute, durCounter))
+                            {
+                                mHour = -1;
+                                mMinute = -1;
+                                txtTime.setText("");
+                                return;
+                            }*/
 
                             txtTime.setText(hourOfDay + ":" + minute);
 
@@ -212,7 +240,7 @@ public class UserRequestEvent extends AppCompatActivity implements
                             mHour = hourOfDay;
                             mMinute = minute;
                         }
-                    }, current_hour, current_minute, false);
+                    }, current_hour, current_minute, true);
             timePickerDialog.show();
         }
 
@@ -220,9 +248,9 @@ public class UserRequestEvent extends AppCompatActivity implements
     public void increaseIntegerDuration(View v) {
         durCounter = durCounter + 1;
         displayDuration(durCounter);
-
-    }public void decreaseIntegerDuration(View v) {
-        if (durCounter <= 0 ) {
+    }
+    public void decreaseIntegerDuration(View v) {
+        if (durCounter <= 2 ) {
             Toast.makeText(this, "You can't do that.", Toast.LENGTH_LONG).show();
         }
         else{
@@ -250,5 +278,42 @@ public class UserRequestEvent extends AppCompatActivity implements
     private void displayPS(int number) {
         party_size = (TextView) findViewById(R.id.partySize);
         party_size.setText("Party Size: " + number);
+    }
+
+    private boolean isValidTime(int hour, int minute, int duration)
+    {
+        boolean isSunday = calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY;
+        boolean isWeekend = isSunday || calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY;
+
+        // opens @ noon on sundays, 7pm any other day
+        // hardcoding these 2 vars numbers since it won't change for this project
+        int minLimit = isSunday ? 12 : 7;
+
+        // 26 hours total for weekends (2 am next day), 23 for weekdays (11pm same day)
+        int maxLimit = isWeekend ? 26 : 23;
+
+        // can do this or add + 1 to hours if minutes > 0, doesn't really matter
+        double hourPlusMinutes = hour + (minute / 60.0);
+
+        if(isWeekend && (hourPlusMinutes == 0 && duration == 2))
+        {
+            return true;
+        }
+        else if(hourPlusMinutes < minLimit)
+        {
+            String response = "Halls won't be open until " + (minLimit == 12 ? "12pm." : "7am.");
+            Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        // convert minutes to hours and add them to the calculation
+        // might just want to remove the option to choose minutes?
+        if((hourPlusMinutes + duration) > maxLimit)
+        {
+            String response = "Event can't extend past " + (maxLimit == 26 ? "2am." : "11pm.");
+            Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+            return false;
+        }
+        return true;
     }
 }
