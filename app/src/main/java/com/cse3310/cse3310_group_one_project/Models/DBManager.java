@@ -49,8 +49,10 @@ public class DBManager extends SQLiteOpenHelper {
     private static final String KEY_EVENT_IDf = "event_id_f";
 
     // allocated resources
-
-
+    private static final String RESOURCES_TABLE_NAME = "resource_data";
+    private static final String KEY_RESOURCE_AMOUNT = "resource_amount";
+    private static final String KEY_RESOURCE_TYPE = "resource_type";
+    private static final String KEY_EVENT_IDr = "event_id_r";
 
     public DBManager(Context context) {
         super(context, DB_NAME, null, Db_VERSION);
@@ -88,9 +90,16 @@ public class DBManager extends SQLiteOpenHelper {
                 "FOREIGN KEY (" +KEY_EVENT_IDf + ") " + "REFERENCES "+ EVENT_TABLE_NAME + "("+KEY_EVENT_ID + ")"+
                 ", FOREIGN KEY ("+KEY_STAFF_ID + ") " + "REFERENCES "+ TABLE_NAME + "("+KEY_ID + "))";
 
+        String CREATE_TABLE_RESOURCES = "CREATE TABLE " + RESOURCES_TABLE_NAME + "(" +
+                KEY_RESOURCE_AMOUNT + " INTEGER, " +
+                KEY_RESOURCE_TYPE + " TEXT, " +
+                KEY_EVENT_IDr + " INTEGER, "+
+                "FOREIGN KEY (" +KEY_EVENT_IDr + ") " + "REFERENCES "+ EVENT_TABLE_NAME + "("+KEY_EVENT_ID + "))";
+
         db.execSQL(CREATE_TABLE_USERDATA);
         db.execSQL(CREATE_TABLE_EVENTDATA);
         db.execSQL(CREATE_TABLE_STAFF_ASSIGN);
+        db.execSQL(CREATE_TABLE_RESOURCES);
     }
 
     @Override
@@ -98,7 +107,16 @@ public class DBManager extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS "+ EVENT_TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS "+ STAFF_TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS "+ RESOURCES_TABLE_NAME);
         onCreate(db);
+    }
+
+    public void addResources(){
+
+    }
+
+    public void removeResources(){
+
     }
 
     public void deleteUser(int id){
