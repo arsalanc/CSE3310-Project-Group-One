@@ -267,7 +267,7 @@ public class UserRequestEvent extends AppCompatActivity implements
         displayPS(partyCounter);
 
     }public void decreaseIntegerPS(View v) {
-        if (partyCounter <= 0) {
+        if (partyCounter <= 0 || partyCounter >= 100) {
             Toast.makeText(this, "You can't do that.", Toast.LENGTH_LONG).show();
         }
         else{

@@ -15,6 +15,7 @@ import com.cse3310.cse3310_group_one_project.Models.User;
 import com.cse3310.cse3310_group_one_project.R;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -32,10 +33,46 @@ public class CatererApproveEvent extends AppCompatActivity {
         //TODO: assign hall  to event and reserve event after submit button click
         Button back_button = (Button) findViewById(R.id.reserve_event_back);
         Button submit_button = (Button) findViewById(R.id.reserve_event_submit);
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(CatererApproveEvent.this,
-                R.layout.spinner_item,getResources().getStringArray(R.array.Halls));
+        ArrayAdapter<String> myAdapter;
+        int event_id = (Integer) getIntent().getSerializableExtra("EVENT_ID");
+        db = new DBManager(this);
+        Event e = db.retrieveEvent(event_id);
+        int partySize = e.getParty_size();
+        String[] halls_array = getResources().getStringArray(R.array.Halls);
+        List<String> list = new ArrayList<String>(Arrays.asList(halls_array));
+        if(partySize > 25){
+            //arlington, liberty, maverick
+            list.remove("KC");
+            list.remove("Shard");
+            halls_array = list.toArray(new String[0]);
+            myAdapter = new ArrayAdapter<String>(CatererApproveEvent.this,
+                    R.layout.spinner_item,halls_array);
+        }
+        else if(partySize > 50 ){
+            //liberty, maverick
+            list.remove("KC");
+            list.remove("Shard");
+            list.remove("Arlington");
+            halls_array = list.toArray(new String[0]);
+            myAdapter = new ArrayAdapter<String>(CatererApproveEvent.this,
+                    R.layout.spinner_item,halls_array);
+        }
+        else if(partySize > 75 && partySize <= 100){
+            //maverick
+            list.remove("KC");
+            list.remove("Shard");
+            list.remove("Arlington");
+            list.remove("Liberty");
+            halls_array = list.toArray(new String[0]);
+            myAdapter = new ArrayAdapter<String>(CatererApproveEvent.this,
+                    R.layout.spinner_item,halls_array);
+        }
+        else{
+            //all of the halls
+            myAdapter = new ArrayAdapter<String>(CatererApproveEvent.this,
+                    R.layout.spinner_item,halls_array);
+        }
         hall = findViewById(R.id.select_hall);
-
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         hall.setAdapter(myAdapter);
         db = new DBManager(this);
