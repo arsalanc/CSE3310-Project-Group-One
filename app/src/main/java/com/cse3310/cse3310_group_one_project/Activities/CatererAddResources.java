@@ -1,6 +1,7 @@
 package com.cse3310.cse3310_group_one_project.Activities;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -61,6 +62,7 @@ public class CatererAddResources extends AppCompatActivity {
             public void onClick(View view) {
                 amount++;
                 resource_amount.setText("Amount: "+amount);
+                resource_amount.setTextColor(Color.WHITE);
             }
         });
         btn_sub.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +73,7 @@ public class CatererAddResources extends AppCompatActivity {
                 else {
                     amount--;
                     resource_amount.setText("Amount: " + amount);
+                    resource_amount.setTextColor(Color.WHITE);
                 }
             }
         });
