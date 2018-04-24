@@ -49,5 +49,8 @@
         <item>Resource Type</item>
         <item>Meal</item>
         <item>Drink</item>
+        <item>Entertainment Item</item>
     </string-array>
+
+
 </resources>

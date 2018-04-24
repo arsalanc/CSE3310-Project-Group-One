@@ -111,8 +111,14 @@ public class DBManager extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void addResources(){
-
+    public void addResources(Resource resource){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_RESOURCE_TYPE,resource.getResource_type());
+        values.put(KEY_RESOURCE_AMOUNT,resource.getResource_amount());
+        values.put(KEY_EVENT_IDr,resource.getEvent_id());
+        db.insert(RESOURCES_TABLE_NAME, null, values);
+        db.close();
     }
 
     public void removeResources(){
