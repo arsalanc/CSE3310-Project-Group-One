@@ -11,6 +11,9 @@ public class Resource {
         this.resource_type = resource_type;
         this.event_id = event_id;
     }
+    public Resource(){
+
+    }
 
     public int getResource_amount() {
         return resource_amount;

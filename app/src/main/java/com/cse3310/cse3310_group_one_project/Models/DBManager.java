@@ -121,8 +121,48 @@ public class DBManager extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void removeResources(){
+    public void removeResources(int event_id,int new_amount,String resource_name){
+        SQLiteDatabase db = this.getWritableDatabase();
+        if(new_amount > 0) {
+            String query = "UPDATE " + RESOURCES_TABLE_NAME + " SET " + KEY_RESOURCE_AMOUNT + " = "
+                    + new_amount + " WHERE (" + KEY_RESOURCE_TYPE + " = \'" + resource_name + "\' AND " + KEY_EVENT_IDr + " = " + event_id+ ");";
+            db.execSQL(query);
+        }
+        else
+            db.delete(RESOURCES_TABLE_NAME, KEY_RESOURCE_TYPE + " = \'"+resource_name + "\' AND "+ KEY_EVENT_IDr + " = "+event_id,null);
+    }
 
+    public int retrieveAmountResources(int event_id, String resource_name)
+    {
+        int amount=0;
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * from " + RESOURCES_TABLE_NAME + " WHERE " + KEY_EVENT_IDr + " = "
+                + event_id + " AND "+ KEY_RESOURCE_TYPE + " = \'"+resource_name+ "\'" ;
+
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst())
+            amount=cursor.getInt(cursor.getColumnIndex(KEY_RESOURCE_AMOUNT));
+        return  amount;
+    }
+
+    public List<Resource> getCurrentResources(int event_id){
+        List<Resource> resources = new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT * from " + RESOURCES_TABLE_NAME + " WHERE " + KEY_EVENT_IDr + " = "
+                + event_id ;
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor.moveToFirst()) {
+            while (!cursor.isAfterLast()) {
+                Resource r = new Resource();
+                r.setEvent_id(cursor.getInt(cursor.getColumnIndex(KEY_EVENT_IDr)));
+                r.setResource_amount(cursor.getInt(cursor.getColumnIndex(KEY_RESOURCE_AMOUNT)));
+                r.setResource_type(cursor.getString(cursor.getColumnIndex(KEY_RESOURCE_TYPE)));
+                resources.add(r);
+                cursor.moveToNext();
+            }
+        }
+        return resources;
     }
     public void deleteUser(int id){
         SQLiteDatabase db = this.getWritableDatabase();

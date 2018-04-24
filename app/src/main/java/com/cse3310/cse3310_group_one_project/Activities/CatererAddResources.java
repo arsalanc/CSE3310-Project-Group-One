@@ -69,7 +69,7 @@ public class CatererAddResources extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(amount<=0)
-                    Toast.makeText(CatererAddResources.this, "You cant do that", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CatererAddResources.this, "You can't do that", Toast.LENGTH_LONG).show();
                 else {
                     amount--;
                     resource_amount.setText("Amount: " + amount);

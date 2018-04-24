@@ -39,7 +39,7 @@
 
         </Spinner>
 
-z
+
 
         <Button
             android:id="@+id/reserve_event_back"
