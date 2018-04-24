@@ -101,23 +101,27 @@ public class UserStaffReservedEventDetails extends AppCompatActivity {
     }
     public void set_text(DBManager db){
         int personsCount;
+        double costOfMeal;
         int event_id = (Integer) getIntent().getSerializableExtra("EVENT_ID");
         Event e = db.retrieveEvent(event_id);
         personsCount = e.getParty_size();
         if(e.getMeal_type().equalsIgnoreCase("breakfast")){
             cost += 8 * personsCount;
+            costOfMeal = 8 *personsCount;
         }
         else if(e.getMeal_type().equalsIgnoreCase("lunch")){
             cost += 12 * personsCount;
+            costOfMeal = 12 * personsCount;
         }
         else{
             cost += 18 * personsCount;
+            costOfMeal = 18 * personsCount;
         }
         if (e.getDrink_venue().equalsIgnoreCase("alcoholic")){
             cost += 15 * personsCount;
         }
         if (e.getFormality().equalsIgnoreCase("formal")) {
-            cost = cost * 1.5;
+            cost += costOfMeal * 1.5;
         }
         party_size.setText(party_size.getText().toString() + " " + e.getParty_size());
         date.setText(date.getText().toString() + " " + e.getDate());
