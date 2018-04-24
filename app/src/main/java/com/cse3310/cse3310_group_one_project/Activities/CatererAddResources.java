@@ -28,7 +28,7 @@ public class CatererAddResources extends AppCompatActivity {
     TextView resource_amount;
     Button btn_add, btn_sub;
     DBManager db;
-    int amount;
+    int amount = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
@@ -39,12 +39,16 @@ public class CatererAddResources extends AppCompatActivity {
         btn_add = (Button)findViewById(R.id.btn_add_resources_a);
         btn_sub = (Button)findViewById(R.id.btn_sub_resources_a);
         resource_amount = findViewById(R.id.resource_amount);
-        resource_type=findViewById(R.id.resource_type);
+        resource_type = findViewById(R.id.resource_type);
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(CatererAddResources.this,
                 R.layout.spinner_item2,getResources().getStringArray(R.array.Resource_Types));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         resource_type.setAdapter(myAdapter);
         db=new DBManager(this);
+        int event_id = (int) getIntent().getSerializableExtra("EVENT_ID");
+        String type = resource_type.getSelectedItem().toString();
+        amount = db.retrieveAmountResources(event_id,type);
+        resource_amount.setText("Amount: "+amount);
         add_resources_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,15 +86,18 @@ public class CatererAddResources extends AppCompatActivity {
     public void addResourcesSubmit(DBManager db){
         int event_id = (int) getIntent().getSerializableExtra("EVENT_ID");
         String type = resource_type.getSelectedItem().toString();
-        Resource r = new Resource(amount,type,event_id);
-
-        db.addResources(r);
-        Intent intent_back = new Intent(this,CatererEditEvent.class);
-        intent_back.putExtra("EVENT_ID",event_id);
-        User user = (User) getIntent().getSerializableExtra("USER");
-        intent_back.putExtra("PREVIOUS_PAGE", (Class) getIntent().getSerializableExtra("PREVIOUS_PAGE"));
-        intent_back.putExtra("USER", user);
-        startActivity(intent_back);
+        if (type.equalsIgnoreCase("Meal") || type.equalsIgnoreCase("Drink") || type.equalsIgnoreCase("Entertainment Item")){
+            Resource r = new Resource(amount,type,event_id);
+            db.addResources(r);
+            Intent intent_back = new Intent(this,CatererEditEvent.class);
+            intent_back.putExtra("EVENT_ID",event_id);
+            User user = (User) getIntent().getSerializableExtra("USER");
+            intent_back.putExtra("PREVIOUS_PAGE", (Class) getIntent().getSerializableExtra("PREVIOUS_PAGE"));
+            intent_back.putExtra("USER", user);
+            startActivity(intent_back);
+        }else{
+            Toast.makeText(this, "Please choose a resource type", Toast.LENGTH_SHORT).show();
+        }
     }
     public void addResourcesBack(){
         Intent intent_back = new Intent(this,CatererEditEvent.class);

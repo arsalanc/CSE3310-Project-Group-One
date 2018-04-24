@@ -48,16 +48,16 @@
                 android:layout_width="175dp"
                 android:layout_height="wrap_content"
                 android:text="Deny"
-                android:layout_margin="10dp"
-                android:background="@color/colorOrange"/>
+                android:layout_marginLeft="25dp"
+                android:background="@color/colorYellow"/>
+
             <Button
                 android:id="@+id/reserve"
                 android:layout_width="175dp"
                 android:layout_height="wrap_content"
-                android:text="Reserve"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="2.5dp"
-                android:background="@color/colorOrange"/>
+                android:layout_marginLeft="10dp"
+                android:background="@color/colorOrange"
+                android:text="Reserve" />
         </LinearLayout>
         <Button
             android:id="@+id/requested_events_back"
