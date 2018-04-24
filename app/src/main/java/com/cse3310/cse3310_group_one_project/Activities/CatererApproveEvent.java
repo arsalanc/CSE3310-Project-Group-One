@@ -45,33 +45,22 @@ public class CatererApproveEvent extends AppCompatActivity {
             list.remove("KC");
             list.remove("Shard");
             halls_array = list.toArray(new String[0]);
-            myAdapter = new ArrayAdapter<String>(CatererApproveEvent.this,
-                    R.layout.spinner_item,halls_array);
         }
-        else if(partySize > 50 ){
+        if(partySize > 50 ){
             //liberty, maverick
-            list.remove("KC");
-            list.remove("Shard");
             list.remove("Arlington");
             halls_array = list.toArray(new String[0]);
-            myAdapter = new ArrayAdapter<String>(CatererApproveEvent.this,
-                    R.layout.spinner_item,halls_array);
         }
-        else if(partySize > 75 && partySize <= 100){
+        if(partySize > 75 && partySize <= 100){
             //maverick
-            list.remove("KC");
-            list.remove("Shard");
-            list.remove("Arlington");
             list.remove("Liberty");
             halls_array = list.toArray(new String[0]);
-            myAdapter = new ArrayAdapter<String>(CatererApproveEvent.this,
-                    R.layout.spinner_item,halls_array);
         }
-        else{
-            //all of the halls
-            myAdapter = new ArrayAdapter<String>(CatererApproveEvent.this,
-                    R.layout.spinner_item,halls_array);
-        }
+
+        myAdapter = new ArrayAdapter<String>(CatererApproveEvent.this,
+                R.layout.spinner_item,halls_array);
+
+
         hall = findViewById(R.id.select_hall);
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         hall.setAdapter(myAdapter);
