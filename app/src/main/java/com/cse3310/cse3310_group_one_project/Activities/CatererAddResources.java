@@ -47,7 +47,7 @@ public class CatererAddResources extends AppCompatActivity {
         db=new DBManager(this);
         int event_id = (int) getIntent().getSerializableExtra("EVENT_ID");
         String type = resource_type.getSelectedItem().toString();
-        amount = db.retrieveAmountResources(event_id,type);
+        //amount = db.retrieveAmountResources(event_id,type);
         resource_amount.setText("Amount: "+amount);
         add_resources_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,9 +86,16 @@ public class CatererAddResources extends AppCompatActivity {
     public void addResourcesSubmit(DBManager db){
         int event_id = (int) getIntent().getSerializableExtra("EVENT_ID");
         String type = resource_type.getSelectedItem().toString();
+        int new_amount;
         if (type.equalsIgnoreCase("Meal") || type.equalsIgnoreCase("Drink") || type.equalsIgnoreCase("Entertainment Item")){
             Resource r = new Resource(amount,type,event_id);
-            db.addResources(r);
+            int old_amount = db.retrieveAmountResources(event_id,type);
+            if(old_amount==0)
+                db.addResources(r);
+            else {
+                new_amount=old_amount + amount;
+                db.updateResources(event_id, new_amount,type);
+            }
             Intent intent_back = new Intent(this,CatererEditEvent.class);
             intent_back.putExtra("EVENT_ID",event_id);
             User user = (User) getIntent().getSerializableExtra("USER");

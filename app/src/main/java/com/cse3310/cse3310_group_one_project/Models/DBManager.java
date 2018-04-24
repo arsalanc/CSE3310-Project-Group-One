@@ -121,7 +121,7 @@ public class DBManager extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void removeResources(int event_id,int new_amount,String resource_name){
+    public void updateResources(int event_id,int new_amount,String resource_name){
         SQLiteDatabase db = this.getWritableDatabase();
         if(new_amount > 0) {
             String query = "UPDATE " + RESOURCES_TABLE_NAME + " SET " + KEY_RESOURCE_AMOUNT + " = "

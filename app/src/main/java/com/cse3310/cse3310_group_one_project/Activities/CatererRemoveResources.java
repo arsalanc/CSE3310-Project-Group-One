@@ -92,7 +92,7 @@ public class CatererRemoveResources extends AppCompatActivity {
         String name = resources.getSelectedItem().toString();
         int old_amount = db.retrieveAmountResources(event_id,name);
         int new_amount = old_amount-amount;
-        db.removeResources(event_id,new_amount,name);
+        db.updateResources(event_id,new_amount,name);
         Intent intent_back = new Intent(this,CatererEditEvent.class);
         intent_back.putExtra("EVENT_ID",event_id);
         User user = (User) getIntent().getSerializableExtra("USER");
