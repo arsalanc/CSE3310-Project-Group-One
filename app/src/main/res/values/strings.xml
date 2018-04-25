@@ -35,7 +35,94 @@
         <item>Italian</item>
         <item>Japanese</item>
         <item>Mexican</item>
+    </string-array>
+    <string-array name="food_american">
+        <item>American Food</item>
         <item>Pizza</item>
+        <item>Hamburgers</item>
+        <item>Barbecue</item>
+        <item>Steak</item>
+        <item>Fried Chicken</item>
+    </string-array>
+    <string-array name="food_chinese">
+        <item>Chinese Food</item>
+        <item>Crab Rangoon</item>
+        <item>Orange Chicken</item>
+        <item>General Tsao's Chicken</item>
+        <item>Wonton Soup</item>
+        <item>Peanut Shrimp</item>
+    </string-array>
+    <string-array name="food_french">
+        <item>French Food</item>
+        <item>Soupe à l'oignon</item>
+        <item>Cassoulet</item>
+        <item>Beef bourguignon</item>
+        <item>Chocolate souffle</item>
+        <item>Nicoise salad</item>
+    </string-array>
+    <string-array name="food_greek">
+        <item>Greek Food</item>
+        <item>Amygdalota</item>
+        <item>Baklava</item>
+        <item>Feta Me Meli</item>
+        <item>Santorini Tomato Fritters</item>
+        <item>Stuffed Grape Leaves</item>
+    </string-array>
+    <string-array name="food_indian">
+        <item>Indian Food</item>
+        <item>Chicken Tikka Masala</item>
+        <item>Biryani</item>
+        <item>Samosa</item>
+        <item>Butter Chicken</item>
+        <item>Tandori Chicken</item>
+    </string-array>
+    <string-array name="food_italian">
+        <item>Italian Food</item>
+        <item>Lasagna</item>
+        <item>Fiorentina Steak</item>
+        <item>Risotto</item>
+        <item>Carbonara</item>
+        <item>Bottarga</item>
+    </string-array>
+    <string-array name="food_japanese">
+        <item>Japanese Food</item>
+        <item>Sushi</item>
+        <item>Shabu-Shabu</item>
+        <item>Tempura</item>
+        <item>Unagi</item>
+        <item>Ramen</item>
+    </string-array>
+    <string-array name="food_mexican">
+        <item>Mexican Food</item>
+        <item>Tostadas</item>
+        <item>Pozole</item>
+        <item>Tamales</item>
+        <item>Tacos al Pastor</item>
+        <item>Chilaquiles</item>
+    </string-array>
+    <string-array name="drinks_alcoholic">
+        <item>Alcoholic Drinks</item>
+        <item>Wine</item>
+        <item>Beer</item>
+        <item>Whiskey</item>
+        <item>Margarita</item>
+        <item>Tequila</item>
+    </string-array>
+    <string-array name="drinks_standard">
+        <item>Non-Alcoholic Drinks</item>
+        <item>Sweet Tea</item>
+        <item>Non-Sweet Tea</item>
+        <item>Dr. Pepper</item>
+        <item>Crush</item>
+        <item>Sprite</item>
+    </string-array>
+    <string-array name="ent_items">
+        <item>Entertainment Items</item>
+        <item>Music</item>
+        <item>Photo Booth</item>
+        <item>Magician</item>
+        <item>Cirque Show</item>
+        <item>Casino</item>
     </string-array>
     <string-array name="Halls">
         <item>Select a Hall</item>
