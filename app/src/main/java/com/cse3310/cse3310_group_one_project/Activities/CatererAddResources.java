@@ -27,7 +27,6 @@ import com.cse3310.cse3310_group_one_project.R;
 public class CatererAddResources extends AppCompatActivity {
     Spinner food_spinner,drink_spinner,ent_spinner;
     //TextView resource_amount;
-    //Button btn_add, btn_sub;
     DBManager db;
     int amount = 0;
     @Override
@@ -35,86 +34,101 @@ public class CatererAddResources extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_caterer_add_resources);
         //TODO: submit button functionality
-        Button add_resources_submit=findViewById(R.id.add_resources_submit_a);
-        Button add_resources_back=findViewById(R.id.add_resources_back_a);
+        Button set_resources_submit=findViewById(R.id.set_resources_submit);
+        Button set_resources_back=findViewById(R.id.set_resources_back);
         food_spinner = findViewById(R.id.foodSpinner);
         drink_spinner = findViewById(R.id.drinkSpinner);
         ent_spinner = findViewById(R.id.entSpinner);
         db=new DBManager(this);
         //int event_id = (int) getIntent().getSerializableExtra("EVENT_ID");
+        //i think this might be the source of the bug (line 47)
+        //could it be the if/if else structure? - miguel
         Event e = (Event) getIntent().getSerializableExtra("EVENT");
         String mealType = e.getMeal_type();
         String drinkType = e.getDrink_venue();
         //FOOD
         if(mealType.equalsIgnoreCase("american")){
-            ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(CatererAddResources.this,
+            ArrayAdapter<String> myAdapterf = new ArrayAdapter<String>(CatererAddResources.this,
                     R.layout.spinner_item2,getResources().getStringArray(R.array.food_american));
-            myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            food_spinner.setAdapter(myAdapter);
+            myAdapterf.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            food_spinner.setAdapter(myAdapterf);
         }
         else if(mealType.equalsIgnoreCase("chinese")){
-            ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(CatererAddResources.this,
+            ArrayAdapter<String> myAdapterf = new ArrayAdapter<String>(CatererAddResources.this,
                     R.layout.spinner_item2,getResources().getStringArray(R.array.food_chinese));
-            myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            food_spinner.setAdapter(myAdapter);
+            myAdapterf.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            food_spinner.setAdapter(myAdapterf);
         }
         else if(mealType.equalsIgnoreCase("french")){
-            ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(CatererAddResources.this,
+            ArrayAdapter<String> myAdapterf = new ArrayAdapter<String>(CatererAddResources.this,
                     R.layout.spinner_item2,getResources().getStringArray(R.array.food_french));
-            myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            food_spinner.setAdapter(myAdapter);
+            myAdapterf.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            food_spinner.setAdapter(myAdapterf);
         }
         else if(mealType.equalsIgnoreCase("greek")){
-            ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(CatererAddResources.this,
+            ArrayAdapter<String> myAdapterf = new ArrayAdapter<String>(CatererAddResources.this,
                     R.layout.spinner_item2,getResources().getStringArray(R.array.food_greek));
-            myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            food_spinner.setAdapter(myAdapter);
+            myAdapterf.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            food_spinner.setAdapter(myAdapterf);
         }
         else if(mealType.equalsIgnoreCase("indian")){
-            ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(CatererAddResources.this,
+            ArrayAdapter<String> myAdapterf = new ArrayAdapter<String>(CatererAddResources.this,
                     R.layout.spinner_item2,getResources().getStringArray(R.array.food_indian));
-            myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            food_spinner.setAdapter(myAdapter);
+            myAdapterf.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            food_spinner.setAdapter(myAdapterf);
         }
         else if(mealType.equalsIgnoreCase("italian")){
-            ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(CatererAddResources.this,
+            ArrayAdapter<String> myAdapterf = new ArrayAdapter<String>(CatererAddResources.this,
                     R.layout.spinner_item2,getResources().getStringArray(R.array.food_italian));
-            myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            food_spinner.setAdapter(myAdapter);
+            myAdapterf.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            food_spinner.setAdapter(myAdapterf);
         }
         else if(mealType.equalsIgnoreCase("japanese")){
-            ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(CatererAddResources.this,
+            ArrayAdapter<String> myAdapterf = new ArrayAdapter<String>(CatererAddResources.this,
                     R.layout.spinner_item2,getResources().getStringArray(R.array.food_japanese));
-            myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            food_spinner.setAdapter(myAdapter);
+            myAdapterf.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            food_spinner.setAdapter(myAdapterf);
         }
         else{
-            ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(CatererAddResources.this,
+            ArrayAdapter<String> myAdapterf = new ArrayAdapter<String>(CatererAddResources.this,
                     R.layout.spinner_item2,getResources().getStringArray(R.array.food_mexican));
-            myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            food_spinner.setAdapter(myAdapter);
+            myAdapterf.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            food_spinner.setAdapter(myAdapterf);
         }
         //DRINK
         if(drinkType.equalsIgnoreCase("alcoholic")){
-            ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(CatererAddResources.this,
+            ArrayAdapter<String> myAdapterd = new ArrayAdapter<String>(CatererAddResources.this,
                     R.layout.spinner_item2,getResources().getStringArray(R.array.drinks_alcoholic));
-            myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            drink_spinner.setAdapter(myAdapter);
+            myAdapterd.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            drink_spinner.setAdapter(myAdapterd);
         }
         else{
-            ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(CatererAddResources.this,
+            ArrayAdapter<String> myAdapterd = new ArrayAdapter<String>(CatererAddResources.this,
                     R.layout.spinner_item2,getResources().getStringArray(R.array.drinks_standard));
-            myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            drink_spinner.setAdapter(myAdapter);
+            myAdapterd.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            drink_spinner.setAdapter(myAdapterd);
         }
         //ENT
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(CatererAddResources.this,
+        ArrayAdapter<String> myAdaptere = new ArrayAdapter<String>(CatererAddResources.this,
                 R.layout.spinner_item2,getResources().getStringArray(R.array.ent_items));
-        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        ent_spinner.setAdapter(myAdapter);
+        myAdaptere.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ent_spinner.setAdapter(myAdaptere);
+
+        set_resources_submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setResourcesSubmit(db);
+            }
+        });
+        set_resources_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setResourcesBack();
+            }
+        });
     }
 
-    public void addResourcesSubmit(DBManager db){
+    public void setResourcesSubmit(DBManager db){
         int event_id = (int) getIntent().getSerializableExtra("EVENT_ID");
         String foodChoice = food_spinner.getSelectedItem().toString();
         String drinkChoice = drink_spinner.getSelectedItem().toString();
@@ -123,11 +137,11 @@ public class CatererAddResources extends AppCompatActivity {
         if ((!foodChoice.equalsIgnoreCase("american food") || !foodChoice.equalsIgnoreCase("chinese food") || !foodChoice.equalsIgnoreCase("indian food") || !foodChoice.equalsIgnoreCase("italian food")
         || !foodChoice.equalsIgnoreCase("japanese food") || !foodChoice.equalsIgnoreCase("greek food") || !foodChoice.equalsIgnoreCase("french food") || !foodChoice.equalsIgnoreCase("mexican food"))
                 && !drinkChoice.equalsIgnoreCase("Drink") && !entChoice.equalsIgnoreCase("Entertainment Item")){
-
             // ADD entries to the database
-
+            Resource r = new Resource(foodChoice,drinkChoice,entChoice,event_id);
+            db.addResources(r);
         }else{
-            Toast.makeText(this, "A resource was not chosen.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "A resource was not selected", Toast.LENGTH_SHORT).show();
         }
 
         Intent intent_back = new Intent(this,CatererEditEvent.class);
@@ -137,7 +151,7 @@ public class CatererAddResources extends AppCompatActivity {
         intent_back.putExtra("USER", user);
         startActivity(intent_back);
     }
-    public void addResourcesBack(){
+    public void setResourcesBack(){
         Intent intent_back = new Intent(this,CatererEditEvent.class);
         int event_id = (int) getIntent().getSerializableExtra("EVENT_ID");
         intent_back.putExtra("EVENT_ID",event_id);

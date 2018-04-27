@@ -59,7 +59,7 @@
             android:orientation="vertical">
 
                     <Button
-                        android:id="@+id/remove_resources_back"
+                        android:id="@+id/view_resources_back"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"

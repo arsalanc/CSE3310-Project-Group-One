@@ -50,8 +50,9 @@ public class DBManager extends SQLiteOpenHelper {
 
     // allocated resources
     private static final String RESOURCES_TABLE_NAME = "resource_data";
-    private static final String KEY_RESOURCE_AMOUNT = "resource_amount";
-    private static final String KEY_RESOURCE_TYPE = "resource_type";
+    private static final String KEY_RESOURCE_FOOD = "resource_food";
+    private static final String KEY_RESOURCE_DRINK = "resource_drink";
+    private static final String KEY_RESOURCE_ENT = "resource_ent";
     private static final String KEY_EVENT_IDr = "event_id_r";
 
     public DBManager(Context context) {
@@ -91,8 +92,9 @@ public class DBManager extends SQLiteOpenHelper {
                 ", FOREIGN KEY ("+KEY_STAFF_ID + ") " + "REFERENCES "+ TABLE_NAME + "("+KEY_ID + "))";
 
         String CREATE_TABLE_RESOURCES = "CREATE TABLE " + RESOURCES_TABLE_NAME + "(" +
-                KEY_RESOURCE_AMOUNT + " INTEGER, " +
-                KEY_RESOURCE_TYPE + " TEXT, " +
+                KEY_RESOURCE_FOOD + " TEXT, " +
+                KEY_RESOURCE_DRINK + " TEXT, " +
+                KEY_RESOURCE_ENT + " TEXT, " +
                 KEY_EVENT_IDr + " INTEGER, "+
                 "FOREIGN KEY (" +KEY_EVENT_IDr + ") " + "REFERENCES "+ EVENT_TABLE_NAME + "("+KEY_EVENT_ID + "))";
 
@@ -114,13 +116,14 @@ public class DBManager extends SQLiteOpenHelper {
     public void addResources(Resource resource){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(KEY_RESOURCE_TYPE,resource.getResource_type());
-        values.put(KEY_RESOURCE_AMOUNT,resource.getResource_amount());
+        values.put(KEY_RESOURCE_FOOD,resource.getResource_food());
+        values.put(KEY_RESOURCE_DRINK,resource.getResource_drink());
+        values.put(KEY_RESOURCE_ENT,resource.getResource_ent());
         values.put(KEY_EVENT_IDr,resource.getEvent_id());
         db.insert(RESOURCES_TABLE_NAME, null, values);
         db.close();
     }
-
+/*
     public void updateResources(int event_id,int new_amount,String resource_name){
         SQLiteDatabase db = this.getWritableDatabase();
         if(new_amount > 0) {
@@ -164,6 +167,7 @@ public class DBManager extends SQLiteOpenHelper {
         }
         return resources;
     }
+    */
     public void deleteUser(int id){
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_NAME, KEY_ID+ " = "+id, null);
