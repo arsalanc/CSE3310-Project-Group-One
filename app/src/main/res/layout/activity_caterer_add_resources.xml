@@ -1,83 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:background="@color/colorRed"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:background="@color/colorRed"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="0dp">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#fff"
-            android:textSize="30dp"
-            android:text="Add Resources"
-            android:gravity="center"
+            android:layout_marginBottom="5dp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="5dp"/>
+            android:gravity="center"
+            android:text="Set Resources"
+            android:textColor="#fff"
+            android:textSize="30dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Food"
+            android:textAlignment="center"
+            android:textColor="#fff"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"
+            android:layout_marginTop="25dp"/>
 
         <Spinner
-            android:id="@+id/resource_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:textColorHint="#fff"
-            android:textSize="20dp"
-            android:hint="Resource Type"
-            android:maxLines="1"
-            android:layout_marginTop="20dp" />
+            android:id="@+id/foodSpinner"/>
 
-        <RelativeLayout
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:text="Drinks"
+            android:textAlignment="center"
+            android:textColor="#fff"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"
+            android:layout_marginTop="25dp"/>
 
-            <TextView
-                android:id="@+id/resource_amount"
-                android:layout_width="wrap_content"
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/drinkSpinner"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Entertainment Items"
+            android:textAlignment="center"
+            android:textColor="#fff"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"
+            android:layout_marginTop="25dp"/>
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/entSpinner"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1"
+            android:gravity="center|bottom"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/remove_resources_submit"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:hint="Amount: "
-                android:maxLines="1"
-                android:padding="10dp"
-                android:textColorHint="#fff"
-                android:textSize="20dp" />
+                android:layout_margin="10dp"
+                android:background="@color/colorOrange"
+                android:text="Submit" />
 
             <Button
-                android:id="@+id/btn_sub_resources_a"
-                android:layout_width="100dp"
+                android:id="@+id/remove_resources_back"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/resource_amount"
-                android:layout_toEndOf="@+id/resource_amount"
-                android:layout_toRightOf="@+id/resource_amount"
-                android:layout_marginLeft="75dp"
-                android:text="-" />
-
-            <Button
-                android:id="@+id/btn_add_resources_a"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/btn_sub_resources_a"
-                android:layout_toEndOf="@+id/btn_sub_resources_a"
-                android:layout_toRightOf="@+id/btn_sub_resources_a"
-                android:text="+" />
-
-        </RelativeLayout>
-
-        <Button
-            android:id="@+id/add_resources_submit_a"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Submit"
-            android:layout_margin="10dp"
-            android:background="@color/colorOrange"/>
-        <Button
-            android:id="@+id/add_resources_back_a"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Back"
-            android:layout_margin="10dp"
-            android:background="@color/colorOrange"/>
+                android:layout_margin="10dp"
+                android:background="@color/colorOrange"
+                android:text="Back"
+                android:layout_gravity="bottom"/>
+        </LinearLayout>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
