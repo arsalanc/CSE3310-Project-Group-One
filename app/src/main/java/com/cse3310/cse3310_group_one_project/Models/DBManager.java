@@ -123,6 +123,24 @@ public class DBManager extends SQLiteOpenHelper {
         db.insert(RESOURCES_TABLE_NAME, null, values);
         db.close();
     }
+    public Resource retrieveResources(int event_id){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT * from " + RESOURCES_TABLE_NAME + " WHERE " + KEY_EVENT_IDr + " = "
+                + event_id;
+
+        Cursor cursor = db.rawQuery(query, null);
+        Resource r = new Resource();
+        if (cursor.moveToFirst()) {
+            r.setEvent_id(cursor.getInt(cursor.getColumnIndex(KEY_EVENT_IDr)));
+            r.setResource_drink(cursor.getString(cursor.getColumnIndex(KEY_RESOURCE_DRINK)));
+            r.setResource_ent(cursor.getString(cursor.getColumnIndex(KEY_RESOURCE_ENT)));
+            r.setResource_food(cursor.getString(cursor.getColumnIndex(KEY_RESOURCE_FOOD)));
+        }else {
+            r = null;
+        }
+        return r;
+    }
 /*
     public void updateResources(int event_id,int new_amount,String resource_name){
         SQLiteDatabase db = this.getWritableDatabase();

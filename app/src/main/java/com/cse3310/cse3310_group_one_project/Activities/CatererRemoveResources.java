@@ -25,18 +25,21 @@ import java.util.List;
 
 public class CatererRemoveResources extends AppCompatActivity {
     DBManager db;
-    Spinner resources;
-    List<String> resource_list=new ArrayList<>();
-    Button btn_add, btn_sub;
-    int amount;
-    TextView resource_amount;
+    TextView food,drink,ent;
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_caterer_remove_resources);
         int event_id = (int) getIntent().getSerializableExtra("EVENT_ID");
         db=new DBManager(this);
+        food = findViewById(R.id.foodTextView);
+        drink=findViewById(R.id.drinksTextView);
+        ent=findViewById(R.id.entTextView);
 
+        Resource resource=db.retrieveResources(event_id);
+        food.setText(food.getText().toString() + " "+resource.getResource_food());
+        drink.setText(drink.getText().toString() + " "+ resource.getResource_drink());
+        ent.setText(ent.getText().toString() + " "+ resource.getResource_ent());
         Button view_resources_back=findViewById(R.id.view_resources_back);
        // resources = findViewById(R.id.resource_type);
         //resource_amount=findViewById(R.id.resource_amount);

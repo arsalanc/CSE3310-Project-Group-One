@@ -43,7 +43,7 @@
             android:id="@+id/remove_resources"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Remove Resources"
+            android:text="View Resources"
             android:layout_margin="8dp"
             android:background="@color/colorOrange"/>
         <Button

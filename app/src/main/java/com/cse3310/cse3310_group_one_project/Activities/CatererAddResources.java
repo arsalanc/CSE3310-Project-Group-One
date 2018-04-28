@@ -43,8 +43,8 @@ public class CatererAddResources extends AppCompatActivity {
         int event_id = (int) getIntent().getSerializableExtra("EVENT_ID");
         //i think this might be the source of the bug (line 47)
         //could it be the if/if else structure? - miguel
-        Event e = (Event) db.retrieveEvent(event_id);
-        String mealType = e.getMeal_type();
+        Event e =  db.retrieveEvent(event_id);
+        String mealType = e.getMeal_venue();
         String drinkType = e.getDrink_venue();
 
 
