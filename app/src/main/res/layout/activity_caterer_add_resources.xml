@@ -27,43 +27,46 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Food"
+            android:layout_marginTop="25dp"
+            android:text="Food:"
             android:textAlignment="center"
-            android:textColor="#fff"
             android:textAppearance="@android:style/TextAppearance.Material.Medium"
-            android:layout_marginTop="25dp"/>
+            android:textColor="#fff"
+            android:textStyle="bold"/>
 
         <Spinner
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:id="@+id/foodSpinner"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Drinks"
+            android:layout_marginTop="25dp"
+            android:text="Drinks:"
             android:textAlignment="center"
-            android:textColor="#fff"
             android:textAppearance="@android:style/TextAppearance.Material.Medium"
-            android:layout_marginTop="25dp"/>
+            android:textColor="#fff"
+            android:textStyle="bold"/>
 
         <Spinner
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:id="@+id/drinkSpinner"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Entertainment Items"
+            android:layout_marginTop="25dp"
+            android:text="Entertainment Items:"
             android:textAlignment="center"
-            android:textColor="#fff"
             android:textAppearance="@android:style/TextAppearance.Material.Medium"
-            android:layout_marginTop="25dp"/>
+            android:textColor="#fff"
+            android:textStyle="bold"/>
 
         <Spinner
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:id="@+id/entSpinner"/>
 
         <LinearLayout
