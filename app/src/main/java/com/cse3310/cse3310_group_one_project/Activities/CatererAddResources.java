@@ -40,11 +40,7 @@ public class CatererAddResources extends AppCompatActivity {
         drink_spinner = findViewById(R.id.drinkSpinner);
         ent_spinner = findViewById(R.id.entSpinner);
         db=new DBManager(this);
-        //i think this might be the source of the bug (line 45)
-        //could it be the if/if else structure? - miguel
-        Event e = (Event) getIntent().getSerializableExtra("EVENT");
-        String mealType = e.getMeal_type();
-        String drinkType = e.getDrink_venue();
+
         /*
         //FOOD
         if(mealType.equalsIgnoreCase("american")){
