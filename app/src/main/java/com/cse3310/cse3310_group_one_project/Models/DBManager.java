@@ -141,18 +141,13 @@ public class DBManager extends SQLiteOpenHelper {
         }
         return r;
     }
-/*
-    public void updateResources(int event_id,int new_amount,String resource_name){
+    public void updateResources(int event_id, String food, String drink,String ent){
         SQLiteDatabase db = this.getWritableDatabase();
-        if(new_amount > 0) {
-            String query = "UPDATE " + RESOURCES_TABLE_NAME + " SET " + KEY_RESOURCE_AMOUNT + " = "
-                    + new_amount + " WHERE (" + KEY_RESOURCE_TYPE + " = \'" + resource_name + "\' AND " + KEY_EVENT_IDr + " = " + event_id+ ");";
+            String query = "UPDATE " + RESOURCES_TABLE_NAME + " SET " + KEY_RESOURCE_FOOD + " = \'"
+                    + food + "\'," + KEY_RESOURCE_DRINK + " = \'" + drink + "\'," + KEY_RESOURCE_ENT + " = \'" + ent + "\' WHERE (" + KEY_EVENT_IDr + " = " + event_id + ");";
             db.execSQL(query);
-        }
-        else
-            db.delete(RESOURCES_TABLE_NAME, KEY_RESOURCE_TYPE + " = \'"+resource_name + "\' AND "+ KEY_EVENT_IDr + " = "+event_id,null);
     }
-
+/*
     public int retrieveAmountResources(int event_id, String resource_name)
     {
         int amount=0;

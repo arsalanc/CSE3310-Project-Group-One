@@ -131,27 +131,49 @@ public class CatererAddResources extends AppCompatActivity {
     }
 
     public void setResourcesSubmit(DBManager db){
+        boolean errorFlag = false;
         int event_id = (int) getIntent().getSerializableExtra("EVENT_ID");
         String foodChoice = food_spinner.getSelectedItem().toString();
         String drinkChoice = drink_spinner.getSelectedItem().toString();
         String entChoice = ent_spinner.getSelectedItem().toString();
         int new_amount;
-        if ((!foodChoice.equalsIgnoreCase("american food") || !foodChoice.equalsIgnoreCase("chinese food") || !foodChoice.equalsIgnoreCase("indian food") || !foodChoice.equalsIgnoreCase("italian food")
-        || !foodChoice.equalsIgnoreCase("japanese food") || !foodChoice.equalsIgnoreCase("greek food") || !foodChoice.equalsIgnoreCase("french food") || !foodChoice.equalsIgnoreCase("mexican food"))
-                && !drinkChoice.equalsIgnoreCase("Drink") && !entChoice.equalsIgnoreCase("Entertainment Item")){
-            // ADD entries to the database
-            Resource r = new Resource(foodChoice,drinkChoice,entChoice,event_id);
-            db.addResources(r);
-        }else{
+
+        if (foodChoice.equalsIgnoreCase("american food") || foodChoice.equalsIgnoreCase("chinese food") || foodChoice.equalsIgnoreCase("indian food") || foodChoice.equalsIgnoreCase("italian food")
+                || foodChoice.equalsIgnoreCase("japanese food") || foodChoice.equalsIgnoreCase("greek food") || foodChoice.equalsIgnoreCase("french food") || foodChoice.equalsIgnoreCase("mexican food")){
+            errorFlag = true;
+        }
+        if(drinkChoice.equalsIgnoreCase("Non-Alcoholic Drinks") || drinkChoice.equalsIgnoreCase("Alcoholic Drinks")){
+            errorFlag = true;
+        }
+        if (entChoice.equalsIgnoreCase("Entertainment Items")){
+            errorFlag = true;
+        }
+        if (errorFlag == false){
+
+            if (db.retrieveResources(event_id) == null){
+                Resource r = new Resource(foodChoice,drinkChoice,entChoice,event_id);
+                db.addResources(r);
+                Intent intent_back = new Intent(this,CatererEditEvent.class);
+                intent_back.putExtra("EVENT_ID",event_id);
+                User user = (User) getIntent().getSerializableExtra("USER");
+                intent_back.putExtra("PREVIOUS_PAGE", getIntent().getSerializableExtra("PREVIOUS_PAGE"));
+                intent_back.putExtra("USER", user);
+                startActivity(intent_back);
+            }
+            else{
+                db.updateResources(event_id,foodChoice,drinkChoice,entChoice);
+                Intent intent_back = new Intent(this,CatererEditEvent.class);
+                intent_back.putExtra("EVENT_ID",event_id);
+                User user = (User) getIntent().getSerializableExtra("USER");
+                intent_back.putExtra("PREVIOUS_PAGE", getIntent().getSerializableExtra("PREVIOUS_PAGE"));
+                intent_back.putExtra("USER", user);
+                startActivity(intent_back);
+            }
+
+        }
+        else {
             Toast.makeText(this, "A resource was not selected", Toast.LENGTH_SHORT).show();
         }
-
-        Intent intent_back = new Intent(this,CatererEditEvent.class);
-        intent_back.putExtra("EVENT_ID",event_id);
-        User user = (User) getIntent().getSerializableExtra("USER");
-        intent_back.putExtra("PREVIOUS_PAGE", getIntent().getSerializableExtra("PREVIOUS_PAGE"));
-        intent_back.putExtra("USER", user);
-        startActivity(intent_back);
     }
     public void setResourcesBack(){
         Intent intent_back = new Intent(this,CatererEditEvent.class);
