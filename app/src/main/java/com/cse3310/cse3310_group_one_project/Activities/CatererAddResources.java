@@ -47,7 +47,7 @@ public class CatererAddResources extends AppCompatActivity {
         String mealType = e.getMeal_type();
         String drinkType = e.getDrink_venue();
 
-        /*
+
         //FOOD
         if(mealType.equalsIgnoreCase("american")){
             ArrayAdapter<String> myAdapterf = new ArrayAdapter<String>(CatererAddResources.this,
@@ -115,7 +115,7 @@ public class CatererAddResources extends AppCompatActivity {
                 R.layout.spinner_item2,getResources().getStringArray(R.array.ent_items));
         myAdaptere.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         ent_spinner.setAdapter(myAdaptere);
-*/
+
         set_resources_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
