@@ -40,7 +40,19 @@
         </Spinner>
 
 
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:gravity="center|bottom"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/reserve_event_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@color/colorOrange"
+            android:text="Submit" />
         <Button
             android:id="@+id/reserve_event_back"
             android:layout_width="match_parent"
@@ -49,13 +61,6 @@
             android:layout_marginTop="10dp"
             android:background="@color/colorOrange"
             android:text="Back" />
-
-        <Button
-            android:id="@+id/reserve_event_submit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@color/colorOrange"
-            android:text="Submit" />
+        </LinearLayout>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
