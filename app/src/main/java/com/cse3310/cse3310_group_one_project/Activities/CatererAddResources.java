@@ -40,12 +40,12 @@ public class CatererAddResources extends AppCompatActivity {
         drink_spinner = findViewById(R.id.drinkSpinner);
         ent_spinner = findViewById(R.id.entSpinner);
         db=new DBManager(this);
-        //int event_id = (int) getIntent().getSerializableExtra("EVENT_ID");
-        //i think this might be the source of the bug (line 47)
+        //i think this might be the source of the bug (line 45)
         //could it be the if/if else structure? - miguel
         Event e = (Event) getIntent().getSerializableExtra("EVENT");
         String mealType = e.getMeal_type();
         String drinkType = e.getDrink_venue();
+        /*
         //FOOD
         if(mealType.equalsIgnoreCase("american")){
             ArrayAdapter<String> myAdapterf = new ArrayAdapter<String>(CatererAddResources.this,
@@ -113,7 +113,7 @@ public class CatererAddResources extends AppCompatActivity {
                 R.layout.spinner_item2,getResources().getStringArray(R.array.ent_items));
         myAdaptere.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         ent_spinner.setAdapter(myAdaptere);
-
+*/
         set_resources_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
