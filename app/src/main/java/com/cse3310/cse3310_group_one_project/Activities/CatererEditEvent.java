@@ -55,7 +55,7 @@ public class CatererEditEvent extends AppCompatActivity {
         Remove_resources.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                removeResources();
+                viewResources();
             }
         });
         Remove_event.setOnClickListener(new View.OnClickListener() {
@@ -100,8 +100,8 @@ public class CatererEditEvent extends AppCompatActivity {
         startActivity(intent_addResources);
     }
 
-    public void removeResources(){
-        Intent intent_removeResources = new Intent(this,CatererRemoveResources.class);
+    public void viewResources(){
+        Intent intent_removeResources = new Intent(this,CatererViewResources.class);
         User user = (User) getIntent().getSerializableExtra("USER");
         int event_id = (int) getIntent().getSerializableExtra("EVENT_ID");
         intent_removeResources.putExtra("PREVIOUS_PAGE", getIntent().getSerializableExtra("PREVIOUS_PAGE"));

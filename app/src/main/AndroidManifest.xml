@@ -34,7 +34,7 @@
         <activity android:name=".Activities.CatererHomepage">
             
         </activity>
-        <activity android:name=".Activities.CatererRemoveResources">
+        <activity android:name=".Activities.CatererViewResources">
             
         </activity>
         <activity android:name=".Activities.CatererRemoveStaff">
