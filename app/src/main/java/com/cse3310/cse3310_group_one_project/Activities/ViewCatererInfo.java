@@ -23,8 +23,8 @@ public class ViewCatererInfo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_caterer_info);
-        name=(TextView)findViewById(R.id.caterer_name);
-        phone=(TextView)findViewById(R.id.caterer_phone_number);
+        name= findViewById(R.id.caterer_name);
+        phone= findViewById(R.id.caterer_phone_number);
 
         db=new DBManager(this);
         int event_id = (Integer) getIntent().getSerializableExtra("EVENT_ID");
@@ -36,7 +36,7 @@ public class ViewCatererInfo extends AppCompatActivity {
         name.setText(name.getText().toString()+ " "+caterer_name);
         phone.setText(phone.getText().toString()+ " "+phone_number);
 
-        Button back_button = (Button) findViewById(R.id.caterer_info_back);
+        Button back_button = findViewById(R.id.caterer_info_back);
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

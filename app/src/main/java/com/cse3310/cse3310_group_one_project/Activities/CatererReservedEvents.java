@@ -31,10 +31,10 @@ public class CatererReservedEvents extends AppCompatActivity {
         setContentView(R.layout.activity_caterer_reserved_events);
 
         db = new DBManager(this);
-        Button view_details=(Button) findViewById(R.id.reserved_events_details_caterer);
-        Button Edit_event=(Button) findViewById(R.id.edit_event_caterer);
-        Button back_event=(Button) findViewById(R.id.reserved_events_back);
-        reserved_events = (Spinner) findViewById(R.id.caterer_reserved_events_spinner);
+        Button view_details= findViewById(R.id.reserved_events_details_caterer);
+        Button Edit_event= findViewById(R.id.edit_event_caterer);
+        Button back_event= findViewById(R.id.reserved_events_back);
+        reserved_events = findViewById(R.id.caterer_reserved_events_spinner);
         final List<Event> reserved = db.retrieveReserved();
         for(Event e: reserved)
         {

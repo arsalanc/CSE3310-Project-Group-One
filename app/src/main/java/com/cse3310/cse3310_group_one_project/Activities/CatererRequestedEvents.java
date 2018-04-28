@@ -33,7 +33,7 @@ public class CatererRequestedEvents extends AppCompatActivity {
         db = new DBManager(this);
         final List<Event> requests = db.retrieveRequests();
 
-        select_event = (Spinner) findViewById(R.id.caterer_requested_events_spinner);
+        select_event = findViewById(R.id.caterer_requested_events_spinner);
 
         for(Event e: requests)
         {
@@ -46,10 +46,10 @@ public class CatererRequestedEvents extends AppCompatActivity {
         select_event.setAdapter(myAdapter);
         myAdapter.notifyDataSetChanged();
         //TODO:view_details, reserve and deny buttons
-        Button view_details = (Button) findViewById(R.id.requested_event_details);
-        Button reserve = (Button) findViewById(R.id.reserve);
-        Button deny = (Button) findViewById(R.id.deny);
-        Button back = (Button) findViewById(R.id.requested_events_back);
+        Button view_details = findViewById(R.id.requested_event_details);
+        Button reserve = findViewById(R.id.reserve);
+        Button deny = findViewById(R.id.deny);
+        Button back = findViewById(R.id.requested_events_back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

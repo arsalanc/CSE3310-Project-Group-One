@@ -31,11 +31,11 @@ public class CatererViewUserInfo extends AppCompatActivity {
         String name = event_user.getFname() + " " + event_user.getLname();
         String phone = event_user.getPhoneNumber();
 
-        user_name=(TextView) findViewById(R.id.user_info_name);
-        user_number=(TextView) findViewById(R.id.user_info_number);
+        user_name= findViewById(R.id.user_info_name);
+        user_number= findViewById(R.id.user_info_number);
         user_name.setText(user_name.getText().toString() + " " + name);
         user_number.setText(user_number.getText().toString() + " " + phone);
-        Button User_info_back = (Button) findViewById(R.id.user_info_back);
+        Button User_info_back = findViewById(R.id.user_info_back);
         User_info_back.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){

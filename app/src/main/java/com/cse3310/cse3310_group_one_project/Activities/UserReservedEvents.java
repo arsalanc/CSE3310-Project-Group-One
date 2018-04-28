@@ -33,9 +33,9 @@ public class UserReservedEvents extends AppCompatActivity {
 
         db = new DBManager(this);
         final List<Event> events = db.retrieveReservedByUserID(user.getId());
-        Button back_button = (Button) findViewById(R.id.user_reserved_events_back);
-        Button view_details_button = (Button) findViewById(R.id.view_details_reserved_user);
-        reserved_events = (Spinner) findViewById(R.id.user_reserved_events_spinner);
+        Button back_button = findViewById(R.id.user_reserved_events_back);
+        Button view_details_button = findViewById(R.id.view_details_reserved_user);
+        reserved_events = findViewById(R.id.user_reserved_events_spinner);
 
         for(Event e: events)
         {

@@ -34,9 +34,9 @@ public class UserSchedule extends AppCompatActivity {
 
         db = new DBManager(this);
         final List<Event> requests = db.retrieveReserved();
-        Button back_button = (Button) findViewById(R.id.user_schedule_back);
-        Button view_details_button = (Button) findViewById(R.id.view_details_schedule);
-        event_schedule = (Spinner) findViewById(R.id.user_schedule_spinner);
+        Button back_button = findViewById(R.id.user_schedule_back);
+        Button view_details_button = findViewById(R.id.view_details_schedule);
+        event_schedule = findViewById(R.id.user_schedule_spinner);
 
         for(Event e: requests)
         {

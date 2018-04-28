@@ -50,16 +50,16 @@ public class UserRequestEvent extends AppCompatActivity implements
 
         db = new DBManager(this);
 
-        btnDatePicker=(Button)findViewById(R.id.btn_date);
-        btnTimePicker=(Button)findViewById(R.id.btn_time);
-        txtDate=(EditText)findViewById(R.id.in_date);
-        txtTime=(EditText)findViewById(R.id.in_time);
+        btnDatePicker= findViewById(R.id.btn_date);
+        btnTimePicker= findViewById(R.id.btn_time);
+        txtDate= findViewById(R.id.in_date);
+        txtTime= findViewById(R.id.in_time);
 
         btnDatePicker.setOnClickListener(this);
         btnTimePicker.setOnClickListener(this);
 
-        btn_add = (Button)findViewById(R.id.btn_add);
-        btn_sub = (Button)findViewById(R.id.btn_sub);
+        btn_add = findViewById(R.id.btn_add);
+        btn_sub = findViewById(R.id.btn_sub);
 
         // set duration text on page build
         displayDuration(durCounter);
@@ -68,25 +68,25 @@ public class UserRequestEvent extends AppCompatActivity implements
         calendar.add(Calendar.DAY_OF_MONTH, 1);
         timeNow = calendar.getTimeInMillis();
 
-        Button cancel = (Button) findViewById(R.id.request_event_cancel);
-        Button confirm = (Button) findViewById(R.id.request_event_confirm);
+        Button cancel = findViewById(R.id.request_event_cancel);
+        Button confirm = findViewById(R.id.request_event_confirm);
 
-        meal_type = (Spinner) findViewById(R.id.meal_type);
+        meal_type = findViewById(R.id.meal_type);
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(UserRequestEvent.this,
                 R.layout.spinner_item2,getResources().getStringArray(R.array.Meal_Types));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         meal_type.setAdapter(myAdapter);
-        meal_venue = (Spinner) findViewById(R.id.venue_type);
+        meal_venue = findViewById(R.id.venue_type);
         myAdapter = new ArrayAdapter<String>(UserRequestEvent.this,
                 R.layout.spinner_item2,getResources().getStringArray(R.array.Venue_Type));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         meal_venue.setAdapter(myAdapter);
-        formality = (Spinner) findViewById(R.id.meal_formality);
+        formality = findViewById(R.id.meal_formality);
         myAdapter = new ArrayAdapter<String>(UserRequestEvent.this,
                 R.layout.spinner_item2,getResources().getStringArray(R.array.Formality));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         formality.setAdapter(myAdapter);
-        drink = (Spinner) findViewById(R.id.drink);
+        drink = findViewById(R.id.drink);
         myAdapter = new ArrayAdapter<String>(UserRequestEvent.this,
                 R.layout.spinner_item2,getResources().getStringArray(R.array.Drink));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -259,7 +259,7 @@ public class UserRequestEvent extends AppCompatActivity implements
         }
     }
     private void displayDuration(int number) {
-        duration = (TextView) findViewById(R.id.duration);
+        duration = findViewById(R.id.duration);
         duration.setText("Duration(hrs): " + number);
     }
     public void increaseIntegerPS(View v) {
@@ -276,7 +276,7 @@ public class UserRequestEvent extends AppCompatActivity implements
         }
     }
     private void displayPS(int number) {
-        party_size = (TextView) findViewById(R.id.partySize);
+        party_size = findViewById(R.id.partySize);
         party_size.setText("Party Size: " + number);
     }
 

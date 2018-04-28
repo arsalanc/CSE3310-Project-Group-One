@@ -19,9 +19,9 @@ public class StaffHomepage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_staff_homepage);
 
-        Button view_assigned_events = (Button) findViewById(R.id.view_assigned_events);
-        Button profile_management = (Button) findViewById(R.id.profile_management_staff);
-        Button logout = (Button) findViewById(R.id.logout_staff);
+        Button view_assigned_events = findViewById(R.id.view_assigned_events);
+        Button profile_management = findViewById(R.id.profile_management_staff);
+        Button logout = findViewById(R.id.logout_staff);
 
         view_assigned_events.setOnClickListener(new View.OnClickListener() {
             @Override

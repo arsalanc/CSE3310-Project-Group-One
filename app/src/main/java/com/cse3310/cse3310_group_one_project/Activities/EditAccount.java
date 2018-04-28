@@ -25,11 +25,11 @@ public class EditAccount extends AppCompatActivity {
 
         db = new DBManager(this);
 
-        current_pass = (EditText) findViewById(R.id.current_pass);
-        new_pass = (EditText) findViewById(R.id.new_pass);
-        new_phone = (EditText) findViewById(R.id.new_pass);
-        Button cancel = (Button) findViewById(R.id.edit_account_cancel);
-        Button submit = (Button) findViewById(R.id.edit_account_submit);
+        current_pass = findViewById(R.id.current_pass);
+        new_pass = findViewById(R.id.new_pass);
+        new_phone = findViewById(R.id.new_pass);
+        Button cancel = findViewById(R.id.edit_account_cancel);
+        Button submit = findViewById(R.id.edit_account_submit);
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

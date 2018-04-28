@@ -31,8 +31,8 @@ public class CatererApproveEvent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_caterer_approve_event);
         //TODO: assign hall  to event and reserve event after submit button click
-        Button back_button = (Button) findViewById(R.id.reserve_event_back);
-        Button submit_button = (Button) findViewById(R.id.reserve_event_submit);
+        Button back_button = findViewById(R.id.reserve_event_back);
+        Button submit_button = findViewById(R.id.reserve_event_submit);
         ArrayAdapter<String> myAdapter;
         int event_id = (Integer) getIntent().getSerializableExtra("EVENT_ID");
         db = new DBManager(this);

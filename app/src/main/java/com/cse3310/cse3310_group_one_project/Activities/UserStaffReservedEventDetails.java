@@ -25,21 +25,21 @@ public class UserStaffReservedEventDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_staff_reserved_event_details);
 
-        party_size = (TextView) findViewById(R.id.reserved_event_party_size);
-        date = (TextView) findViewById(R.id.reserved_event_date);
-        time = (TextView) findViewById(R.id.reserved_event_time);
-        duration = (TextView) findViewById(R.id.reserved_event_duration);
-        meal_type = (TextView) findViewById(R.id.reserved_event_Meal);
-        venue_type = (TextView) findViewById(R.id.reserved_event_venue);
-        formality = (TextView) findViewById(R.id.reserved_event_formality);
-        drink = (TextView) findViewById(R.id.reserved_event_drink);
-        hall = (TextView) findViewById(R.id.reserved_event_hall);
-        total_cost = (TextView) findViewById(R.id.total_cost);
+        party_size = findViewById(R.id.reserved_event_party_size);
+        date = findViewById(R.id.reserved_event_date);
+        time = findViewById(R.id.reserved_event_time);
+        duration = findViewById(R.id.reserved_event_duration);
+        meal_type = findViewById(R.id.reserved_event_Meal);
+        venue_type = findViewById(R.id.reserved_event_venue);
+        formality = findViewById(R.id.reserved_event_formality);
+        drink = findViewById(R.id.reserved_event_drink);
+        hall = findViewById(R.id.reserved_event_hall);
+        total_cost = findViewById(R.id.total_cost);
         db = new DBManager(this);
         set_text(db);
 
-        Button caterer_info = (Button) findViewById(R.id.caterer_information);
-        Button back_button = (Button) findViewById(R.id.event_details_back_user);
+        Button caterer_info = findViewById(R.id.caterer_information);
+        Button back_button = findViewById(R.id.event_details_back_user);
         User user = (User) getIntent().getSerializableExtra("USER");
         if(user.getAccountType().equalsIgnoreCase("caterer"))
             {

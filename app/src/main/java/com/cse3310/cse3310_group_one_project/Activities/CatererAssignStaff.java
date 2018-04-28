@@ -33,7 +33,7 @@ public class CatererAssignStaff extends AppCompatActivity {
         //TODO: Submit button functionality
         Button assign_staff_submit = findViewById(R.id.assign_staff_submit);
         Button back_assign_staff = findViewById(R.id.back_assign_staff);
-        available_staff = (Spinner) findViewById(R.id.available_staff);
+        available_staff = findViewById(R.id.available_staff);
 
         int event_id =  (int) getIntent().getSerializableExtra("EVENT_ID");
         db = new DBManager(this);
@@ -70,7 +70,7 @@ public class CatererAssignStaff extends AppCompatActivity {
         Intent intent_submit = new Intent(this,CatererEditEvent.class);
         intent_submit.putExtra("EVENT_ID",event_id);
         User user = (User) getIntent().getSerializableExtra("USER");
-        intent_submit.putExtra("PREVIOUS_PAGE", (Class) getIntent().getSerializableExtra("PREVIOUS_PAGE"));
+        intent_submit.putExtra("PREVIOUS_PAGE", getIntent().getSerializableExtra("PREVIOUS_PAGE"));
         intent_submit.putExtra("USER", user);
         startActivity(intent_submit);
     }
@@ -79,7 +79,7 @@ public class CatererAssignStaff extends AppCompatActivity {
         int event_id = (int) getIntent().getSerializableExtra("EVENT_ID");
         intent_back.putExtra("EVENT_ID",event_id);
         User user = (User) getIntent().getSerializableExtra("USER");
-        intent_back.putExtra("PREVIOUS_PAGE", (Class) getIntent().getSerializableExtra("PREVIOUS_PAGE"));
+        intent_back.putExtra("PREVIOUS_PAGE", getIntent().getSerializableExtra("PREVIOUS_PAGE"));
         intent_back.putExtra("USER", user);
         startActivity(intent_back);
     }

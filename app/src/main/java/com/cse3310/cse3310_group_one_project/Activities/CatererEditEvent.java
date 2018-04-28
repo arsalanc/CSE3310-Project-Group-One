@@ -30,7 +30,7 @@ public class CatererEditEvent extends AppCompatActivity {
         Button Remove_resources=findViewById(R.id.remove_resources);
         Button Remove_event=findViewById(R.id.remove_event);
         Button Back=findViewById(R.id.back_caterer);
-        event_number = (TextView)findViewById(R.id.edit_event_number);
+        event_number = findViewById(R.id.edit_event_number);
         int event_id = (int) getIntent().getSerializableExtra("EVENT_ID");
         event_number.setText(event_number.getText().toString() + " "+ event_id );
 

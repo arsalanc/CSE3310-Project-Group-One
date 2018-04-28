@@ -25,10 +25,10 @@ public class MainActivity extends AppCompatActivity {
 
         db = new DBManager(this);
         //db.recreateTable();
-        Button register_button = (Button) findViewById(R.id.Register);
-        Button login_button = (Button) findViewById(R.id.login);
-        username = (EditText) findViewById(R.id.username_input);
-        password = (EditText) findViewById(R.id.password_input);
+        Button register_button = findViewById(R.id.Register);
+        Button login_button = findViewById(R.id.login);
+        username = findViewById(R.id.username_input);
+        password = findViewById(R.id.password_input);
         register_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("USER", user);
             }
             else if(user.getAccountType().equalsIgnoreCase("user")){
-                ;
                 intent = new Intent(this, UserHomepage.class);
                 intent.putExtra("USER", user);
             }

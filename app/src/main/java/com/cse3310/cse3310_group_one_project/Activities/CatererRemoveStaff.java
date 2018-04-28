@@ -31,7 +31,7 @@ public class CatererRemoveStaff extends AppCompatActivity {
         Button remove_staff_submit=findViewById(R.id.remove_staff_submit);
         Button remove_staff_back=findViewById(R.id.remove_staff_back);
 
-        remove_staff = (Spinner) findViewById(R.id.remove_staff_spinner);
+        remove_staff = findViewById(R.id.remove_staff_spinner);
         int event_id =  (int) getIntent().getSerializableExtra("EVENT_ID");
         db = new DBManager(this);
         staffNames=db.currentStaff(event_id);
@@ -63,7 +63,7 @@ public class CatererRemoveStaff extends AppCompatActivity {
         Intent intent_remove = new Intent(this,CatererEditEvent.class);
         intent_remove.putExtra("EVENT_ID",event_id);
         User user = (User) getIntent().getSerializableExtra("USER");
-        intent_remove.putExtra("PREVIOUS_PAGE", (Class) getIntent().getSerializableExtra("PREVIOUS_PAGE"));
+        intent_remove.putExtra("PREVIOUS_PAGE", getIntent().getSerializableExtra("PREVIOUS_PAGE"));
         intent_remove.putExtra("USER", user);
         startActivity(intent_remove);
     }
@@ -73,7 +73,7 @@ public class CatererRemoveStaff extends AppCompatActivity {
         int event_id = (int) getIntent().getSerializableExtra("EVENT_ID");
         intent_back.putExtra("EVENT_ID",event_id);
         User user = (User) getIntent().getSerializableExtra("USER");
-        intent_back.putExtra("PREVIOUS_PAGE", (Class) getIntent().getSerializableExtra("PREVIOUS_PAGE"));
+        intent_back.putExtra("PREVIOUS_PAGE", getIntent().getSerializableExtra("PREVIOUS_PAGE"));
         intent_back.putExtra("USER", user);
         startActivity(intent_back);
     }

@@ -22,21 +22,21 @@ public class UserEventDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState)  {
         setContentView(R.layout.activity_user_event_details);
         //TODO: display event information, cancel event on cancel button click
-        party_size = (TextView) findViewById(R.id.party_size_text);
-        date = (TextView) findViewById(R.id.date_text);
-        time = (TextView) findViewById(R.id.time_text);
-        duration = (TextView) findViewById(R.id.duration_text);
-        meal_type = (TextView) findViewById(R.id.meal_type_text);
-        venue_type = (TextView) findViewById(R.id.venue_type_text);
-        formality = (TextView) findViewById(R.id.formality_text);
-        drink = (TextView) findViewById(R.id.drink_text);
+        party_size = findViewById(R.id.party_size_text);
+        date = findViewById(R.id.date_text);
+        time = findViewById(R.id.time_text);
+        duration = findViewById(R.id.duration_text);
+        meal_type = findViewById(R.id.meal_type_text);
+        venue_type = findViewById(R.id.venue_type_text);
+        formality = findViewById(R.id.formality_text);
+        drink = findViewById(R.id.drink_text);
 
         db = new DBManager(this);
 
 
         set_text(db);
-        Button back_button = (Button) findViewById(R.id.event_details_back_user);
-        Button cancel_event = (Button) findViewById(R.id.cancel_event_user);
+        Button back_button = findViewById(R.id.event_details_back_user);
+        Button cancel_event = findViewById(R.id.cancel_event_user);
         super.onCreate(savedInstanceState);
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -29,18 +29,18 @@ public class Register extends AppCompatActivity {
 
         db = new DBManager(this);
         //db.recreateTable();
-        Button cancel_button = (Button) findViewById(R.id.cancel_register);
-        Button submit_button = (Button) findViewById(R.id.register_submit);
-        fname=(EditText) findViewById(R.id.Firstname);
-        lname=(EditText) findViewById(R.id.Lastname);
-        username=(EditText) findViewById(R.id.username);
-        password=(EditText) findViewById(R.id.password);
-        account_type =(Spinner) findViewById(R.id.spinner1);
+        Button cancel_button = findViewById(R.id.cancel_register);
+        Button submit_button = findViewById(R.id.register_submit);
+        fname= findViewById(R.id.Firstname);
+        lname= findViewById(R.id.Lastname);
+        username= findViewById(R.id.username);
+        password= findViewById(R.id.password);
+        account_type = findViewById(R.id.spinner1);
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(Register.this,
                 R.layout.spinner_item2,getResources().getStringArray(R.array.Account_Types));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         account_type.setAdapter(myAdapter);
-        phone_number=(EditText) findViewById(R.id.phone_number);
+        phone_number= findViewById(R.id.phone_number);
         //TODO: Create account using edit text data when submit button is clicked
         cancel_button.setOnClickListener(new View.OnClickListener() {
             @Override

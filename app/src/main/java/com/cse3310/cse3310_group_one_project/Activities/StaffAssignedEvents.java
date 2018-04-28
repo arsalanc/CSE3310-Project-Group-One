@@ -29,11 +29,11 @@ public class StaffAssignedEvents extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_staff_assigned_events);
         //TODO: view_details button
-        Button view_details = (Button) findViewById(R.id.view_details_assigned);
-        Button back_button= (Button) findViewById(R.id.assigned_events_back);
+        Button view_details = findViewById(R.id.view_details_assigned);
+        Button back_button= findViewById(R.id.assigned_events_back);
         db= new DBManager(this);
         User user = (User) getIntent().getSerializableExtra("USER");
-        assigned_events = (Spinner) findViewById(R.id.staff_assigned_events_spinner);
+        assigned_events = findViewById(R.id.staff_assigned_events_spinner);
         int id = user.getId();
         List<Event> assigned = db.retrieveAssignedEvents(id);
         for(Event e: assigned)

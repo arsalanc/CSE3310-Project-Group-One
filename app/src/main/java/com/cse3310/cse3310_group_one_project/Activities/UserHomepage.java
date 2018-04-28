@@ -19,12 +19,12 @@ public class UserHomepage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_homepage);
 
-        Button request_event = (Button) findViewById(R.id.request_event_user);
-        Button view_requested_events = (Button) findViewById(R.id.view_requested_events_user);
-        Button view_reserved_events = (Button) findViewById(R.id.view_reserved_events_user);
-        Button view_schedule = (Button) findViewById(R.id.view_schedule_user);
-        Button profile_management = (Button) findViewById(R.id.profile_management_user);
-        Button logout = (Button) findViewById(R.id.logout_user);
+        Button request_event = findViewById(R.id.request_event_user);
+        Button view_requested_events = findViewById(R.id.view_requested_events_user);
+        Button view_reserved_events = findViewById(R.id.view_reserved_events_user);
+        Button view_schedule = findViewById(R.id.view_schedule_user);
+        Button profile_management = findViewById(R.id.profile_management_user);
+        Button logout = findViewById(R.id.logout_user);
 
         request_event.setOnClickListener(new View.OnClickListener() {
             @Override
